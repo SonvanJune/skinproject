@@ -1,0 +1,47 @@
+.help-us {
+    padding-top: 150px;
+    height: 100%;
+}
+
+.help-us body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(180deg, #f6fbff, #eef6ff);
+    color: #0f172a;
+}
+
+.help-us .logo-img {
+    height: 68px;
+    /* chỉ set chiều cao */
+    width: auto;
+    /* chiều rộng tự động theo tỷ lệ ảnh */
+    border-radius: 14px;
+}
+
+
+.help-us .step .icon {
+    min-width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff, #f3f8ff);
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+.help-us .thumb img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: zoom-in;
+}
+
+.help-us .faq-a {
+    display: none;
+    color: var(--muted);
+}
+
+.help-us footer {
+    font-size: 13px;
+    color: var(--muted);
+}

@@ -1,0 +1,198 @@
+.search{
+    padding-top: 130px;
+    height: 100%;
+    animation: wfadeIn 1.5s ease-in-out;
+}
+
+.search .user-noti{
+    padding-top: 20px;
+}
+
+.search .empty-list{
+    text-align: center;
+}
+
+.search .empty-list img{
+    width: 40%;
+    height: auto;
+    transform: translateX(3%);
+}
+@keyframes wfadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes wslideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search .search-banner {
+    padding: 50px 0 75px;
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #f8f9fa;
+}
+
+.search .search-banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: Righteous;
+}
+
+.search .breadcrumb {
+    justify-content: center;
+}
+
+.search .breadcrumb a {
+    color: #495057;
+    text-decoration: none;
+}
+
+.search .breadcrumb span {
+    color: #6c757d;
+    margin: 0 5px;
+}
+
+.search .search-container {
+    background-color: #f8f9fa;
+    color: #343a40;
+    border-radius: 10px;
+}
+
+.search .search-content{
+    font-family: sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.search .search-content .card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.search .search-content .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem 1.25rem;
+    font-weight: bold;
+}
+
+.search .search-content .list-group-item {
+    border: none;
+    padding: 0.75rem 0;
+}
+
+.search .search-content .list-group-item label {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.search .search-content .filter-badge {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    margin-right: 0.3rem;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.search .search-content .filter-badge button {
+    background: none;
+    border: none;
+    color: #dc3545;
+    margin-left: 0.3rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+    padding: 0;
+}
+
+.search .search-content .filter-badge button:hover {
+    text-decoration: underline;
+}
+
+.search .search-content .job-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: white;
+    margin-bottom: 1rem;
+}
+
+.search .search-content .job-item h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.search .search-content .job-item p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.3rem;
+}
+
+.search .search-content .job-item .salary {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.search .search-content .job-item .salary .price-sale{
+    text-decoration: line-through;
+    color: #a7a7a7;
+}
+
+.search .search-content .job-item .badge {
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+}
+
+.search .company-info{
+    width: 80%;
+}
+
+.search .company-info img{
+    width: 70%;
+    height: auto;
+}
+
+.search .job-card-header{
+    margin-bottom: 10px;
+}
+
+.search .btn-primary{
+    white-space: nowrap;
+}
+
+.search .note-small{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font-size: 12px;
+}
+
+.search .list-group-item:hover{
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    
+
+}
+
+@media (max-width: 500px) {
+    
+}

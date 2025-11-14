@@ -1,0 +1,95 @@
+/* carousel */
+.nor .carousel-item {
+    width: 100%;
+    z-index: 0;
+}
+
+.nor .carousel-item img{
+    width: 100%;
+}
+
+/* custom carousel */
+.carousel-custom {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    /* Adjust as needed */
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-custom-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.carousel-custom-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-custom-item {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.carousel-custom-item img {
+    border-radius: 25px 25px 25px 25px;
+    width: 450px;
+    height: 300px;
+}
+
+.carousel-custom-item-no {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.carousel-custom-item-no img {
+    border-radius: 25px 25px 25px 25px;
+    width: 450px;
+    height: 300px;
+}
+
+.carousel-custom-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel-custom-button.prev {
+    left: 10px;
+}
+
+.carousel-custom-button.next {
+    right: 10px;
+}
+
+.pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 0 5px;
+    background-color: #FF0000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pagination-dot.active {
+    background-color: #717171;
+}

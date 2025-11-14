@@ -1,0 +1,47 @@
+.brand-item{
+    align-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    box-shadow: 5px 7px 10px 0px rgba(0, 0, 0, 0.5);
+    margin: 10px 10px 10px 10px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+    transition: all 0.7s;
+    text-decoration: none;
+    width: 15%;
+    font-size: 18px;
+}
+
+.brand-item img{
+    background-size: cover;
+    width: 100%;
+}
+
+.brand-item h4{
+    text-align: center;
+    color: #000000;
+    font-family: "ADLaM Display", Sans-serif;
+    margin-top: 20px;
+    font-size: 70%;
+    font-weight: 600;
+    stroke-width: 0px;
+    stroke: #000;
+}
+
+.brand-item:hover{
+    box-shadow: -4px -4px 10px 0px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+/* reponsive */
+@media (max-width: 991px) {
+    .brand-item{
+        width: 30%;
+    }
+}
+
+@media (max-width: 769px) {
+    .brand-item{
+        width: 50%;
+    }
+}

@@ -1,0 +1,164 @@
+.home {
+    padding-top: 150px;
+}
+
+/* menu */
+.menu {
+    background: #dadada;
+}
+
+.menu .flex-item {
+    font-family: Righteous;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin: 0.5rem;
+    text-wrap: nowrap;
+    color: #000000;
+}
+
+.menu .flex-item h2{
+    font-size: 1rem !important;
+    font-weight: bold;
+    text-wrap: nowrap;
+}
+
+.menu .flex-fill:hover {
+    transform: scale(1.1);
+    color: #D73A10;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.menu .flex-fill:hover .flex-item{
+    color: #D73A10;
+}
+
+.menu .flex-fill:hover i{
+    color: #D73A10;
+}
+
+.menu i {
+    font-family: Righteous;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-right: -20px;
+    margin-top: 22px;
+    color: #000000;
+}
+
+/* daily */
+.daily {
+    margin-top: 70px;
+    width: 100%;
+    height: max-content;
+    background-color: #414141;
+    padding: 20px;
+    text-align: center;
+}
+
+.daily img {
+    width: 200px;
+    height: 200px;
+    background: none;
+}
+
+.daily .btn-daily {
+    border-radius: 5px;
+    border: #fff 1px solid;
+    width: max-content;
+    margin: 0 auto;
+    display: flex;
+    padding: 5px;
+}
+
+.daily .btn-daily:hover {
+    border: orange 1px solid;
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.daily .btn-daily:hover .item h1{
+    color: orange !important;
+}
+
+.daily .btn-daily:hover i {
+    color: orange !important;
+}
+
+.daily .btn-daily .item {
+    font-family: Righteous;
+    text-transform: uppercase;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.daily .btn-daily .item h1{
+    font-size: 2em;
+    text-decoration: underline;
+    line-height: normal !important;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.daily .btn-daily i {
+    font-family: Righteous;
+    font-size: 2.5em;
+    color: #fff;
+}
+
+.daily p {
+    font-family: sans-serif;
+    font-size: 1.2em;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* new */
+.new {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+/* thank */
+.thank{
+    margin-top: 40px;
+    margin-bottom: 100px;
+    padding: 10px 0 5px 0;
+    width: 100%;
+    text-align: center;
+    background-color: #000000;
+}
+
+.thank h4{
+    color: #FFFFFF;
+    font-family: "Roboto", Sans-serif;
+    font-weight: 900;
+    text-shadow: 6px 5px 5px rgba(255, 255, 255, 0.65);
+    animation: bounce 2s;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-75px);
+    }
+    60% {
+        transform: translateY(-25px);
+    }
+}
+
+@media (max-width: 500px) {
+    .home{
+        padding-top: 60px;
+    }
+}
+
+.products .detail .cart{
+    display: inline-block !important;
+}

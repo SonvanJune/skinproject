@@ -1,0 +1,83 @@
+.brand{
+    padding-top: 130px;
+}
+
+.brand .image-type1{
+    background: #000;
+    padding: 10px 0 10px 0;
+    position: relative;
+}
+
+.brand .image-type1 img{
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+}
+
+.brand .image-type1 h2{
+    color: #FFFFFF;
+    font-family: "Aladin", Sans-serif;
+    font-size: clamp(1rem, 2vw + 1rem, 3rem);
+    font-weight: 600;
+    text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.67);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* type 2 */
+.brand .image-type2{
+    background: #000;
+    padding: 10px 0 10px 0;
+}
+
+.brand .image-type2 img{
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+}
+
+.brand .image-type2 h2{
+    color: #FFFFFF;
+    font-family: "Aladin", Sans-serif;
+    font-size: clamp(1rem, 2vw + 1rem, 2.5rem);
+    font-weight: 600;
+    text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.67);
+    padding: 40px 0 40px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.brand .brand-list{
+    margin-top: 50px;
+}
+
+
+.brand .empty-list{
+    text-align: center;
+}
+
+.brand .empty-list img{
+    width: 40%;
+    height: 40%;
+}
+
+.brand .empty-list .empty-text{
+    transform: translateX(-1%);
+}
+
+@media (max-width: 769px) {
+    .brand-list .list{
+        justify-content: center;
+    }
+}
+@media (max-width: 500px) {
+    .brand{
+        padding-top: 60px;
+    }
+
+    .brand .image-type1 h2{
+        font-size: 0.7rem;
+    }
+}

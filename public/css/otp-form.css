@@ -1,0 +1,21 @@
+.otp-input {
+    width: 30%;
+    height: 50px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.otp-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.intro-form .error{
+    color: red;
+    font-weight: bold;
+    font-size: 0.8em;
+}

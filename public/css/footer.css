@@ -1,0 +1,218 @@
+.footer {
+    margin-top: 100px;
+    height: max-content;
+    width: 100%;
+}
+
+.footer .elementor-shape {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    height: 3rem;
+    background-color: #11101D;
+}
+
+.footer .elementor-shape-fill {
+    fill: #fff;
+    transform-origin: center;
+    transform: rotateY(0deg);
+}
+
+.footer .shape-mid {
+    padding: 130px 0 50px 0;
+    background-color: #11101D;
+    height: max-content;
+}
+
+.footer .shape-mid img {
+    width: 100%;
+    height: auto;
+}
+
+.footer .shape-mid h6 {
+    font-weight: 600;
+    color: #ced5cf;
+    padding: 20px 10px 10px 10px;
+    line-height: 2;
+}
+
+.footer .title {
+    color: #FFFFFF;
+    font-family: "Righteous", Sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.footer .under {
+    margin-top: 30px;
+}
+
+.footer .list {
+    font-family: "Righteous", Sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .list .item {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.footer .list i {
+    font-size: 0.8em;
+    margin-right: 15px;
+    margin-top: 10px;
+    color: #ECE40D;
+}
+
+.footer .list .item:hover {
+    color: #ECE40D;
+    cursor: pointer;
+}
+
+.footer .list .item:hover i {
+    color: #1bafed !important;
+}
+
+.footer .contact {
+    color: #FFFFFF;
+    font-family: "Ribeye Marrow", Sans-serif;
+    font-weight: 300;
+    text-align: center;
+    position: relative;
+}
+
+.footer .line {
+    border-top: 1px solid #7B7979;
+    width: 60%;
+    position: absolute;
+    top: 17%;
+    left: 20%;
+}
+
+.footer .contact .list-btn {
+    font-family: "Righteous", Sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    width: 100%;
+    align-items: center;
+}
+
+.footer .contact .bt {
+    border-radius: 25px 25px 25px 25px;
+    padding: 10px 10px 10px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    width: 60%;
+    transition: all 0.5s;
+    margin-bottom: 10px;
+}
+
+.footer .contact .bt i {
+    font-size: 1em;
+    margin-right: 15px;
+}
+
+.footer .contact .conta {
+    background-color: #0866ff;
+    box-shadow: 0px 0px 30px 0px rgba(16.557065590568218, 82.6915263954769, 230.79545974731445, 0.5);
+}
+
+.footer .contact .conta:hover {
+    background-color: #B03636;
+}
+
+.footer .contact .whatapp {
+    background-color: #397B00;
+    box-shadow: 1px 0px 64px 0px rgba(95.73212430067025, 230.79545974731445, 16.557065590568218, 0.55);
+}
+
+.footer .contact .whatapp:hover {
+    background-color: hwb(128 38% 19%);
+}
+
+.footer .contact .insta {
+    background-color: #BA3187A1;
+    box-shadow: 1px 0px 64px 0px rgba(255, 0, 222.84782608695653, 0.5);
+}
+
+.footer .contact .insta:hover {
+    background-color: hsl(322, 81%, 53%);
+}
+
+.footer .contact .youtube {
+    background-color: #F01C1CA1;
+    box-shadow: 1px 0px 64px 0px rgba(255, 0, 0, 0.55);
+}
+
+.footer .contact .youtube:hover {
+    background-color: hwb(0 15% 9%);
+}
+
+.copy-right {
+    padding: 10px;
+    width: 100%;
+    color: #FFFFFF;
+    font-family: "Arial", Sans-serif;
+    font-size: 17px;
+    font-weight: 100;
+    background-color: #000;
+    text-align: center;
+}
+
+@keyframes zoomInFromTopRight {
+    0% {
+        transform: translateX(-50%) scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.alert {
+    animation: zoomInFromTopRight 0.5s ease-out forwards;
+    position: fixed;
+    z-index: 10041;
+    width: 20%;
+    height: max-content;
+    top: 50%;
+    left: 50%;
+}
+
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10030 !important;
+}
+
+.page-overlay-noti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10030 !important;
+}
+
+@media (max-width: 768px) {
+    .alert{
+        width: 60%;
+    }
+}

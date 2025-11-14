@@ -1,0 +1,124 @@
+.category-tree ul {
+    list-style-type: none;
+    margin: 3px;
+}
+
+/* Mục cha */
+.category-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333333;
+    font-weight: 500;
+    font-size: 14.5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.category-item:hover {
+    background-color: #eef5ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon toggle */
+.toggle-icon {
+    font-size: 17px;
+    margin-right: 10px;
+    transition: transform 0.3s ease, color 0.3s;
+    color: #7575ff;
+}
+
+.toggle-icon.rotate {
+    transform: rotate(90deg);
+}
+
+/* Mục con */
+.category-children {
+    margin-left: 20px;
+    padding-left: 15px;
+    border-left: 2px solid #dfe3e8;
+    display: none;
+    flex-direction: column;
+}
+
+.category-children.open {
+    display: flex;
+    /* Hiển thị theo chiều dọc khi mở */
+}
+
+/* Các mục con riêng lẻ */
+.category-children .category-item {
+    background-color: #ffffff;
+    margin: 3px 0;
+    padding: 8px 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.category-children .category-item:hover {
+    background-color: #e6f7ff;
+}
+
+/* Hiển thị cấp con sâu hơn */
+.category-children .category-children {
+    margin-left: 3px;
+    padding-left: 15px;
+    border-left: 2px dashed #d0d7de;
+}
+
+.search-cate .search-container {
+    position: relative;
+    max-width: 90%;
+    margin: auto;
+}
+
+.search-cate .search-box {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+}
+
+.search-cate .search-box.show {
+    max-height: 100px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.search-cate .search-input {
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    border-color: #7575ff;
+}
+
+.search-cate .search-input:focus {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+.search-cate .search-btn {
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-cate .search-btn.active {
+    background-color: #dc3545;
+    transform: rotate(90deg);
+    border-radius: 50%;
+    padding: 10px !important;
+}
+
+.page-header{
+    margin-bottom: 0.5rem !important;
+}
+
+#titleSearch {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}

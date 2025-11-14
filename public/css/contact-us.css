@@ -1,0 +1,123 @@
+.contact-us{
+    padding-top: 150px;
+    height: 100%;
+}
+
+.contact-us .contact-section {
+    padding: 60px 0;
+}
+
+.contact-us .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us .contact-info-bg {
+    background-color: #003c71;
+    color: #fff;
+    padding: 50px;
+    position: relative;
+    padding-bottom: 210px;
+}
+
+.contact-us .contact-info-bg h3 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.contact-us .contact-info-bg p {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.contact-us .contact-info-bg hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 20px 0;
+}
+
+.contact-us .contact-form-bg {
+    background-color: #fff;
+    padding: 30px;
+    z-index: 3;
+}
+
+.contact-us .form-label {
+    font-weight: bold;
+    color: #343a40;
+    font-size: 0.9rem;
+}
+
+.contact-us .form-control,
+.contact-us .form-select,
+.contact-us .form-textarea {
+    font-size: 0.9rem;
+}
+
+.contact-us .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+}
+
+.contact-us .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.contact-us .social-icons {
+    position: absolute;
+    bottom: 12%;
+    left: 25%;
+}
+
+.contact-us .social-icons a {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.contact-us .social-icons a:hover {
+    opacity: 0.8;
+}
+
+.contact-us .sales-info {
+    margin-bottom: 15px;
+}
+
+.contact-us .sales-info strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.contact-us .form-check-label {
+    font-size: 0.9rem;
+    color: #343a40;
+}
+
+.contact-us .circle-1 {
+    background-color: #3087f980;
+    border-radius: 1000px;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    inset: auto -31% -15% auto;
+    z-index: 1;
+}
+
+.contact-us .circle-2 {
+    z-index: 1;
+    background-color: #0fbf958c;
+    border-radius: 1000px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 12%;
+    right: 25%;
+}
+

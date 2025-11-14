@@ -1,0 +1,22 @@
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.table-bordered {
+    border: 1px solid #55679C;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #7C93C3;
+    cursor: pointer;
+}
+
+.table-responsive {
+    margin-top: 20px;
+}

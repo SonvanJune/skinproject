@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'Righteous';
+    src: url('../gg-fonts/Righteous-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../gg-fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ribeye Marrow';
+    src: url('../gg-fonts/RibeyeMarrow-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rock Salt';
+    src: url('../gg-fonts/RockSalt-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ADLaM Display';
+    src: url('../gg-fonts/ADLaMDisplay-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Aladin';
+    src: url('../gg-fonts/Aladin-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input::placeholder {
+    font-weight: bold;
+}
+
+body{
+    width: 100%;
+    position: relative;
+}
+
+.btn-primary{
+    background: #7575ff !important;
+}
+
+.btn-primary:hover{
+    background: #6969f0 !important;
+}
+
+.page-item.active .page-link{
+    background: #7575ff !important;
+}
+
+.note {
+    background-color: #fff8dc;
+    border-left: 4px solid #f0ad4e;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #555;
+    border-radius: 4px;
+    font-style: italic;
+    font-weight: bold;
+}

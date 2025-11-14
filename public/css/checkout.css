@@ -1,0 +1,192 @@
+.checkout {
+    padding-top: 150px;
+    height: 100%;
+}
+
+.checkout .title {
+    background-color: #f5f5f5;
+    width: 100%;
+    padding: 20px 0 20px 0;
+}
+
+.checkout .title .path {
+    justify-content: end;
+    display: flex;
+    padding-top: 5px;
+}
+
+.checkout .title .path a {
+    padding: 0 5px 0 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.9em;
+}
+
+.checkout .title .path a:hover {
+    color: #6EC1E4;
+}
+
+.checkout .title .path .fa-chevron-right {
+    padding-top: 7px;
+    font-size: 0.6em;
+}
+
+.checkout .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.checkout .btn-checkout {
+    width: 100%;
+    height: 60px;
+    background-color: #ffc439;
+    border: none;
+    border-radius: 6px;
+    padding: 0;
+}
+
+.paypal-img {
+    max-height: 40px;
+    padding: 5px 10px;
+    object-fit: contain;
+}
+
+.checkout .btn-checkout:hover {
+    filter: brightness(85%);
+}
+
+.checkout .checkout-payment .form-control {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.checkout .checkout-payment .form-group,
+.product-list {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.checkout h2 {
+    font-weight: bold;
+}
+
+.checkout .product-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.checkout .product-list .list-group {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.checkout .product-list .list-group .list-group-item img {
+    height: 100px;
+}
+
+.checkout .payment-details {
+    display: none;
+    margin-top: 20px;
+}
+
+@media (max-width: 769px) {
+    .checkout .title .path {
+        justify-content: start;
+    }
+}
+
+@media (max-width: 500px) {
+    .checkout {
+        padding-top: 60px;
+    }
+
+    .checkout .product-list .list-group .list-group-item img {
+        width: 50%;
+        height: 50%;
+    }
+}
+
+/* Tạo khoảng cách giữa các checkbox và các thành phần */
+.checkout .form-check-label {
+    margin-left: 10px;
+}
+
+.checkout #voucherSelected {
+    font-weight: bold;
+    color: green;
+}
+
+.checkout .modal {
+    padding-top: 150px;
+}
+
+/* Modal nền */
+.checkout .custom-modal {
+    display: none;
+    /* Ẩn modal mặc định */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Nền mờ */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.checkout .custom-modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.checkout .custom-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout .custom-modal-title {
+    margin: 0;
+}
+
+.checkout .btn-close {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.checkout .custom-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.checkout .small {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.8;
+    margin-left: 3%;
+}
+
+.checkout .textUnderline {
+    text-decoration: line-through;
+    color: #D73A10;
+}
+
+.checkout .empty-list {
+    text-align: center;
+}
+
+.checkout .empty-list img {
+    width: 40%;
+    height: auto;
+    transform: translateX(3%);
+}

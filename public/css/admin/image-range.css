@@ -1,0 +1,40 @@
+.slide-range{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+.slide-range::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: #ddd;
+    border-radius: 999px;
+    left: 0;
+    top: 114px;
+    right: 0;
+    z-index: -1;
+}  
+.slide-item {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.slide-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #377dff;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.slide-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.slide-index{
+    font-size: 16px;
+}

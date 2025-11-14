@@ -1,0 +1,30 @@
+/* Form and CAPTCHA styling */
+.captcha-component canvas {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+}
+.captcha-component input[type="text"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.captcha-component input[type="password"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.captcha-component button:disabled {
+    background-color: #ddd;
+}
+.captcha-component .message {
+    margin-top: 10px;
+    color: red;
+    display: none;
+}
+.captcha-component .success-message {
+    color: green;
+}

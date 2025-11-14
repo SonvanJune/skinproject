@@ -1,0 +1,92 @@
+.svg-form{
+    display: block;
+}
+.elementor-shape-fill {
+    fill: #fff;
+    transform-origin: center;
+    transform: rotateY(0deg);
+}
+.elementor-shape-top {
+    display: inline-block;
+}
+.elementor-shape {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2rem;
+    line-height: 0;
+    background-color: #414141;
+}
+.elementor-shape svg {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.elementor-shape-bottom {
+    transform: rotate(180deg);
+    display: inline-block;
+}
+
+.shape-mid{
+    background-color: #414141;
+    width: 100%;
+    height: 100px;
+    padding-top: 35px;
+}
+
+.title-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.title-block .view-all-link{
+    margin-left: auto;
+}
+
+.title-block .titleBig{
+    font-family: Righteous;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 14px 11px 13px rgba(194, 86, 86, 0.49);
+    color: #7575ff;
+     flex: 1;
+    text-align: center;
+}
+
+.jc{
+    justify-content: center;
+}
+
+.title-block .titleSmall{
+    font-family: Righteous;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+    padding-top: 10px;
+    color: black;
+    position: relative;
+    white-space: wrap;
+}
+
+.title-block .titleSmall:hover{
+    transform: scale(1.1);
+    color: blue;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.title-block .dot{
+    position: absolute;
+    background-color: #D73A10;
+    display: block;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: 5%;
+    right: -20%;
+}

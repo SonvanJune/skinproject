@@ -1,0 +1,86 @@
+.cart-page{
+    padding-top: 150px;
+    height: 100%;
+}
+
+.cart-page .title{
+    background-color: #f5f1f1;
+    width: 100%;
+    padding: 20px 0 20px 0;
+}
+
+.cart-page .title .path{
+    justify-content: end;
+    display: flex;
+    padding-top: 5px;
+}
+
+.cart-page .title .path a{
+    padding: 0 5px 0 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.9em;
+}
+
+.cart-page .title .path a:hover{
+    color: #6EC1E4;
+}
+
+.cart-page .title .path .fa-chevron-right{
+    padding-top: 7px;
+    font-size: 0.6em;
+}
+
+.cart-page tr img{
+    height: 100px;
+}
+
+.cart-page .table-striped>tbody>tr:nth-of-type(odd){
+    --bs-table-accent-bg: #fff !important;
+}
+
+.cart-page .table-striped>tbody>tr:nth-of-type(even){
+    --bs-table-accent-bg: #fff !important;
+}
+
+.cart-page .table-striped>tbody>tr:hover{
+    --bs-table-accent-bg: #f5f5f5 !important;
+    cursor: pointer;
+}
+
+.cart-page .table-striped {
+    background-color: #f5f5f5;
+    border-radius: 8px;  /* Bo góc của bảng */
+    transition: all 0.3s ease;  /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+.cart-page .table-striped:hover {
+    box-shadow: 0 12px 20px rgba(117, 117, 255, 0.4);  /* Bóng đổ mạnh hơn khi hover */
+    transform: translateY(-5px);  /* Nâng bảng lên một chút */
+    background-color: #fff;
+}
+
+.cart-page .empty-list{
+    width: 100%;
+}
+
+.cart-page .empty-list img{
+    width: 30%;
+    height: auto;
+}
+
+.cart-page  .empty-text{
+    transform: translateX(-1%);
+}
+
+@media (max-width: 769px) {
+    .cart-page .title .path {
+        justify-content: start;
+    }
+}
+
+@media (max-width: 500px) {
+    .cart-page{
+        padding-top: 60px;
+    }
+}

@@ -1,0 +1,16 @@
+.ql-editor .ql-code-block-container option {
+    display: none;
+}
+
+.ql-editor .ql-code-block-container option[value="xml"],
+.ql-editor .ql-code-block-container option[value="javascript"],
+.ql-editor .ql-code-block-container option[value="css"] {
+    display: unset;
+}
+
+.ql-ui{
+    position: absolute !important;
+    top: 0% !important;
+    right: 0% !important;
+    transform: translateY(-100%);
+}

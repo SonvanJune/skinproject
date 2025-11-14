@@ -1,0 +1,41 @@
+body {
+    background-color: #f4f7fa;
+    font-family: 'Arial', sans-serif;
+}
+.login-admin .login-container {
+    margin-top: 100px;
+}
+.login-admin .login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login-admin .logo {
+    display: block;
+    margin: 0 auto 20px;
+    width: 150px;
+}
+.login-admin .form-control {
+    border-radius: 5px;
+}
+.login-admin .btn-custom {
+    background-color: #007bff;
+    color: white;
+}
+.login-admin .btn-custom:hover {
+    background-color: #0056b3;
+}
+.login-admin .admin-text {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.right-panel{
+    display: none !important;
+}
+
+.left-panel{
+    display: none !important;
+}

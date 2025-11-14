@@ -1,0 +1,219 @@
+.my-account{
+    padding-top: 150px;
+    height: 100%;
+}
+
+.my-account input{
+    font-weight: bold;
+}
+
+.my-account .title{
+    background-color: #f5f5f5;
+    width: 100%;
+    padding: 20px 0 20px 0;
+}
+
+.my-account .title .path{
+    justify-content: end;
+    display: flex;
+    padding-top: 5px;
+}
+
+.my-account .title .path a{
+    padding: 0 5px 0 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.9em;
+}
+
+.my-account .title .path a:hover{
+    color: #6EC1E4;
+}
+
+.my-account .title .path .fa-chevron-right{
+    padding-top: 7px;
+    font-size: 0.6em;
+}
+
+.my-account .content .sidebar{
+    display: flex;
+    flex-direction: column;
+}
+
+.my-account .content .sidebar .user{
+    display: flex;
+    flex-direction: row;
+    background-color: #55679C;
+    align-items: center;
+    padding: 30px;
+}
+
+.my-account .content .sidebar .user img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.my-account .content .sidebar .user h4{
+    margin-left: 20px;
+}
+
+.my-account .content .sidebar .item{
+    text-decoration: none;
+    padding: 10px 20px 10px 30px;
+    background: #7C93C3;
+    color: black;
+    transition: all 0.5s;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.my-account .content .sidebar .item:hover {
+    background-color: #1E2A5E;
+    color: #6EC1E4;
+}
+
+.my-account .content .info{
+    height: 100%;
+}
+
+.my-account .content .info h4{
+    text-align: center;
+}
+
+.my-account .content .info .info-item{      
+    border-bottom: 1px solid #d0d7deb3;
+}
+
+.my-account .content .info .info-item .info-title{
+    background: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+    border-width: 0 0 0 5px;
+    border-style: solid;
+    border-color: #13aff0;
+    letter-spacing: 1px;
+    padding: 0 0 0 15px;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+    font-weight: bold;
+}
+
+.my-account .content .info .info-item .info-title i{
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.my-account .content .info .info-item .info-content{
+    padding-bottom: 30px;
+    padding-left: 5px;
+}
+
+.my-account .error-message-select {
+    color: red;
+}
+
+.my-account .right{
+    font-size: 12px;
+    text-transform: uppercase;
+    justify-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.my-account .right .page{
+    font-weight: bold;
+}
+
+/* Modal - ẩn mặc định */
+.my-account .modalProduct {
+    display: none; /* Ẩn modal */
+    position: fixed; /* Đặt modal cố định trên trang */
+    z-index: 1000; /* Đảm bảo modal ở trên các phần tử khác */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền tối mờ */
+    overflow: auto; /* Nếu nội dung lớn hơn màn hình thì có thể cuộn */
+}
+
+/* Nội dung modal */
+.my-account .modalProduct-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Điều chỉnh kích thước modal */
+    max-width: 600px; /* Kích thước tối đa */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+}
+
+/* Nút đóng modal */
+.my-account .closeBtn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.my-account .closeBtn:hover,
+.closeBtn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Nút mở modal */
+#openProductModal {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#openProductModal:hover {
+    background-color: #0056b3;
+}
+
+.my-account .down img{
+    width: 50%;
+}
+
+.my-account .down .btn-down{
+    border: none;
+    text-align: left;
+}
+
+.my-account .empty-list{
+    text-align: center;
+}
+
+.my-account .empty-list img{
+    width: 40%;
+    height: 40%;
+}
+
+.my-account .empty-list .empty-text{
+    transform: translateX(-1%);
+}
+
+@media (max-width: 769px) {
+    .my-account .title .path {
+        justify-content: start;
+    }
+}
+
+@media (max-width: 500px) {
+    .my-account{
+        padding-top: 60px;
+    }
+}

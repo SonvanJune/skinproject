@@ -1,0 +1,93 @@
+/* card */
+.card{
+    width: 100%;
+    height: max-content;
+    margin-top: 50px;
+}
+
+.card .title-big{
+    background-color: #000000;
+    text-align: center;
+    font-family: Righteous, Sans-serif;
+    font-weight: 600;
+    text-shadow: 9px 7px 13px rgba(0, 0, 0, 0.49);
+    color: #fff;
+    font-size: 34px;
+}
+
+.card .card-body{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+}
+
+.card .title-small{
+    background-color: #00000091;
+    text-align: center;
+}
+
+.card .title-small h2{
+    margin-top:200px;
+    color: #FFFFFF;
+    font-family: "Rock Salt", Sans-serif;
+    font-weight: 600;
+    text-shadow: 7px 9px 9px rgba(0, 0, 0, 0.63);
+}
+
+.card .list{
+    margin: 30px 0 150px 0;
+}
+
+.card .item{
+    font-family: "Roboto", Sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.79);
+    fill: #FFFFFF;
+    color: #FFFFFF;
+    background-color: #F4F4F436;
+    border-style: solid;
+    margin: 10px 75px 10px 75px;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    padding: 5px 12px 5px 12px;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.card .item:hover{
+    background: #266a9a;
+    transform: scale(1.1);
+    transition: all 0.5s;   
+    cursor: pointer;
+}
+
+.card .flex-wrap{
+    justify-items: center;
+}
+
+.card .item .flex-item{
+    margin-left: 10px;
+}
+
+.card .item i{
+    padding-top: 5px;
+}
+
+.card .title-small:hover + .list .item{
+    animation: rung 1s infinite;
+}
+
+@keyframes rung {
+    0%{
+        transform: translateX(25px);
+    }
+    50%{
+        transform: translateX(-50px);
+    }
+    100%{
+        transform: translateX(25px);
+    }
+}

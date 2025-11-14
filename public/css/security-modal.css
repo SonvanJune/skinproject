@@ -1,0 +1,102 @@
+.security-modal .page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10040; /* Same as Bootstrap modal backdrop */
+}
+
+/* Adjust modal z-index to sit above the overlay */
+.security-modal .modal {
+    z-index: 10050;
+}
+
+.security-modal .alert{
+    z-index: 10050;
+}
+
+/* Increase modal size */
+.security-modal .modal-dialog {
+    max-width: 800px;
+}
+
+.security-modal .modal-body {
+    height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Custom styles for navigation buttons */
+.security-modal .carousel-control-prev, .carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: #7575ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.security-modal .carousel-control-prev i, .carousel-control-next i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.security-modal .carousel-indicators button {
+    background-color: #7575ff;
+}
+
+.security-modal .btn-refresh{
+    background-color: transparent !important;
+    color: #7575ff !important;
+    width: max-content !important;
+    height: max-content !important;
+}
+
+.security-modal .modal-content {
+    border-radius: 8px;
+}
+
+/* Form and CAPTCHA styling */
+.security-modal .captcha-container {
+    text-align: center;
+}
+.security-modal canvas {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+}
+.security-modal input[type="text"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.security-modal input[type="password"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.security-modal .btn {
+    padding: 10px 20px;
+    background-color: #7575ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.security-modal button:disabled {
+    background-color: #ddd;
+}
+.security-modal .message {
+    margin-top: 10px;
+    color: red;
+    display: none;
+}
+.security-modal .success-message {
+    color: green;
+}
