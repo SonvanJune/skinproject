@@ -63,6 +63,8 @@
                                 class="fa-solid fa-handshake-angle"></i>{{ __('message.contactUs') }}</a>
                         <a href="{{ route('helps') }}" class="item"><i
                                 class="fa-solid fa-circle-question"></i>{{ __('message.helpPage') }}</a>
+                        <a href="{{ route('policies') }}" class="item"><i
+                                class="fa-solid fa-file-contract"></i>{{ __('message.policyTitle') }}</a>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -82,8 +84,8 @@
                     <h4>{{ __('message.contactUs') }}</h4>
                     <div class="line"></div>
                     <div class="list-btn">
-                        <a href="https://www.facebook.com/binhcaochinh" class="bt conta"><i
-                                class="fa-brands fa-facebook"></i>{{ __('message.facebook') }}</a>
+                        {{-- <a href="#" class="bt conta"><i
+                                class="fa-brands fa-facebook"></i>{{ __('message.facebook') }}</a> --}}
                         <a href="" class="bt whatapp"><i
                                 class="fa-solid fa-phone"></i>{{ __('message.webPhone') }}</a>
                         {{-- <a href="" class="bt insta"><i class="fa-brands fa-instagram"></i>Instagram</a>
@@ -91,6 +93,12 @@
                     </div>
                 </div>
             </div>
+            {{-- <p class="mb-0 small">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=YOUR_DMCA_ID" target="_blank"
+                    class="text-decoration-none text-light">
+                    DMCA Protected
+                </a>
+            </p> --}}
         </div>
     </div>
 
@@ -101,8 +109,14 @@
         ])
     @endif
 
-    @include('component.noticationNoData.notification.index', ['notification' => 'security_success' , 'type' => 'success'])
-    @include('component.noticationNoData.notification.index', ['notification' => 'security_error' , 'type' => 'error'])
+    @include('component.noticationNoData.notification.index', [
+        'notification' => 'security_success',
+        'type' => 'success',
+    ])
+    @include('component.noticationNoData.notification.index', [
+        'notification' => 'security_error',
+        'type' => 'error',
+    ])
 </section>
 
 

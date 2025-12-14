@@ -122,6 +122,12 @@
                         {{ __('message.helpPage') }}
                     </a>
                 </div>
+                <div class="b-group">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <a class="btn b-item" type="button" href="{{ route('policies') }}">
+                        {{ __('message.policyTitle') }}
+                    </a>
+                </div>
             </div>
 
         </div>

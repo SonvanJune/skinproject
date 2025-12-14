@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminSlideShowController;
 use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminTrackingCodeController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\SubAdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
@@ -99,6 +100,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('popular-products', [PageController::class, 'popularProducts'])->name('popularProducts');
     Route::get('sales', [PageController::class, 'saleProducts'])->name('saleProducts');
     Route::get('helps', [PageController::class, 'helps'])->name('helps');
+    Route::get('policies', [PageController::class, 'policies'])->name('policies');
     Route::get('maintenance', [PageController::class, 'maintenance'])->name('maintenance');
 
     // -------------------------------
@@ -114,6 +116,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::post('/admin/paypal-settings', [AdminPaypalSettingController::class, 'save'])->middleware('admin')->name('admin.paypal.save');
     Route::get('/admin/maintenance', [AdminMaintenanceController::class, 'index'])->middleware('admin')->name('admin.maintenance.index');
     Route::post('/admin/maintenance/update', [AdminMaintenanceController::class, 'update'])->middleware('admin')->name('admin.maintenance.update');
+    
+    //Default images
+    Route::get('/admin/defaultImages', [ImageController::class, 'index'])->name('admin.defaultImages.index');
+    Route::post('/admin/defaultImages/{image}', [ImageController::class, 'update'])->name('admin.defaultImages.update');
 
     // Products
     Route::get('/admin/products/create', [AdminProductController::class, 'create'])->middleware('admin')->name("admin.products.create");
@@ -197,6 +203,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::post('/admin/mails/render', [AdminMailController::class, "render"])->middleware('admin')->name("admin.mails.render");
     Route::get('/admin/mails/edit/{mail_id}', [AdminMailController::class, "edit"])->middleware('admin')->name("admin.mails.edit");
     Route::put('/admin/mails/update/{mail_id}', [AdminMailController::class, "update"])->middleware('admin')->name("admin.mails.update");
+
 
     // File manager route
     // File routes
