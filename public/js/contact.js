@@ -1,4 +1,4 @@
-const address = "Tran Nao, An Khanh, Quan 2, Ho Chi Minh City, Vietnam";
+const address = "New York, USA";
 const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
     address
 )}`;
@@ -18,7 +18,7 @@ fetch(url)
 
             L.marker([lat, lon])
                 .addTo(map)
-                .bindPopup("Tran Nao, Quan 2 ,Ho Chi Minh City, VN")
+                .bindPopup(address)
                 .openPopup();
         } else {
             console.log("Address not found");
