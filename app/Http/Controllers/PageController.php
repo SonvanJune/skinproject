@@ -268,6 +268,34 @@ class PageController extends Controller
         ]);
     }
 
+    public function policies(Request $request)
+    {
+        $user = parent::checkTokenWhenReload($request, $this->userService);
+        if (parent::checkMaintenance($user) == "off") {
+            return redirect()->route('maintenance');
+        }
+        
+        $categories = $this->categoryService->getListCategoryPerPage($request, CategoryService::ROLE_USER);
+        $user_name = "";
+        if ($user != null) {
+            $user_name = $user->user_last_name;
+            $cart = $this->cartService->getCartsByUser($user->user_id);
+            if (parent::checkIsString($cart)) {
+                $cart = null;
+            }
+        } else {
+            if (is_int($user)) {
+                return redirect()->route('login')->with('token_expired', "Login session expired");
+            }
+        }
+
+        return view('policy.index', [
+            "categories" => $categories,
+            "position_logo" => parent::getPositionLogo($categories),
+            "user_name" => $user_name
+        ]);
+    }
+
     public function setLocale($locale)
     {
         App::setLocale($locale);

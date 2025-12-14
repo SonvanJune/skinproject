@@ -236,6 +236,7 @@
                             <a class="nav-link " href="{{ route('admin.paypal.form') }}">Payment Information</a>
                             <a class="nav-link " href="{{ route('admin.maintenance.index') }}">Maintenance
                                 Setting</a>
+                            <a class="nav-link " href="{{ route('admin.defaultImages.index') }}">Default Images</a>
                         </div>
                     </div>
                     <!-- End General Settings -->
