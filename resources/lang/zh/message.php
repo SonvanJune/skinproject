@@ -86,7 +86,7 @@ return [
     'needToLogin' => '您需要登录才能访问此页面',
     'next' => '下一步',
     'newPassword' => '新密码',
-    'noLogin' => '未登录',
+    'noLogin' => '访客',
     'noPost' => '帖子不存在',
     'noteOfCategory' => '下载适用于所有流行品牌手机的皮肤模板切割文件，如苹果，三星，小米，一加，华为等。文件格式包括CDR，EPS，DXF，SVG和TEXT，用于各种切割机的乙烯基切割。根据原始设备精心设计并使用流行的乙烯基材料进行测试。',
     'noteOfCoupon' => '*如果使用折扣代码购买产品，可能会覆盖现有折扣！',

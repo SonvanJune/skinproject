@@ -86,7 +86,7 @@ return [
     'needToLogin' => 'Bạn cần đăng nhập để truy cập trang này',
     'next' => 'Tiếp theo',
     'newPassword' => 'Mật khẩu mới',
-    'noLogin' => 'Chưa đăng nhập',
+    'noLogin' => 'Khách',
     'noPost' => 'Bài viết không tồn tại',
     'noteOfCategory' => 'Tải xuống các tệp mẫu cắt skin cho các điện thoại của các thương hiệu phổ biến như Apple, Samsung, Xiaomi, OnePlus, Huawei, v.v. Có sẵn các định dạng tệp CDR, EPS, DXF, SVG và TEXT cho việc cắt vinyl trên nhiều máy cắt khác nhau. Được thiết kế chính xác và thử nghiệm trên thiết bị gốc sử dụng các vật liệu vinyl phổ biến.',
     'noteOfCoupon' => '*Nếu bạn sử dụng mã giảm giá cho sản phẩm, nó có thể ghi đè lên các ưu đãi giảm giá hiện có!',

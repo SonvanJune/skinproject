@@ -87,6 +87,7 @@
     font-weight: 300;
     text-align: center;
     position: relative;
+    margin-top: 60px;
 }
 
 .footer .line {
@@ -214,5 +215,20 @@
 @media (max-width: 768px) {
     .alert{
         width: 60%;
+    }
+}
+
+@media (max-width: 500px) {
+    .footer .shape-mid .logo{
+        text-align: center;
+    }
+
+    .footer .shape-mid .logo img {
+        height: 50%;
+        width: 50%;
+    }
+
+    .copy-right{
+        margin-bottom: 3.5em;
     }
 }

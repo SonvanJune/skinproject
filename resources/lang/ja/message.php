@@ -86,7 +86,7 @@ return [
     'needToLogin' => 'このページにアクセスするにはログインが必要です',
     'next' => '次へ',
     'newPassword' => '新しいパスワード',
-    'noLogin' => '未ログイン',
+    'noLogin' => 'ゲスト',
     'noPost' => '投稿が存在しません',
     'noteOfCategory' => 'Apple、Samsung、Xiaomi、OnePlus、Huaweiなどの人気ブランドの電話用スキンテンプレートカットファイルをダウンロードできます。ビニールカッター用の様々なカッターで使用するために、CDR、EPS、DXF、SVG、TEXTファイル形式で提供します。オリジナルデバイスで正確に設計およびテストされています。',
     'noteOfCoupon' => '*製品にディスカウントコードを使用すると、既存のディスカウントが上書きされる場合があります！',

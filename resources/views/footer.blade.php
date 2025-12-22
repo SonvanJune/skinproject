@@ -33,7 +33,7 @@
     <div class="shape-mid pri">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 logo">
                     <img src="{{ asset('images/logo.png') }}" alt="logo">
                     <h6>{{ __('message.footerIntro') }}</h6>
                 </div>

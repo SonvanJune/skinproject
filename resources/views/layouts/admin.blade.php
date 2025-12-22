@@ -42,7 +42,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
 
     @yield('link')
-    <title>@yield('title', 'TDC EVENTS')</title>
+        <title>@yield('title', 'Admin')</title>
+        <link rel="icon" type="image/png" href="{{asset('images/logo.png')}}">
 
 </head>
 

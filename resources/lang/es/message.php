@@ -86,7 +86,7 @@ return [
     'needToLogin' => 'Necesitas iniciar sesión para acceder a esta página',
     'next' => 'Siguiente',
     'newPassword' => 'Nueva contraseña',
-    'noLogin' => 'No conectado',
+    'noLogin' => 'Invitado',
     'noPost' => 'La publicación no existe',
     'noteOfCategory' => 'Descarga archivos de plantillas de piel para teléfonos de todas las marcas populares como Apple, Samsung, Xiaomi, OnePlus, Huawei, etc. Disponibles en formatos CDR, EPS, DXF, SVG y TEXT para corte de vinilo en varios cortadores. Diseñados y probados con precisión en el dispositivo original usando materiales de vinilo populares.',
     'noteOfCoupon' => '*Si usas un código de descuento para un producto, puede reemplazar el descuento existente.',

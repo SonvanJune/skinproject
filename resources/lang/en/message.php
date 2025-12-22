@@ -86,7 +86,7 @@ return [
     'needToLogin' => 'You need to log in to access this page',
     'next' => 'Next',
     'newPassword' => 'New password',
-    'noLogin' => 'Not Login',
+    'noLogin' => 'Guest',
     'noPost' => 'The post does not exist',
     'noteOfCategory' => 'Download Skin Template Cut Files for phones of all popular brands like Apple, Samsung, Xiaomi, OnePlus, Huawei, etc. Available in CDR, EPS, DXF, SVG, And TEXT file formats for vinyl cutting on various cutters. Precisely designed and tested on the original device using popular vinyl materials.',
     'noteOfCoupon' => '*If you use a discount code for a product, it may override the existing discount!',

@@ -21,6 +21,7 @@
 
     {{-- title --}}
     <title>{{ __('message.webName') }} - @yield('title')</title>
+    <link rel="icon" type="image/png" href="{{asset('images/logo.png')}}">
 
     {{-- Example import css , js , image --}}
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
@@ -39,6 +40,7 @@
     {{-- security --}}
     <script src="{{ asset('js/security.js') }}"></script>
     <script src="{{asset('js/modalNologin.js')}}"></script>
+    <script src="{{asset('js/tooltip.js')}}"></script>
     {{-- <script src="{{ asset('js/block-dev-tool.js') }}"></script> --}}
 @endsection
 

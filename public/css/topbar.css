@@ -686,12 +686,105 @@
 
 /* Main content styles */
 .topbar-sm .main-content {
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    color: white;
     transition: transform 0.6s ease;
-    /* Smooth move effect */
     position: fixed;
     left: 0%;
     top: 0%;
     z-index: 9999 !important;
+    width: 100%;
+}
+
+.topbar-sm-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5px 1rem;
+}
+
+.topbar-sm-btn,
+.topbar-sm-search-btn {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 1.5rem;
+    padding: 0.4em 0.6em;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.topbar-sm-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.topbar-sm-logo {
+    height: 2rem;
+}
+
+.topbar-sm-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.topbar-sm-search-wrapper {
+    display: none;
+    position: fixed;
+    top: 6.5%;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 10000;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+
+.topbar-sm-search-wrapper.active {
+    display: block;
+    animation: topbarSmSlideDown 0.3s ease;
+}
+
+.topbar-sm-search-box {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.topbar-sm-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    color: #000000;
+    flex: 1;
+}
+
+#topbarsm-searchBtn {
+  flex-shrink: 0;
+}
+
+
+@keyframes topbarSmSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .topbar-sm .open-btn {
@@ -706,7 +799,6 @@
 
 .topbar-sm .open-btn:hover {
     background-color: #0a58ca;
-    /* Darker blue on hover */
 }
 
 .topbar-sm .custom-sidebar .search-bar {

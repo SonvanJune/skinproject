@@ -86,7 +86,7 @@ return [
     'needToLogin' => 'Vous devez vous connecter pour accéder à cette page',
     'next' => 'Suivant',
     'newPassword' => 'Nouveau mot de passe',
-    'noLogin' => 'Non connecté',
+    'noLogin' => 'Invité',
     'noPost' => 'Le post n\'existe pas',
     'noteOfCategory' => 'Téléchargez les fichiers de découpe de modèle de peau pour les téléphones de toutes les grandes marques comme Apple, Samsung, Xiaomi, OnePlus, Huawei, etc. Disponibles en formats CDR, EPS, DXF, SVG et TEXT pour la découpe vinyle sur divers découpeurs. Conçu et testé avec précision sur l\'appareil d\'origine en utilisant des matériaux vinyles populaires.',
     'noteOfCoupon' => '*Si vous utilisez un code de réduction pour un produit, il peut remplacer la réduction existante !',

@@ -57,18 +57,6 @@
                         @include('component.language-modal.button')
                     </div>
                 </div>
-                <div class="search-bar">
-                    @isset($searchQuery)
-                        <input type="text" class="form-control form-input"
-                            placeholder="{{ __('message.searchAnything') }}" id="searchInput" oninput="searchApi()"
-                            value="{{ $searchQuery }}">
-                        <button class="left-pan" onclick="goToSearchPage()"><i class="fa fa-search"></i></button>
-                    @else
-                        <input type="text" class="form-control form-input"
-                            placeholder="{{ __('message.searchAnything') }}" id="searchInput" oninput="searchApi()">
-                        <button class="left-pan" onclick="goToSearchPage()"><i class="fa fa-search"></i></button>
-                    @endisset
-                </div>
             </div>
             <div class="sidebar-menu">
                 <div class="b-group">
@@ -148,10 +136,40 @@
         </div>
     </div>
 </div>
+
 <div id="mainContent" class="main-content">
-    <button id="openSidebar" class="open-btn">☰</button>
+    <div class="topbar-sm-bar">
+        <button id="openSidebar" class="topbar-sm-btn">☰</button>
+
+        <div class="topbar-sm-brand" onclick="window.location.href='{{ url(App::getLocale() . '/') }}'">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="topbar-sm-logo">
+            <span class="topbar-sm-title">{{ __('message.webName') }}</span>
+        </div>
+
+        <button id="topbarsm-toggleSearch" class="topbar-sm-search-btn btn">
+            <i id="topbarsm-search-icon" class="bi bi-search"></i>
+        </button>
+    </div>
 </div>
 
+<div id="topbarsm-searchBar" class="topbar-sm-search-wrapper"
+    data-topbar-sm-search-url="{{ route('search.page') }}">
+    <div class="topbar-sm-search-box d-flex">
+        @isset($searchQuery)
+            <input type="search" id="topbarsm-searchInput" class="topbar-sm-search-input form-control"
+                placeholder="{{ __('message.searchAnything') }}" value="{{ $searchQuery }}">
+            <button id="topbarsm-searchBtn" class="btn btn-primary ms-2" onclick="topbarsmGoToSearchPage()">
+                {{ __('message.next') }}
+            </button>
+        @else
+            <input type="search" id="topbarsm-searchInput" class="topbar-sm-search-input form-control"
+                placeholder="{{ __('message.searchAnything') }}">
+            <button id="topbarsm-searchBtn" class="btn btn-primary ms-2" onclick="topbarsmGoToSearchPage()">
+                {{ __('message.next') }}
+            </button>
+        @endisset
+    </div>
+</div>
 
 @push('js')
     <script src="{{ asset('js/custom-sidebar-sm.js') }}"></script>
