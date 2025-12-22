@@ -26,6 +26,12 @@
     height: max-content;
 }
 
+.footer .shape-mid .logo{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
 .footer .shape-mid img {
     width: 100%;
     height: auto;
@@ -219,15 +225,6 @@
 }
 
 @media (max-width: 500px) {
-    .footer .shape-mid .logo{
-        text-align: center;
-    }
-
-    .footer .shape-mid .logo img {
-        height: 50%;
-        width: 50%;
-    }
-
     .copy-right{
         margin-bottom: 3.5em;
     }
