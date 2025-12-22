@@ -1,14 +1,17 @@
-.svg-form{
+.svg-form {
     display: block;
 }
+
 .elementor-shape-fill {
     fill: #fff;
     transform-origin: center;
     transform: rotateY(0deg);
 }
+
 .elementor-shape-top {
     display: inline-block;
 }
+
 .elementor-shape {
     overflow: hidden;
     position: absolute;
@@ -16,8 +19,13 @@
     width: 100%;
     height: 2rem;
     line-height: 0;
-    background-color: #414141;
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
 }
+
+.elementor-shape.pri{
+    background: #0F0F16 !important;
+}
+
 .elementor-shape svg {
     display: block;
     position: relative;
@@ -30,57 +38,70 @@
     display: inline-block;
 }
 
-.shape-mid{
-    background-color: #414141;
+.shape-mid {
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
     width: 100%;
     height: 100px;
     padding-top: 35px;
 }
 
-.title-block{
+.shape-mid.pri{
+    background: #0F0F16 !important;
+}
+
+.title-block {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.title-block .view-all-link{
+.title-block .view-all-link {
     margin-left: auto;
+    background: #000000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.title-block .titleBig{
+.title-block .view-all-link:hover {
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-block .titleBig {
     font-family: Righteous;
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: 14px 11px 13px rgba(194, 86, 86, 0.49);
-    color: #7575ff;
-     flex: 1;
+    color: #000000;
+    flex: 1;
     text-align: center;
 }
 
-.jc{
+.jc {
     justify-content: center;
 }
 
-.title-block .titleSmall{
+.title-block .titleSmall {
     font-family: Righteous;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: underline;
     padding-top: 10px;
-    color: black;
+    color: 000000;
     position: relative;
     white-space: wrap;
 }
 
-.title-block .titleSmall:hover{
+.title-block .titleSmall:hover {
     transform: scale(1.1);
     color: blue;
     cursor: pointer;
     transition: all 0.5s;
 }
 
-.title-block .dot{
+.title-block .dot {
     position: absolute;
     background-color: #D73A10;
     display: block;

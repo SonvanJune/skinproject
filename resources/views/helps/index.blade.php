@@ -215,10 +215,10 @@
                             <li><i class="bi bi-telephone-fill me-1"></i>
                                 <a href="tel:0123456789" class="text-decoration-none">{{__('message.webPhone')}}</a>
                             </li>
-                            <li><i class="bi bi-facebook me-1"></i>
+                            {{-- <li><i class="bi bi-facebook me-1"></i>
                                 <a href="https://www.facebook.com/binhcaochinh" target="_blank"
                                     class="text-decoration-none">{{__('message.helpPageHelper')}}</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

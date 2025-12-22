@@ -6,7 +6,7 @@
 }
 
 .card .title-big{
-    background-color: #000000;
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
     text-align: center;
     font-family: Righteous, Sans-serif;
     font-weight: 600;
@@ -58,7 +58,7 @@
 }
 
 .card .item:hover{
-    background: #266a9a;
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
     transform: scale(1.1);
     transition: all 0.5s;   
     cursor: pointer;

@@ -35,7 +35,7 @@
     display: none;
     color: #fff;
     border: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
     border-radius: 5px;
     position: absolute;
     padding: 5px 13px;
@@ -122,7 +122,9 @@
 }
 
 .detail .name:hover a h3 {
-    color: #D73A10;
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     cursor: pointer;
 }
 

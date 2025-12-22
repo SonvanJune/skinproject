@@ -4,7 +4,7 @@
 
 /* menu */
 .menu {
-    background: #dadada;
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
 }
 
 .menu .flex-item {
@@ -19,7 +19,7 @@
     color: #000000;
 }
 
-.menu .flex-item h2{
+.menu .flex-item h2 {
     font-size: 1rem !important;
     font-weight: bold;
     text-wrap: nowrap;
@@ -32,12 +32,14 @@
     transition: all 0.5s;
 }
 
-.menu .flex-fill:hover .flex-item{
-    color: #D73A10;
+.menu .flex-fill:hover .flex-item {
+    color: #DADAE3;
 }
 
-.menu .flex-fill:hover i{
-    color: #D73A10;
+.menu .flex-fill:hover i {
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .menu i {
@@ -54,7 +56,7 @@
     margin-top: 70px;
     width: 100%;
     height: max-content;
-    background-color: #414141;
+    background-color: #0F0F16;
     padding: 20px;
     text-align: center;
 }
@@ -67,7 +69,7 @@
 
 .daily .btn-daily {
     border-radius: 5px;
-    border: #fff 1px solid;
+    border: #DADAE3 1px solid;
     width: max-content;
     margin: 0 auto;
     display: flex;
@@ -81,22 +83,26 @@
     transition: all 0.5s;
 }
 
-.daily .btn-daily:hover .item h1{
-    color: orange !important;
+.daily .btn-daily:hover .item h1 {
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .daily .btn-daily:hover i {
-    color: orange !important;
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .daily .btn-daily .item {
     font-family: Righteous;
     text-transform: uppercase;
-    color: #fff;
+    color: #DADAE3;
     padding-left: 10px;
 }
 
-.daily .btn-daily .item h1{
+.daily .btn-daily .item h1 {
     font-size: 2em;
     text-decoration: underline;
     line-height: normal !important;
@@ -107,13 +113,13 @@
 .daily .btn-daily i {
     font-family: Righteous;
     font-size: 2.5em;
-    color: #fff;
+    color: #DADAE3;
 }
 
 .daily p {
     font-family: sans-serif;
     font-size: 1.2em;
-    color: #fff;
+    color: #DADAE3;
     margin-top: 20px;
 }
 
@@ -124,17 +130,17 @@
 }
 
 /* thank */
-.thank{
+.thank {
     margin-top: 40px;
     margin-bottom: 100px;
     padding: 10px 0 5px 0;
     width: 100%;
     text-align: center;
-    background-color: #000000;
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
 }
 
-.thank h4{
-    color: #FFFFFF;
+.thank h4 {
+    color: #000000;
     font-family: "Roboto", Sans-serif;
     font-weight: 900;
     text-shadow: 6px 5px 5px rgba(255, 255, 255, 0.65);
@@ -142,23 +148,30 @@
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-75px);
     }
+
     60% {
         transform: translateY(-25px);
     }
 }
 
 @media (max-width: 500px) {
-    .home{
+    .home {
         padding-top: 60px;
     }
 }
 
-.products .detail .cart{
+.products .detail .cart {
     display: inline-block !important;
 }

@@ -44,21 +44,24 @@ input::placeholder {
     font-weight: bold;
 }
 
-body{
+body {
     width: 100%;
     position: relative;
+    background: #fff;
 }
 
-.btn-primary{
-    background: #7575ff !important;
+.btn-primary {
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5) !important;
+    border: none;
 }
 
-.btn-primary:hover{
-    background: #6969f0 !important;
+.btn-primary:hover {
+    background: none !important;
+    color: #000000;
 }
 
-.page-item.active .page-link{
-    background: #7575ff !important;
+.page-item.active .page-link {
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5) !important;
 }
 
 .note {
