@@ -73,11 +73,11 @@
                                         </div>
                                         @if (session('priceCoupon'))
                                             <h5 class="mt-3">{{ __('message.totalPrice') }}:
-                                                <strong>{{ session('priceCoupon') }}$</strong>
+                                                <strong>${{ session('priceCoupon') }}</strong>
                                             </h5>
                                         @else
                                             <h5 class="mt-3">{{ __('message.totalPrice') }}:
-                                                <strong>{{ $cart->price }}$</strong>
+                                                <strong>${{ $cart->price }}</strong>
                                             </h5>
                                         @endif
                                         <div class="mt-3">
@@ -123,6 +123,35 @@
                                                         type="submit">{{ __('message.applyCouponButton') }}</button>
                                                 </form>
                                             @endif
+
+                                            <div class="mt-4 border-top pt-3">
+                                                <div class="d-flex justify-content-between">
+                                                    @if (session('priceCoupon'))
+                                                        <span>{{ __('message.totalPrice') }}</span>
+                                                        <strong>${{ session('priceCoupon') }}</strong>
+                                                    @else
+                                                        <span>{{ __('message.totalPrice') }}</span>
+                                                        <strong>${{ $cart->price }}</strong>
+                                                    @endif
+                                                </div>
+
+                                                <div class="d-flex justify-content-between mt-2">
+                                                    <span>
+                                                        {{ __('message.VAT') }}
+                                                        ({{ $vatText }})
+                                                    </span>
+                                                    <strong>+ ${{$cart->priceOfVat}}</strong>
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="d-flex justify-content-between fs-5">
+                                                    <span>{{ __('message.totalPrice') }}</span>
+                                                    <strong class="text-success">
+                                                        ${{$totalPriceAndVat}}
+                                                    </strong>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -173,15 +202,17 @@
                                                     @csrf
                                                     @if (session('priceCoupon'))
                                                         <input type="hidden" name="price"
-                                                            value="{{ session('priceCoupon') }}">
+                                                            value="{{$totalPriceAndVat}}">
                                                         <input type="hidden" name="coupon_id"
                                                             value="{{ session('coupon')->coupon_id }}">
                                                     @else
-                                                        <input type="hidden" name="price" value="{{ $cart->price }}">
+                                                        <input type="hidden" name="price" value="{{ $totalPriceAndVat }}">
                                                     @endif
                                                     @if (session('typeCoupon') == 'couponProduct')
                                                         <input type="hidden" name="type_coupon" value="couponProduct">
                                                     @endif
+                                                    <input type="hidden" name="vat_detail" value="{{$vatText}}">
+                                                    <input type="hidden" name="vat_value" value="{{$cart->priceOfVat}}"">
                                                     <input type="hidden" name="cart_id" value="{{ $cart->cart_id }}">
                                                     <input type="hidden" name="order_payment" value=1>
                                                     <button

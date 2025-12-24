@@ -54,6 +54,8 @@
                                             <th>#</th>
                                             <th>{{ __('message.couponCode') }}</th>
                                             <th>{{ __('message.timePayment') }}</th>
+                                            <th>{{ __('message.vatDetail') }}</th>
+                                            <th>{{ __('message.vatValue') }}</th>
                                             <th>{{ __('message.totalPrice') }}</th>
                                             <th>{{ __('message.status') }}</th>
                                             <th>{{ __('message.productTitle') }}</th>
@@ -77,6 +79,8 @@
                                                     <td>{{ __('message.notCouponCode') }}</td>
                                                 @endif
                                                 <td>{{ $order->updated_at }}</td>
+                                                <td>{{ $order->vat_detail }}</td>
+                                                <td>{{ $order->vat_value }}</td>
                                                 <td>${{ $order->total_price }}</td>
                                                 <td>
                                                     <span

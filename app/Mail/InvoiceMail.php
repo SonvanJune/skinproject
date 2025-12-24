@@ -28,6 +28,8 @@ class InvoiceMail extends Mailable
     public float $order_price;
     public string $currency;
     public string $coupon;
+    public string $vat_detail;
+    public string $vat_value;
 
     public string $path;
     public string $file_name;
@@ -59,6 +61,8 @@ class InvoiceMail extends Mailable
         $products = $order->cart->products()->get();
         $this->invoice_products = GetProductDTO::fromModels($products, GetUserDTO::fromModel($user));
         $this->order_price = $order->order_price;
+        $this->vat_detail = $order->vat_detail;
+        $this->vat_value = $order->vat_value;
         $this->currency = $currency;
         $this->coupon = $this->getCouponOfOrder($order);
     }
@@ -81,8 +85,10 @@ class InvoiceMail extends Mailable
             $subtotal += $product->product_quantity * ($product->product_price_sale ?? $product->product_price);
         }
         $coupon = $this->coupon;
+        $vat_detail = $this->vat_detail;
+        $vat_value = $this->vat_value;
 
-        $mail_content = preg_replace('/{{\s*\$invoice_table\s*}}/', view('component.mail.invoice_products', compact('invoice_products', 'subtotal', 'coupon', 'order_price', 'currency'))->render(), $mail_content);
+        $mail_content = preg_replace('/{{\s*\$invoice_table\s*}}/', view('component.mail.invoice_products', compact('invoice_products', 'subtotal','vat_detail','vat_value', 'coupon', 'order_price', 'currency'))->render(), $mail_content);
 
         $data = [
             'user' => $this->user,

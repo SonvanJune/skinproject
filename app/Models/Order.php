@@ -22,6 +22,8 @@ class Order extends Model
         'updated_at',
         'cart_id',
         'order_payment',
+        'vat_detail',
+        'vat_value',
     ];
 
     const CREATED_AT = 'created_at';

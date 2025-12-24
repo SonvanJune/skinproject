@@ -87,6 +87,8 @@ class OrderService
             'order_payment' => 'required|numeric',
             'coupon_id' => 'nullable|string',
             'price' => 'required|string',
+            'vat_detail' => 'required|string',
+            'vat_value' => 'required|string'
         ]);
 
         if ($validator->fails()) {
@@ -137,6 +139,8 @@ class OrderService
             $order->order_price = $request->input('price');
             $order->order_status = self::STATUS_WAIT_PAY;
             $order->coupon_id = $request->input('coupon_id') ? $request->input('coupon_id') : null;
+            $order->vat_detail = $request->input('vat_detail');
+            $order->vat_value = $request->input('vat_value');
 
             $order->save();
 

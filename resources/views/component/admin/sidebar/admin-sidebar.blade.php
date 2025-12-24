@@ -237,6 +237,7 @@
                             <a class="nav-link " href="{{ route('admin.maintenance.index') }}">Maintenance
                                 Setting</a>
                             <a class="nav-link " href="{{ route('admin.defaultImages.index') }}">Default Images</a>
+                            <a class="nav-link " href="{{ route('admin.vat.index') }}">Vat Settings</a>
                         </div>
                     </div>
                     <!-- End General Settings -->

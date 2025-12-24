@@ -456,11 +456,24 @@ class UserController extends Controller
             }
         }
 
+        $vat = include resource_path('setting/vat.php');
+
+        if ($vat['type'] === 'percent') {
+            $vatText = $vat['value'] . '%';
+        } else {
+            $vatText = '$' . number_format($vat['value'], 2);
+        }
+        
+        $totalPrice = session('priceCoupon') ?? $cart?->price;
+        $totalPriceAndVat = (float)($totalPrice + $cart?->priceOfVat);
+
         return view('user.checkout.index', [
             "categories" => $categories,
             "position_logo" => parent::getPositionLogo($categories),
             "user_name" => $user_name,
-            "cart" => $cart
+            "cart" => $cart,
+            "vatText" => $vatText,
+            "totalPriceAndVat" =>$totalPriceAndVat
         ]);
     }
 
@@ -541,9 +554,9 @@ class UserController extends Controller
         }
         $didInitialOTP = $this->otpService->resendOTP($request, $email, OTPService::TYPE_OTP_FOR_ACTIVE_ACCOUNT, $this->userService);
         if (is_string($didInitialOTP)) {
-            return redirect()->back()->with('error' , "Send OTP failed: " . $didInitialOTP);
+            return redirect()->back()->with('error', "Send OTP failed: " . $didInitialOTP);
         }
-        return redirect()->back()->with('success' , 'We have sent a verification code to your email :' . $email);
+        return redirect()->back()->with('success', 'We have sent a verification code to your email :' . $email);
     }
 
     public function resendOtpForgetPass(Request $request, $email)
@@ -557,8 +570,8 @@ class UserController extends Controller
         }
         $didInitialOTP = $this->otpService->resendOTP($request, $email, OTPService::TYPE_OTP_FOR_FORGETTING_PASSWORD, $this->userService);
         if (is_string($didInitialOTP)) {
-            return redirect()->back()->with('error' , "Send OTP failed: " . $didInitialOTP);
+            return redirect()->back()->with('error', "Send OTP failed: " . $didInitialOTP);
         }
-        return redirect()->back()->with('success' , 'We have sent a verification code to your email :' . $email);
+        return redirect()->back()->with('success', 'We have sent a verification code to your email :' . $email);
     }
 }

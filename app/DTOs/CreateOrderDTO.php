@@ -52,6 +52,8 @@ class CreateOrderDTO
      * @var string
      */
     public string $order_payment;
+    public string $vat_detail;
+    public string $vat_value;
 
     /**
      * CreateOrderDTO constructor.
@@ -69,7 +71,9 @@ class CreateOrderDTO
         GetCartDTO $cart,
         string $total_price,
         string $order_payment,
-        ?GetCouponDTO $coupon = null
+        ?GetCouponDTO $coupon = null,
+        string $vat_detail,
+        string $vat_value
     ) {
         $this->order_id = $order_id;
         $this->user = $user;
@@ -77,6 +81,8 @@ class CreateOrderDTO
         $this->total_price = $total_price;
         $this->order_payment = $order_payment;
         $this->coupon = $coupon;
+        $this->vat_detail = $vat_detail;
+        $this->vat_value = $vat_value;
     }
 
     /**
@@ -101,7 +107,9 @@ class CreateOrderDTO
             GetCartDTO::fromModel($cart, $user_id),
             $order->order_price,
             $order->order_payment,
-            $coupon
+            $coupon,
+            $order->vat_detail,
+            $order->vat_value
         );
     }
 }

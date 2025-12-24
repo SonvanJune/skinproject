@@ -99,7 +99,7 @@ class PayPalController extends Controller
             }
             switch ($finishPayment->status) {
                 case PaypalService::STATUS_FINISH_PAYMENT:
-                    dispatch(new SendEmailFinishPayment($request->all(), $user));
+                    $this->mailService->sendEmailFinishPayment($request->all(), $user, $this->userService);
                     return redirect()->route($finishPayment->link)->with('success', $finishPayment->message);
                 default:
                     return redirect()->route($finishPayment->link)->with('error', $finishPayment->message);

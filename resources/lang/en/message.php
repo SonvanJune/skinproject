@@ -215,5 +215,8 @@ return [
     'policyLiabilityTitle' => 'Limitation of Liability',
     'policyLiabilityContent' =>'We are not responsible for any damage, data loss, or game issues caused by using our files.',
     'policyContactTitle' => 'Contact Information',
-    'policyContactContent' =>'If you have any questions regarding these terms, please contact our support team.'
+    'policyContactContent' =>'If you have any questions regarding these terms, please contact our support team.',
+    'VAT' => 'VAT',
+    'vatDetail'=> 'VAT Desription',
+    'vatValue'=> 'VAT Price'
 ];

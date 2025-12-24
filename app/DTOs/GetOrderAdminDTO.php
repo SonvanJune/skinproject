@@ -68,6 +68,9 @@ class GetOrderAdminDTO
      */
     public array $discounts = [];
 
+    public string $vat_detail;
+    public string $vat_value;
+
     /**
      * GetOrderDTO constructor.
      *
@@ -87,7 +90,9 @@ class GetOrderAdminDTO
         ?GetCouponDTO $coupon,
         string $updated_at,
         string $status,
-        ?array $discounts
+        ?array $discounts,
+        string $vat_detail,
+        string $vat_value,
     ) {
         $this->order_id = $order_id;
         $this->user = $user;
@@ -98,6 +103,8 @@ class GetOrderAdminDTO
         $this->updated_at = $updated_at;
         $this->status = $status;
         $this->discounts = $discounts ?? [];
+        $this->vat_detail = $vat_detail;
+        $this->vat_value = $vat_value;
     }
 
     /**
@@ -121,7 +128,9 @@ class GetOrderAdminDTO
             $order->coupon ? GetCouponDTO::fromModel($order->coupon) : null,
             $order->updated_at,
             $order->order_status,
-            self::getDiscountOfOrder($order)
+            self::getDiscountOfOrder($order),
+            $order->vat_detail,
+            $order->vat_value
         );
     }
 
@@ -148,7 +157,9 @@ class GetOrderAdminDTO
                 $order->coupon ? GetCouponDTO::fromModel($order->coupon) : null,
                 $order->updated_at,
                 $order->order_status,
-                self::getDiscountOfOrder($order)
+                self::getDiscountOfOrder($order),
+                $order->vat_detail,
+                $order->vat_value
             );
         }
         return $result;
@@ -163,7 +174,7 @@ class GetOrderAdminDTO
         $result = [];
         $orders = DB::table('orders_coupons')
             ->where('order_id', $order->order_id)->get();
-        foreach($orders as $order){
+        foreach ($orders as $order) {
             $coupon = Coupon::find($order->coupon_id);
             $priceSale = (float)($coupon->coupon_price ? $coupon->product->product_price - $coupon->coupon_price : $coupon->product->product_price - ($coupon->product->product_price * $coupon->coupon_per_hundred / 100));
             $result += [

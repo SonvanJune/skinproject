@@ -226,7 +226,7 @@ class CartService
     public function getCartsByUser($userId)
     {
         $cart = Cart::where('user_id', $userId)->where('cart_status', self::STATUS_ACTIVE)->first();
-        if($cart == null){
+        if ($cart == null) {
             return "Cart not found";
         }
         return GetCartDTO::fromModel($cart, $userId);
@@ -371,17 +371,52 @@ class CartService
                     if ($coupon->product_id && !$coupon->coupon_code && now() >= $coupon->coupon_release && now() < $coupon->coupon_expired) {
                         $total = (float)($coupon->coupon_price ? $product->product_price - $coupon->coupon_price : $product->product_price - ($product->product_price * $coupon->coupon_per_hundred / 100));
                         break;
-                    }
-                    else {
+                    } else {
                         $total = (float)$product->product_price;
                     }
                 }
                 $totalPrice += $total;
-            }
-            else {
+            } else {
                 $totalPrice += (float)$product->product_price;
             }
         }
         return $totalPrice;
+    }
+
+    /**
+     * Calculates the total price of a collection of products.
+     *
+     * @param  Collection  $products  The collection of Product models.
+     * @return string  The total price as a string.
+     */
+    public static function totalPriceOfVat(Collection $products): string
+    {
+        $totalPrice = 0;
+        foreach ($products as $product) {
+            if ($product->coupons()->exists()) {
+                $coupons = $product->coupons()->get();
+                $total = 0;
+                foreach ($coupons as $coupon) {
+                    if ($coupon->product_id && !$coupon->coupon_code && now() >= $coupon->coupon_release && now() < $coupon->coupon_expired) {
+                        $total = (float)($coupon->coupon_price ? $product->product_price - $coupon->coupon_price : $product->product_price - ($product->product_price * $coupon->coupon_per_hundred / 100));
+                        break;
+                    } else {
+                        $total = (float)$product->product_price;
+                    }
+                }
+                $totalPrice += $total;
+            } else {
+                $totalPrice += (float)$product->product_price;
+            }
+        }
+
+        $vat = include resource_path('setting/vat.php');
+
+        if ($vat['type'] === 'percent') {
+            $vatAmount = $totalPrice * ($vat['value'] / 100);
+        } else {
+            $vatAmount = (float) $vat['value'];
+        }
+        return $vatAmount;
     }
 }

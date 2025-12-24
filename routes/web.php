@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminSlideShowController;
 use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminTrackingCodeController;
+use App\Http\Controllers\Admin\AdminVatController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\SubAdminController;
 use App\Http\Controllers\BrandController;
@@ -116,6 +117,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::post('/admin/paypal-settings', [AdminPaypalSettingController::class, 'save'])->middleware('admin')->name('admin.paypal.save');
     Route::get('/admin/maintenance', [AdminMaintenanceController::class, 'index'])->middleware('admin')->name('admin.maintenance.index');
     Route::post('/admin/maintenance/update', [AdminMaintenanceController::class, 'update'])->middleware('admin')->name('admin.maintenance.update');
+    Route::get('/admin/vat', [AdminVatController::class, 'index'])->middleware('admin')->name('admin.vat.index');
+    Route::post('/admin/vat', [AdminVatController::class, 'store'])->middleware('admin')->name('admin.vat.store');
     
     //Default images
     Route::get('/admin/defaultImages', [ImageController::class, 'index'])->name('admin.defaultImages.index');

@@ -41,6 +41,13 @@ class GetCartDTO
     public string $price;
 
     /**
+     * The total price of the cart.
+     *
+     * @var string
+     */
+    public string $priceOfVat;
+
+    /**
      * The status of the cart.
      *
      * @var int
@@ -56,12 +63,13 @@ class GetCartDTO
      * @param string $price The total price of the cart.
      * @param int $status The status of the cart.
      */
-    public function __construct(string $cart_id, GetUserDTO $user, array $products, string $price, int $status)
+    public function __construct(string $cart_id, GetUserDTO $user, array $products, string $price,string $priceOfVat, int $status)
     {
         $this->cart_id = $cart_id;
         $this->user = $user;
         $this->products = $products;
         $this->price = $price;
+        $this->priceOfVat = $priceOfVat;
         $this->status = $status;
     }
 
@@ -79,8 +87,9 @@ class GetCartDTO
         return new static(
             $cart->cart_id,
             $user,
-            GetProductDTO::fromModels($cart->products()->get(),$user),
+            GetProductDTO::fromModels($cart->products()->get(), $user),
             CartService::totalPrice($cart->products()->get()),
+            CartService::totalPriceOfVat($cart->products()->get()),
             $cart->cart_status
         );
     }
@@ -99,8 +108,9 @@ class GetCartDTO
             $result[] = new static(
                 $cart->cart_id,
                 $user,
-                GetProductDTO::fromModels($cart->products()->get(),$user),
+                GetProductDTO::fromModels($cart->products()->get(), $user),
                 CartService::totalPrice($cart->products()->get()),
+                CartService::totalPriceOfVat($cart->products()->get()),
                 $cart->cart_status
             );
         }

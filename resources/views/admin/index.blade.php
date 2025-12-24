@@ -188,6 +188,8 @@
                                 <th scope="col">Product</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Price Sale</th>
+                                <th scope="col">VAT Description</th>
+                                <th scope="col">VAT Value</th>
                                 <th scope="col">Total Price</th>
                                 <th scope="col">User</th>
                                 <th scope="col">Status</th>
@@ -309,6 +311,9 @@
                     return '$' + salePrice;
                 }).join(' + ');
 
+                const vatDes = order.vat_detail;
+                const vatValue = '$' + parseFloat(order.vat_value);
+
                 const userName = order.user ? order.user.user_email : 'N/A';
                 const totalPrice = '$' + parseFloat(order.total_price);
                 totalRevenue += parseFloat(order.total_price);
@@ -349,6 +354,8 @@
                <td>${productNames}</td>
                <td class="revenue">${productPrices}</td>
                <td class="revenue">${productSalePrices}</td>
+               <td class="revenue">${vatDes}</td>
+               <td class="revenue">${vatValue}</td>
                <td class="revenue">${totalPrice}</td>
                <td>${userName}</td>
                <td><span class="badge badge-success">${statusText}</span></td>
@@ -364,8 +371,8 @@
             totalRow.classList.add('total-row');
             totalRow.innerHTML = `
             <td colspan="4" class="text-end">Total Revenue</td>
-            <td colspan="3" id="totalRevenue">${totalRevenue}</td>
-            <td colspan="4"></td>
+            <td colspan="4" id="totalRevenue">${totalRevenue}</td>
+            <td colspan="5"></td>
             `;
             tableBody.appendChild(totalRow);
         }

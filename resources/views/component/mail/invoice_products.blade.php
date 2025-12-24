@@ -30,7 +30,7 @@
 
         <tr>
             <td colspan="5" style="border: 1px solid #ddd; padding: 8px; text-align: right; font-weight: bold;">
-                Subtotal</td>
+                Total Products Price</td>
             <td style="border: 1px solid #ddd; padding: 8px; text-align: right; font-weight: bold;">{{ $subtotal }}
             </td>
         </tr>
@@ -40,6 +40,14 @@
                 Coupon</td>
             <td style="border: 1px solid #ddd; padding: 8px; text-align: right; font-weight: bold;">
                 {{ $coupon ?? "No coupon" }}
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="border: 1px solid #ddd; padding: 8px; text-align: right; font-weight: bold;">
+                VAT({{$vat_detail}})</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: right; font-weight: bold;">
+                {{ $vat_value }}
             </td>
         </tr>
 
