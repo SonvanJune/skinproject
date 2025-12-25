@@ -82,7 +82,7 @@ return [
     'message' => 'Mensaje',
     'noscript' => '¡Tu navegador no soporta JavaScript!',
     'newUploadTemplates' => 'Nuevo modelo subido',
-    'newPopularTemplates' => 'Nuevo modelo popular',
+    'newPopularTemplates' => 'Modelo popular',
     'needToLogin' => 'Necesitas iniciar sesión para acceder a esta página',
     'next' => 'Siguiente',
     'newPassword' => 'Nueva contraseña',

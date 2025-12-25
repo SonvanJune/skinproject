@@ -82,7 +82,7 @@ return [
     'message' => 'Message',
     'noscript' => 'Votre navigateur ne prend pas en charge JavaScript !',
     'newUploadTemplates' => 'Nouveau modèle téléchargé',
-    'newPopularTemplates' => 'Nouveau modèle populaire',
+    'newPopularTemplates' => 'Modèle populaire',
     'needToLogin' => 'Vous devez vous connecter pour accéder à cette page',
     'next' => 'Suivant',
     'newPassword' => 'Nouveau mot de passe',

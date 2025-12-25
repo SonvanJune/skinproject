@@ -82,7 +82,7 @@ return [
     'message' => 'メッセージ',
     'noscript' => 'お使いのブラウザはJavaScriptをサポートしていません！',
     'newUploadTemplates' => '新しいアップロードテンプレート',
-    'newPopularTemplates' => '新しい人気テンプレート',
+    'newPopularTemplates' => '人気のテンプレート',
     'needToLogin' => 'このページにアクセスするにはログインが必要です',
     'next' => '次へ',
     'newPassword' => '新しいパスワード',

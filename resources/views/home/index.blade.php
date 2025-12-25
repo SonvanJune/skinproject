@@ -49,21 +49,6 @@
         @isset($categories)
             @foreach ($categories as $key => $category)
                 @if ($key == 0)
-                    @if ($productPopulars && count($productPopulars) > 0)
-                        <div class="new">
-                            @include('component.svg-title.svg-title', [
-                                'titleBig' => __('message.newPopularTemplates'),
-                                'link' => 'popular-products',
-                            ])
-                        </div>
-
-                        @include('home.popular-product', [
-                            'products' => $productPopulars,
-                            'fakeView' => true,
-                        ])
-                    @endif
-                @endif
-                @if ($key == 1)
                     @if ($productNews && count($productNews) > 0)
                         <div class="new">
                             @include('component.svg-title.svg-title', [
@@ -75,6 +60,21 @@
                         @include('home.home-products', [
                             'products' => $productNews,
                             'fakeView' => false,
+                        ])
+                    @endif
+                @endif
+                @if ($key == 1)
+                    @if ($productPopulars && count($productPopulars) > 0)
+                        <div class="new">
+                            @include('component.svg-title.svg-title', [
+                                'titleBig' => __('message.newPopularTemplates'),
+                                'link' => 'popular-products',
+                            ])
+                        </div>
+
+                        @include('home.popular-product', [
+                            'products' => $productPopulars,
+                            'fakeView' => true,
                         ])
                     @endif
                 @endif
@@ -117,19 +117,19 @@
     @include('component.noticationNoData.loading.index', [])
     @include('component.noticationNoData.notification.index', [
         'notification' => 'add_to_cart_failed',
-        'type' => 'error'
+        'type' => 'error',
     ])
     @include('component.noticationNoData.notification.index', [
         'notification' => 'add_to_cart_success',
-        'type' => 'success'
+        'type' => 'success',
     ])
     @include('component.noticationNoData.notification.index', [
         'notification' => 'error',
-        'type' => 'error'
+        'type' => 'error',
     ])
     @include('component.noticationNoData.notification.index', [
         'notification' => 'success',
-        'type' => 'success'
+        'type' => 'success',
     ])
 @endsection
 

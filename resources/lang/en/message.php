@@ -82,7 +82,7 @@ return [
     'message' => 'Message',
     'noscript' => 'Your browser does not support JavaScript!',
     'newUploadTemplates' => 'New Upload Template',
-    'newPopularTemplates' => 'New Popular Template',
+    'newPopularTemplates' => 'Popular Templates',
     'needToLogin' => 'You need to log in to access this page',
     'next' => 'Next',
     'newPassword' => 'New password',

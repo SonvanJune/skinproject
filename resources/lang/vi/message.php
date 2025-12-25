@@ -82,7 +82,7 @@ return [
     'message' => 'Tin nhắn',
     'noscript' => 'Trình duyệt của bạn không hỗ trợ JavaScript!',
     'newUploadTemplates' => 'Tải lên mẫu mới',
-    'newPopularTemplates' => 'Mẫu phổ biến mới',
+    'newPopularTemplates' => 'Mẫu phổ biến',
     'needToLogin' => 'Bạn cần đăng nhập để truy cập trang này',
     'next' => 'Tiếp theo',
     'newPassword' => 'Mật khẩu mới',

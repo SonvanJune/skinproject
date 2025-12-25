@@ -82,7 +82,7 @@ return [
     'message' => '信息',
     'noscript' => '您的浏览器不支持JavaScript！',
     'newUploadTemplates' => '新上传模板',
-    'newPopularTemplates' => '新流行模板',
+    'newPopularTemplates' => '流行模板',
     'needToLogin' => '您需要登录才能访问此页面',
     'next' => '下一步',
     'newPassword' => '新密码',
