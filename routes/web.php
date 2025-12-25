@@ -253,37 +253,37 @@ Route::get('/sitemap.xml', function () {
 });
 
 
-Route::get('/test-invoice-snapshot', function (
-) {
-    $user = User::first();
+// Route::get('/test-invoice-snapshot', function (
+// ) {
+//     $user = User::first();
 
-    if (!$user) {
-        return 'No user found';
-    }
+//     if (!$user) {
+//         return 'No user found';
+//     }
 
-    $pdfData = [
-        'paymentTime' => "23/20",
-        'invoice_products' => [],
-        'name' => "test",
-        'email' => "m@gmail.com",
-        'phone' =>"5647",
-        'subtotal' => "450",
-        'vat_detail' => "10%",
-        'vat_value' => "30",
-        'coupon' => "coupon new",
-        'order_price' => "3400",
-        'currency' => "USD"
-    ];
+//     $pdfData = [
+//         'paymentTime' => "23/20",
+//         'invoice_products' => [],
+//         'name' => "test",
+//         'email' => "m@gmail.com",
+//         'phone' =>"5647",
+//         'subtotal' => "450",
+//         'vat_detail' => "10%",
+//         'vat_value' => "30",
+//         'coupon' => "coupon new",
+//         'order_price' => "3400",
+//         'currency' => "USD"
+//     ];
 
-    $pdf = Pdf::loadView('pdf.invoice', $pdfData);
+//     $pdf = Pdf::loadView('pdf.invoice', $pdfData);
 
-    $fileName = 'invoice_' . 'hh' . '.pdf';
-    $fullPath = public_path('payment-snapshot/' . $fileName);
+//     $fileName = 'invoice_' . 'hh' . '.pdf';
+//     $fullPath = public_path('payment-snapshot/' . $fileName);
 
-    if (!file_exists(dirname($fullPath))) {
-        mkdir(dirname($fullPath), 0755, true);
-    }
+//     if (!file_exists(dirname($fullPath))) {
+//         mkdir(dirname($fullPath), 0755, true);
+//     }
 
-    file_put_contents($fullPath, $pdf->output());
-    return true;
-});
+//     file_put_contents($fullPath, $pdf->output());
+//     return true;
+// });
