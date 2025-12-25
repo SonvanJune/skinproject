@@ -7,6 +7,7 @@ use App\Services\CouponService;
 use App\Services\MailService;
 use App\Services\OrderService;
 use App\Services\PaypalService;
+use App\Services\PdfService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -17,15 +18,17 @@ class PayPalController extends Controller
     protected $couponService;
     protected $paypalService;
     protected $mailService;
+    protected $pdfService;
     public const TYPE_COUPON_PRODUCT = 'couponProduct';
 
-    public function __construct(OrderService $orderService, UserService $userService, CouponService $couponService, PaypalService $paypalService, MailService $mailService)
+    public function __construct(OrderService $orderService, UserService $userService, CouponService $couponService, PaypalService $paypalService, MailService $mailService, PdfService $pdfService)
     {
         $this->orderService = $orderService;
         $this->userService = $userService;
         $this->couponService = $couponService;
         $this->paypalService = $paypalService;
         $this->mailService = $mailService;
+        $this->pdfService = $pdfService;
     }
 
     public function payment(Request $request)
@@ -99,7 +102,8 @@ class PayPalController extends Controller
             }
             switch ($finishPayment->status) {
                 case PaypalService::STATUS_FINISH_PAYMENT:
-                    $this->mailService->sendEmailFinishPayment($request->all(), $user, $this->userService);
+                    // $this->mailService->sendEmailFinishPayment($request->all(), $user, $this->userService);
+                    $this->pdfService->createInvoiceSnapshot($request->all(), $user, $this->userService);
                     return redirect()->route($finishPayment->link)->with('success', $finishPayment->message);
                 default:
                     return redirect()->route($finishPayment->link)->with('error', $finishPayment->message);

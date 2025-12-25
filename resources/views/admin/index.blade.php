@@ -300,16 +300,16 @@
 
                 // Gộp tên các sản phẩm
                 const productNames = order.cart.products.map(p => p.product_name).join(', ');
-                const productPrices = order.cart.products.map(p => `$${p.product_price}`).join(' + ');
-                const productSalePrices = order.cart.products.map(product => {
-                    let salePrice = product.product_price_sale;
+                // const productPrices = order.cart.products.map(p => `$${p.product_price}`).join(' + ');
+                // const productSalePrices = order.cart.products.map(product => {
+                //     let salePrice = product.product_price_sale;
 
-                    if (order.discounts.hasOwnProperty(product.product_id)) {
-                        salePrice = order.discounts[product.product_id];
-                    }
+                //     if (order.discounts.hasOwnProperty(product.product_id)) {
+                //         salePrice = order.discounts[product.product_id];
+                //     }
 
-                    return '$' + salePrice;
-                }).join(' + ');
+                //     return '$' + salePrice;
+                // }).join(' + ');
 
                 const vatDes = order.vat_detail;
                 const vatValue = '$' + parseFloat(order.vat_value);
@@ -352,8 +352,6 @@
                <td class="fw-bold">${date}</td>
                <td>${coupon}</td>
                <td>${productNames}</td>
-               <td class="revenue">${productPrices}</td>
-               <td class="revenue">${productSalePrices}</td>
                <td class="revenue">${vatDes}</td>
                <td class="revenue">${vatValue}</td>
                <td class="revenue">${totalPrice}</td>
@@ -371,8 +369,8 @@
             totalRow.classList.add('total-row');
             totalRow.innerHTML = `
             <td colspan="4" class="text-end">Total Revenue</td>
-            <td colspan="4" id="totalRevenue">${totalRevenue}</td>
-            <td colspan="5"></td>
+            <td colspan="3" id="totalRevenue">${totalRevenue}</td>
+            <td colspan="4"></td>
             `;
             tableBody.appendChild(totalRow);
         }
@@ -410,12 +408,12 @@
                     salePrice = discounts[product.product_id];
                 }
 
-                productList += '<p class="card-text">{{ __('message.productPriceColumn') }}: $' + product
-                    .product_price + '</p>';
-                if (product.product_price != salePrice) {
-                    productList += '<p class="card-text">{{ __('message.productPriceSaleColumn') }}: $' +
-                        salePrice + '</p>';
-                }
+                // productList += '<p class="card-text">{{ __('message.productPriceColumn') }}: $' + product
+                //     .product_price + '</p>';
+                // if (product.product_price != salePrice) {
+                //     productList += '<p class="card-text">{{ __('message.productPriceSaleColumn') }}: $' +
+                //         salePrice + '</p>';
+                // }
                 productList += '</div>';
                 productList += '</div>';
                 productList += '</div>';

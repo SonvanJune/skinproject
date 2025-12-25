@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminPaymentSnapshotController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminCouponController;
 use App\Http\Controllers\Admin\AdminLanguageController;
@@ -30,6 +31,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
+use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
@@ -119,7 +122,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::post('/admin/maintenance/update', [AdminMaintenanceController::class, 'update'])->middleware('admin')->name('admin.maintenance.update');
     Route::get('/admin/vat', [AdminVatController::class, 'index'])->middleware('admin')->name('admin.vat.index');
     Route::post('/admin/vat', [AdminVatController::class, 'store'])->middleware('admin')->name('admin.vat.store');
-    
+    Route::get('/admin/payment-snapshot', [AdminPaymentSnapshotController::class, 'index'])
+        ->name('admin.payment.index');
+
+    Route::get('/admin/payment-snapshot/view/{filename}', [AdminPaymentSnapshotController::class, 'view'])
+        ->name('admin.payment.view');
+
+    Route::get('/admin/payment-snapshot/download/{filename}', [AdminPaymentSnapshotController::class, 'download'])
+        ->name('admin.payment.download');
+
     //Default images
     Route::get('/admin/defaultImages', [ImageController::class, 'index'])->name('admin.defaultImages.index');
     Route::post('/admin/defaultImages/{image}', [ImageController::class, 'update'])->name('admin.defaultImages.update');
@@ -239,4 +250,40 @@ Route::get('/sitemap.xml', function () {
 
     return Response::make($content, 200)
         ->header('Content-Type', 'application/xml');
+});
+
+
+Route::get('/test-invoice-snapshot', function (
+) {
+    $user = User::first();
+
+    if (!$user) {
+        return 'No user found';
+    }
+
+    $pdfData = [
+        'paymentTime' => "23/20",
+        'invoice_products' => [],
+        'name' => "test",
+        'email' => "m@gmail.com",
+        'phone' =>"5647",
+        'subtotal' => "450",
+        'vat_detail' => "10%",
+        'vat_value' => "30",
+        'coupon' => "coupon new",
+        'order_price' => "3400",
+        'currency' => "USD"
+    ];
+
+    $pdf = Pdf::loadView('pdf.invoice', $pdfData);
+
+    $fileName = 'invoice_' . 'hh' . '.pdf';
+    $fullPath = public_path('payment-snapshot/' . $fileName);
+
+    if (!file_exists(dirname($fullPath))) {
+        mkdir(dirname($fullPath), 0755, true);
+    }
+
+    file_put_contents($fullPath, $pdf->output());
+    return true;
 });

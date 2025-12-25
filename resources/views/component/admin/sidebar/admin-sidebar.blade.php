@@ -221,6 +221,13 @@
                         </a>
                     </div>
 
+                    <div class="nav-item">
+                        <a class="nav-link " href="{{ route('admin.payment.index') }}" data-placement="left">
+                            <i class="bi-file-earmark-pdf nav-icon"></i>
+                            <span class="nav-link-title">Payment Snapshots</span>
+                        </a>
+                    </div>
+
                     <!-- General Settings -->
                     <div class="nav-item">
                         <a class="nav-link dropdown-toggle collapsed" href="#navbarVerticalMenuPagesOther"

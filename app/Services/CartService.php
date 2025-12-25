@@ -411,9 +411,9 @@ class CartService
         }
 
         $vat = include resource_path('setting/vat.php');
-
+        $priceHaveCoupon = session('priceCoupon') ?? $totalPrice;
         if ($vat['type'] === 'percent') {
-            $vatAmount = $totalPrice * ($vat['value'] / 100);
+            $vatAmount = $priceHaveCoupon * ($vat['value'] / 100);
         } else {
             $vatAmount = (float) $vat['value'];
         }

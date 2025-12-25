@@ -80,7 +80,7 @@
                                                 @endif
                                                 <td>{{ $order->updated_at }}</td>
                                                 <td>{{ $order->vat_detail }}</td>
-                                                <td>{{ $order->vat_value }}</td>
+                                                <td>${{ $order->vat_value }}</td>
                                                 <td>${{ $order->total_price }}</td>
                                                 <td>
                                                     <span
@@ -190,12 +190,12 @@
                     salePrice = discounts[product.product_id];
                 }
 
-                productList += '<p class="card-text">{{ __('message.productPriceColumn') }}: $' + product
-                    .product_price + '</p>';
-                if (product.product_price != salePrice) {
-                    productList += '<p class="card-text">{{ __('message.productPriceSaleColumn') }}: $' +
-                        salePrice + '</p>';
-                }
+                // productList += '<p class="card-text">{{ __('message.productPriceColumn') }}: $' + product
+                //     .product_price + '</p>';
+                // if (product.product_price != salePrice) {
+                //     productList += '<p class="card-text">{{ __('message.productPriceSaleColumn') }}: $' +
+                //         salePrice + '</p>';
+                // }
                 productList += '</div>';
                 productList += '</div>';
                 productList += '<div class="down">';
