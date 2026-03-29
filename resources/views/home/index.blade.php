@@ -9,10 +9,23 @@
 
 @section('content')
     <section class="home">
-        {{-- carousel img --}}
+        @include('component.hero.index', [])
+
+        <div class="daily">
+            <img src="{{ asset('images/ab.png') }}" alt="daily">
+            <a class="btn-daily" href="{{ route('saleProducts') }}">
+                <i class="bi bi-bullseye"></i>
+                <div class="item">
+                    <h1>{{ __('message.dailyOffer') }}</h1>
+                </div>
+            </a>
+            <p>{{ __('message.goToDailyOffer') }}</p>
+        </div>
+
+                {{-- carousel img --}}
         @include('component.carousel.carousel', [])
 
-        {{-- menu --}}
+                {{-- menu --}}
         <div class="menu">
             <div class="container">
                 <div class="row">
@@ -33,17 +46,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="daily">
-            <img src="{{ asset('images/ab.png') }}" alt="daily">
-            <a class="btn-daily" href="{{ route('saleProducts') }}">
-                <i class="bi bi-bullseye"></i>
-                <div class="item">
-                    <h1>{{ __('message.dailyOffer') }}</h1>
-                </div>
-            </a>
-            <p>{{ __('message.goToDailyOffer') }}</p>
         </div>
 
         @isset($categories)
@@ -79,18 +81,10 @@
                     @endif
                 @endif
                 @include('component.card.card-intro', [
-                    'titleBig' => 'Best Quantity All ' . $category->name . ' Template Tested',
-                    'titleSmall' => $category->name . ' Template',
+                    'titleBig' => $category->name. ' - ' . __('message.homeBigTitle'),
+                    'titleSmall' => $category->name . ' '. __('message.homeSmallTitle'),
                     'children' => $category->children,
-                    'icon' => [
-                        'fa-solid fa-' . strtolower($category->name),
-                        'fa-solid fa-' . strtolower($category->name),
-                        'fa-solid fa-' . strtolower($category->name),
-                        'fa-solid fa-' . strtolower($category->name),
-                        'fa-solid fa-' . strtolower($category->name),
-                        'fa-solid fa-' . strtolower($category->name),
-                        'fa-solid fa-' . strtolower($category->name),
-                    ],
+                    'categoryName' => $category->name,
                     'background' => route('get.file', ['filename' => $category->image_path]),
                     'fixed' => 'fixed',
                 ])

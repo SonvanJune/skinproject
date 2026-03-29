@@ -1,11 +1,10 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/topbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/topbar-big.css') }}">
 @endpush
 
 <div class="topbar">
-    @include('component.topbar.topbar-nav', [])
-    @include('component.topbar.topbar-menu', [])
-    @include('component.search-modal.index')
+    @include('component.topbar.topbar-menu-big')
 </div>
 
 {{-- topbar sm --}}

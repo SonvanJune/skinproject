@@ -43,7 +43,7 @@
                                 <tbody>
                                     @foreach ($cart->products as $product)
                                         <tr>
-                                            <td>
+                                            <td class="img-mask">
                                                 <img src="{{ route('get.file', ['filename' => $product->post_image_path]) }}"
                                                     alt="{{ $product->post_image_alt }}">
                                             </td>

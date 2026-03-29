@@ -64,10 +64,10 @@
                                 @foreach ($wistList->data as $product)
                                     <div class="wishlist-item">
                                         <img src="{{ route('get.file', ['filename' => $product->post_image_path]) }}"
-                                            alt="{{ $product->post_image_alt }}" />
+                                            alt="{{ $product->post_image_alt }}" onclick="window.location.href='{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}'"/>
 
                                         <div class="item-details">
-                                            <h6 class="item-title">{{ $product->product_name }}</h6>
+                                            <h6 class="item-title" onclick="window.location.href='{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}'">{{ $product->product_name }}</h6>
                                             @if ($product->product_price != $product->product_price_sale)
                                                 <p class="item-price"><span>${{ $product->product_price }}</span>
                                                     ${{ $product->product_price_sale }}</p>

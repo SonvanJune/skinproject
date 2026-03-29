@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AccessProductService;
 use App\Services\CartService;
 use App\Services\CategoryService;
 use App\Services\FileService;
@@ -15,19 +16,21 @@ class ProductController extends Controller
     protected $productService;
     protected $userService;
     protected $cartService;
+    protected $accessProductService;
 
-    public function __construct(CategoryService $categoryService, ProductService $productService, UserService $userService, CartService $cartService)
+    public function __construct(CategoryService $categoryService, ProductService $productService, UserService $userService, CartService $cartService, AccessProductService $accessProductService)
     {
         $this->categoryService = $categoryService;
         $this->productService = $productService;
         $this->userService = $userService;
         $this->cartService = $cartService;
+        $this->accessProductService = $accessProductService;
     }
 
     public function product(Request $request, $slug)
     {
         $user = parent::checkTokenWhenReload($request, $this->userService);
-        if(parent::checkMaintenance($user) == "off"){
+        if (parent::checkMaintenance($user) == "off") {
             return redirect()->route('maintenance');
         }
         if ($user) {
@@ -52,6 +55,12 @@ class ProductController extends Controller
         $this->productService->updateProductViews($request);
 
         $product = $this->productService->getProductBySlug($request, CategoryService::ROLE_USER, $user);
+        if ($user != null) {
+            $request->merge([
+                'user_id' => $user->user_id
+            ]);
+            $this->accessProductService->addProduct($request);
+        }
 
         if (parent::checkIsString($categories) || parent::checkIsString($product)) {
             abort(404);
@@ -85,7 +94,7 @@ class ProductController extends Controller
     public function downloadProduct(Request $request)
     {
         $user = parent::checkTokenWhenReload($request, $this->userService, true);
-        if(parent::checkMaintenance($user) == "off"){
+        if (parent::checkMaintenance($user) == "off") {
             return redirect()->route('maintenance');
         }
         if ($user) {

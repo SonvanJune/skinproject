@@ -43,6 +43,7 @@ return [
     'enterConfirmPassword' => 'Confirm Password:',
     'enterSecurityQuestionAnswer' => 'Enter Your Answer:',
     'email' => 'Email',
+    'explore'=>'Explore',
     'for' => 'for',
     'forOrder' => 'for Order',
     'forgetPassword' => 'Forgotten Password?',
@@ -195,6 +196,10 @@ return [
     'helpPageContact' => 'Contact Support',
     'helpPageHelper' => 'Mr. Binh',
     'helpPageFooter' => 'Need detailed guidance on how to purchase and pay on our website? Contact us via Facebook or phone.',
+    'heroBigTitle'=>"PREMIUM CAR SKINS",
+    'heroSmallTitle'=>"Elevate your style – make your vehicle truly stand out.",
+    'homeBigTitle' => 'Best Quantity Templates',
+    'homeSmallTitle' => 'Template',
     'policyTitle' => 'Terms & Policies',
     'policyHeading' => 'Terms of Service & Policies',
     'policyLastUpdated' => 'Last updated',
@@ -218,5 +223,5 @@ return [
     'policyContactContent' =>'If you have any questions regarding these terms, please contact our support team.',
     'VAT' => 'VAT',
     'vatDetail'=> 'VAT Desription',
-    'vatValue'=> 'VAT Price'
+    'vatValue'=> 'VAT Price',
 ];

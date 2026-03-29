@@ -2,8 +2,16 @@
     width: 100%;
 }
 
-.sidebar-caterory .search {
+.recent-products {
     margin-bottom: 40px;
+}
+
+.recent-products .badge{
+    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+}
+
+.recent-products .badge:hover{
+    color: #000000;
 }
 
 .sidebar-caterory .title {

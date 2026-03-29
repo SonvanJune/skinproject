@@ -116,11 +116,7 @@
 }
 
 .search-modal {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
+    width: 100%;
     height: max-content;
     overflow-y: auto;
     background-color: #0B0B10;
@@ -132,7 +128,6 @@
     display: none;
     flex-direction: column;
     overflow: hidden;
-    max-height: 80vh;
 }
 
 .search-modal .search-modal-content {
@@ -1017,7 +1012,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
     .topbar {
         display: none;
     }

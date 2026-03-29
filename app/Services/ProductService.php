@@ -231,9 +231,12 @@ class ProductService
             }
 
             if ($request->input('coupon_id')) {
+                $coupon = Coupon::find($request->input('coupon_id'));
                 $request->merge([
                     'coupon_id' => $request->input('coupon_id'),
-                    'product_id' => $product->product_id
+                    'product_id' => $product->product_id,
+                    'coupon_name' => $coupon->coupon_name,
+                    'coupon_code' => $coupon->coupon_code
                 ]);
                 if (!$request->input('coupon_release') && !$request->input('coupon_expired')) {
                     //cancel coupon

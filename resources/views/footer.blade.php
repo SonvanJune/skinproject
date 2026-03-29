@@ -123,7 +123,7 @@
 
 
 {{-- copy right --}}
-<div class="copy-right">{{ __('message.webName') }} &copy; 2025</div>
+<div class="copy-right">{{ __('message.webName') }} &copy; {{ date('Y') }}</div>
 
 
 @push('js')

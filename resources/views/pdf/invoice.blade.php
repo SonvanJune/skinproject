@@ -94,12 +94,36 @@
             text-align: center;
             color: #777;
         }
+
+        .logo-in {
+            display: flex;
+            line-height: 1;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 
 <body>
 
-    <h2>Invoice Detail</h2>
+    <div style="margin-bottom: 20px">
+        <!-- Logo bên trái -->
+        <div style="float: left">
+            <div class="logo-in" style="display: flex">
+                <div class="logo">
+                    <a href="#"><img src="{{ public_path('images/logo.png') }}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Title bên phải -->
+        <div style="text-align: right">
+            <h2 style="margin: 0">Invoice Detail</h2>
+        </div>
+
+        <div style="clear: both"></div>
+    </div>
 
     <div class="info">
         <p><strong>Full name:</strong> {{ $name }}</p>
@@ -126,7 +150,7 @@
                     <td>{{ $product->product_name }}</td>
                     <td class="text-center">{{ $product->product_quantity }}</td>
                     <td class="text-right">${{ $product->product_price }}</td>
-                    <td class="text-right">${{ $product->product_price_sale ?? "No sale"}}</td>
+                    <td class="text-right">${{ $product->product_price_sale ?? 'No sale' }}</td>
                     <td class="text-right">${{ $product->product_price_sale ?? $product->product_price }}</td>
                 </tr>
             @endforeach
@@ -140,10 +164,10 @@
         </tr>
         <tr>
             <td class="label">Coupon</td>
-            <td class="value">{{ $coupon ?? "No coupon" }}</td>
+            <td class="value">{{ $coupon ?? 'No coupon' }}</td>
         </tr>
         <tr>
-            <td class="label">VAT({{$vat_detail}})</td>
+            <td class="label">VAT({{ $vat_detail }})</td>
             <td class="value">${{ $vat_value }}</td>
         </tr>
         <tr>

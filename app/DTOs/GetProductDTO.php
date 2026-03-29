@@ -2,6 +2,7 @@
 
 namespace App\DTOs;
 
+use App\Models\Cart;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\User;
@@ -31,6 +32,9 @@ class GetProductDTO
 
     /** @var int The number of views for the product */
     public int $product_views;
+
+    /** @var int The number of purchases for the product */
+    public int $product_purchases;
 
     /** @var int The number of views for the product */
     public int $product_fake_views;
@@ -103,6 +107,7 @@ class GetProductDTO
         $this->can_download = $data['can_download'];
         $this->is_like = $data['is_like'];
         $this->coupon_code = $data['coupon_code'];
+        $this->product_purchases = $data['product_purchases'];
     }
 
     /**
@@ -133,7 +138,8 @@ class GetProductDTO
             'product_images' => $product->productImages->all(),
             'can_download' => self::checkCanDownload($product, $user),
             'is_like' => self::checkIsLike($product, $user),
-            'coupon_code' => self::getCouponCodeIfHave($product)
+            'coupon_code' => self::getCouponCodeIfHave($product),
+            'product_purchases' => self::getPurchases($product),
         ]);
     }
 
@@ -171,6 +177,20 @@ class GetProductDTO
             return false;
         }
         return false;
+    }
+
+    public static function getPurchases(Product $input_product)
+    {
+        $count = 0;
+        $carts = Cart::all();
+        foreach($carts as $cart){
+            foreach($cart->products as $product){
+                if($product->product_id == $input_product->product_id){
+                    $count+=1;
+                }
+            }
+        }
+        return $count;
     }
 
     public static function checkIsLike(Product $product, ?GetUserDTO $user)

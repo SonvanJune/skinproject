@@ -31,14 +31,18 @@
                     <div class="zoomer">
                         <div class="image">
                             @if ($product->product_images)
-                                <img id="mainImage" alt="{{ $product->product_images[0]->product_image_alt }}"
-                                    src="{{ route('get.file', ['filename' => $product->product_images[0]->product_image_path]) }}"
-                                    class="zoomImg">
+                                <div class="img-mask">
+                                    <img id="mainImage" alt="{{ $product->product_images[0]->product_image_alt }}"
+                                        src="{{ route('get.file', ['filename' => $product->product_images[0]->product_image_path]) }}"
+                                        class="zoomImg">
+                                </div>
                                 <div class="result hide"></div>
                             @else
-                                <img id="mainImage" alt="{{ $product->post_image_alt }}"
-                                    src="{{ route('get.file', ['filename' => $product->post_image_path]) }}"
-                                    class="zoomImg">
+                                <div class="img-mask">
+                                    <img id="mainImage" alt="{{ $product->post_image_alt }}"
+                                        src="{{ route('get.file', ['filename' => $product->post_image_path]) }}"
+                                        class="zoomImg">
+                                </div>
                                 <div class="result hide"></div>
                             @endif
                         </div>
@@ -46,9 +50,11 @@
                         <!-- Image thumbnails below the main image -->
                         <div class="image-thumbnails">
                             @foreach ($product->product_images as $image)
-                                <img src="{{ route('get.file', ['filename' => $image->product_image_path]) }}"
-                                    alt="{{ $image->product_image_alt }}" class="thumbnail"
-                                    data-src="{{ route('get.file', ['filename' => $image->product_image_path]) }}" />
+                                <div class="img-mask">
+                                    <img src="{{ route('get.file', ['filename' => $image->product_image_path]) }}"
+                                        alt="{{ $image->product_image_alt }}" class="thumbnail"
+                                        data-src="{{ route('get.file', ['filename' => $image->product_image_path]) }}" />
+                                </div>  
                             @endforeach
                         </div>
                     </div>
@@ -123,7 +129,8 @@
                     @else
                         <div class="add-cart">
                             <form class="form-add-cart" action="#">
-                                <button type="button" id="addTocartNoLogin" onclick="openModalLoginRegis()">{{ __('message.addToCartBtn') }}</button>
+                                <button type="button" id="addTocartNoLogin"
+                                    onclick="openModalLoginRegis()">{{ __('message.addToCartBtn') }}</button>
                             </form>
                         </div>
                     @endif

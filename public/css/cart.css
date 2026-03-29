@@ -1,5 +1,5 @@
 .cart-page{
-    padding-top: 150px;
+    padding-top: 80px;
     height: 100%;
 }
 
@@ -83,4 +83,11 @@
     .cart-page{
         padding-top: 60px;
     }
+}
+
+.cart-page .img-mask::after{
+    width: 20px;
+    height: 20px;
+    bottom: 10%;
+    right: 5%;
 }

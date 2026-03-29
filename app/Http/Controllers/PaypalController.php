@@ -102,8 +102,8 @@ class PayPalController extends Controller
             }
             switch ($finishPayment->status) {
                 case PaypalService::STATUS_FINISH_PAYMENT:
-                    // $this->mailService->sendEmailFinishPayment($request->all(), $user, $this->userService);
-                    $this->pdfService->createInvoiceSnapshot($request->all(), $user, $this->userService);
+                    $invoicePath = $this->pdfService->createInvoiceSnapshot($request->all(), $user, $this->userService);
+                    $this->mailService->sendEmailFinishPayment($request->all(), $user, $this->userService, $invoicePath);
                     return redirect()->route($finishPayment->link)->with('success', $finishPayment->message);
                 default:
                     return redirect()->route($finishPayment->link)->with('error', $finishPayment->message);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Services\AccessProductService;
 use App\Services\CartService;
 use App\Services\CategoryService;
 use App\Services\ProductService;
@@ -19,13 +20,15 @@ class CategoryController extends Controller
     protected $userService;
     protected $cartService;
     protected $productPerpage = 9;
+    protected $accessProductService;
 
-    public function __construct(CategoryService $categoryService, ProductService $productService, UserService $userService, CartService $cartService)
+    public function __construct(CategoryService $categoryService, ProductService $productService, UserService $userService, CartService $cartService, AccessProductService $acaccessProductService)
     {
         $this->categoryService = $categoryService;
         $this->productService = $productService;
         $this->userService = $userService;
         $this->cartService = $cartService;
+        $this->accessProductService = $acaccessProductService;
     }
 
     public function productCategory(Request $request, $slug)
@@ -40,9 +43,11 @@ class CategoryController extends Controller
         $categories = $this->categoryService->getListCategoryPerPage($request, CategoryService::ROLE_USER);
         $cart = null;
         $user_name = "";
+        $access_list = null;
         if ($user != null) {
             $user_name = $user->user_last_name;
             $cart = $this->cartService->getCartsByUser($user->user_id);
+            $access_list = $this->accessProductService->readUserAccessProducts($request, $user);
             if (parent::checkIsString($cart)) {
                 $cart = null;
             }
@@ -84,7 +89,8 @@ class CategoryController extends Controller
                     "total_page" => $productDtos->last_page,
                     "current_page" => $productDtos->current_page,
                     "user_name" => $user_name,
-                    "cart" => $cart
+                    "cart" => $cart,
+                    "access_list" => $access_list
                 ]);
             }
         } else {

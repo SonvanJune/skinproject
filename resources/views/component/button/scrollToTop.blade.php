@@ -3,11 +3,12 @@
         #scrollTopBtn {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            right: 1.5%;
             width: 48px;
             height: 48px;
             z-index: 999;
             display: none;
+            background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5) !important;
         }
 
         @media (max-width: 500px) {
@@ -18,7 +19,7 @@
     </style>
 @endpush
 
-<button id="scrollTopBtn" class="btn btn-primary rounded-circle shadow d-flex align-items-center justify-content-center"
+<button id="scrollTopBtn" class="btn rounded-circle shadow d-flex align-items-center justify-content-center"
     title="Go to top">
     <i class="bi bi-chevron-up fs-5"></i>
 </button>

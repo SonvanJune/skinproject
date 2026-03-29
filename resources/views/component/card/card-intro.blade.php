@@ -23,7 +23,7 @@
                                         @foreach ($chunk as $key => $category)
                                             @if (isset($category->name))
                                                 <a class="flex-fill d-flex item" href="{{url(App::getLocale() . '/product-category' . '/' . $category->slug) }}">
-                                                    <i class="{{ $icon[$key] ?? '' }}"></i>
+                                                    <i class="fa-solid {{'fa-' . strtolower($categoryName) ?? '' }}"></i>
                                                     <div class="flex-item">{{ $category->name }}</div>
                                                 </a>
                                             @endif

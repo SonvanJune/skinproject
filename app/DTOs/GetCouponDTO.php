@@ -16,7 +16,7 @@ class GetCouponDTO
     public string $coupon_id;
 
     /** @var string The name of the coupon. */
-    public string $coupon_name;
+    public ?string $coupon_name;
 
     /** @var string The unique code for the coupon. */
     public ?string $coupon_code;
@@ -51,7 +51,7 @@ class GetCouponDTO
      */
     public function __construct(
         string $coupon_id,
-        string $coupon_name,
+        ?string $coupon_name,
         ?string $coupon_code,
         string $coupon_release,
         ?string $coupon_expired,

@@ -8,7 +8,6 @@
         const url = routeSearch + "?s=" + searchTerm;
         const contentDiv = document.getElementById("search-modal-content");
         const searchSpinner = document.getElementById("searchSpinner");
-
         if (searchTerm.trim() === "") {
             contentDiv.innerHTML = '';
             searchModal.style.display = "none";

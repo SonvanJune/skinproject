@@ -74,3 +74,20 @@ body {
     font-style: italic;
     font-weight: bold;
 }
+
+.img-mask {
+    position: relative;
+    display: inline-block;
+}
+
+.img-mask::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background: url('/images/logo.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.8;
+}

@@ -37,8 +37,10 @@
                                                 @foreach ($cart->products as $product)
                                                     <li
                                                         class="list-group-item d-flex justify-content-between align-items-center">
-                                                        <img src="{{ route('get.file', ['filename' => $product->post_image_path]) }}"
-                                                            alt="{{ $product->post_image_alt }}">
+                                                        <div class="img-mask">
+                                                            <img src="{{ route('get.file', ['filename' => $product->post_image_path]) }}"
+                                                                alt="{{ $product->post_image_alt }}">
+                                                        </div>
                                                         <span>{{ $product->product_name }}</span>
                                                         @if (session('typeCoupon'))
                                                             @if (session('typeCoupon') == 'couponProduct' && session('productCouponId') == $product->product_id)
@@ -140,7 +142,7 @@
                                                         {{ __('message.VAT') }}
                                                         ({{ $vatText }})
                                                     </span>
-                                                    <strong>+ ${{$cart->priceOfVat}}</strong>
+                                                    <strong>+ ${{ $cart->priceOfVat }}</strong>
                                                 </div>
 
                                                 <hr>
@@ -148,7 +150,7 @@
                                                 <div class="d-flex justify-content-between fs-5">
                                                     <span>{{ __('message.totalPrice') }}</span>
                                                     <strong class="text-success">
-                                                        ${{$totalPriceAndVat}}
+                                                        ${{ $totalPriceAndVat }}
                                                     </strong>
                                                 </div>
                                             </div>
@@ -201,8 +203,7 @@
                                                 <form method="POST" action="{{ route('paypal.payment') }}">
                                                     @csrf
                                                     @if (session('priceCoupon'))
-                                                        <input type="hidden" name="price"
-                                                            value="{{$totalPriceAndVat}}">
+                                                        <input type="hidden" name="price" value="{{ $totalPriceAndVat }}">
                                                         <input type="hidden" name="coupon_id"
                                                             value="{{ session('coupon')->coupon_id }}">
                                                     @else
@@ -211,8 +212,8 @@
                                                     @if (session('typeCoupon') == 'couponProduct')
                                                         <input type="hidden" name="type_coupon" value="couponProduct">
                                                     @endif
-                                                    <input type="hidden" name="vat_detail" value="{{$vatText}}">
-                                                    <input type="hidden" name="vat_value" value="{{$cart->priceOfVat}}"">
+                                                    <input type="hidden" name="vat_detail" value="{{ $vatText }}">
+                                                    <input type="hidden" name="vat_value" value="{{ $cart->priceOfVat }}"">
                                                     <input type="hidden" name="cart_id" value="{{ $cart->cart_id }}">
                                                     <input type="hidden" name="order_payment" value=1>
                                                     <button

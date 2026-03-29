@@ -193,7 +193,7 @@ class MailService
         return shell_exec("echo $escapedHtml | prettier --parser html");
     }
 
-    public function sendEmailFinishPayment(array $data, User $user, UserService $userService)
+    public function sendEmailFinishPayment(array $data, User $user, UserService $userService, string $invoicePath)
     {
         $validator = Validator::make(
             $data,
@@ -224,6 +224,7 @@ class MailService
             $password,
             $data['currency'] ?? 'USD',
             $data['country'] ?? 'Not Found',
+            $invoicePath
         );
 
         if (isset($tempZipFilePath) && file_exists($tempZipFilePath)) {

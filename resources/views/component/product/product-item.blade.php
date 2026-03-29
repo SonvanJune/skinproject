@@ -2,8 +2,8 @@
     <link rel="stylesheet" href="{{ asset('css/product.css') }}">
 @endpush
 
-<div class=" d-flex flex-column it-p">
-    <a class="product" href="{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}">
+<div class="d-flex flex-column it-p">
+    <a class="product img-mask" href="{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}">
         @if ($product->product_price != $product->product_price_sale)
             <div class="sale"><img src="{{ asset('images/sale.png') }}" alt="sale"></div>
         @endif
@@ -40,6 +40,9 @@
         </div>
         <div class="release-date">
             <i class="bi bi-calendar-event-fill"></i> {{ $product->post_release }}
+        </div>
+        <div class="release-date">
+            <i class="bi bi-cart-check-fill"></i> {{ $product->product_purchases }}
         </div>
         @if ($product->coupon_code)
             <div class="release-date">

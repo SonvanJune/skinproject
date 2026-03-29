@@ -282,6 +282,8 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `coupon_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `order_payment` int NOT NULL,
+  `vat_detail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vat_value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `fk_orders_carts1_idx` (`cart_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -492,6 +494,21 @@ CREATE TABLE IF NOT EXISTS `wishlist` (
   PRIMARY KEY (`user_id`,`product_id`),
   KEY `fk_users_has_products_products1_idx` (`product_id`),
   KEY `fk_users_has_products_users1_idx` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `access_products`
+--
+DROP TABLE IF EXISTS `access_products`;
+CREATE TABLE IF NOT EXISTS `access_products` (
+  `user_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`,`product_id`),
+  KEY `fk_access_products_user` (`user_id`),
+  KEY `fk_access_products_product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

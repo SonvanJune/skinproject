@@ -89,7 +89,7 @@ class PdfService
 
         file_put_contents($fullPath, $pdf->output());
 
-        return true;
+        return $fullPath;
     }
 
     public function getCouponOfOrder(Order $order): string

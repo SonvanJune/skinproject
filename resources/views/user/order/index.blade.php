@@ -177,10 +177,9 @@
                 productList += '<div class="card w-100 mb-3" style="max-width: 100%;">';
                 productList += '<div class="d-flex align-items-center">';
                 const url = routeGetFileTemplate.replace(":filename", product.post_image_path);
-                productList += '<img src="' + url +
+                productList += '<div class="img-mask"> <img src="' + url +
                     '" class="card-img-top" alt="' +
-                    product.post_image_alt + '" style="width: 100px; height: 100px; object-fit: cover;">';
-
+                    product.post_image_alt + '" style="width: 100px; height: 100px; object-fit: cover;"> </div>';
                 productList += '<div class="card-body w-60">';
                 productList += '<a href="' + '{{ url(App::getLocale()) }}' + '/product/' + product.product_slug +
                     '" class="card-title">' + product.product_name + '</a>';

@@ -33,6 +33,7 @@ class InvoiceMail extends Mailable
 
     public string $path;
     public string $file_name;
+    public string $invoice_file_path;
 
     /**
      * Create a new message instance.
@@ -45,13 +46,14 @@ class InvoiceMail extends Mailable
      * @param string $file_name the new file name to send to client
      * @return void
      */
-    public function __construct(User $user, string $path , string $file_name,Order $order, string $file_password, string $currency = "USD", string $country = "Unknown",)
+    public function __construct(User $user, string $path , string $file_name,Order $order, string $file_password, string $currency = "USD", string $country = "Unknown", string $invoice_file_path)
     {
         $this->user = $user->user_first_name . " " . $user->user_last_name;
         $this->email = $user->user_email;
         $this->phone = $user->user_phone;
         $this->country = $country;
         $this->path = $path;
+        $this->invoice_file_path = $invoice_file_path;
         $this->file_name = $file_name;
 
         $this->app_name = config('app.name', __('message.webName'));
@@ -109,6 +111,13 @@ class InvoiceMail extends Mailable
                 [
                     'as' => $this->file_name,
                     'mime' => 'application/zip'
+                ]
+            )
+            ->attach(
+                $this->invoice_file_path,
+                [
+                    'as' => basename($this->invoice_file_path),
+                    'mime' => 'application/pdf'
                 ]
             )
             ->html($html_render);

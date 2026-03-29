@@ -1,5 +1,5 @@
 .checkout {
-    padding-top: 150px;
+    padding-top: 80px;
     height: 100%;
 }
 
@@ -189,4 +189,11 @@
     width: 40%;
     height: auto;
     transform: translateX(3%);
+}
+
+.checkout .img-mask::after{
+    width: 20px;
+    height: 20px;
+    bottom: 8%;
+    right: 5%;
 }

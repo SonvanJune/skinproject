@@ -24,6 +24,6 @@
             $label = 'EN'; // fallback
     } 
 @endphp
-<button class="flags btn border-0 bg-transparent nav-link" onclick="openLangModal(event)">
-    <span class="text-white">{{$label}}</span>
-</button>
+<a class="flags border-0 bg-transparent" onclick="openLangModal(event)">
+    <span>{{$label}}</span>
+</a>

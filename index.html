@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Navbar Mega Menu</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+            rel="stylesheet"
+        />
+        <style>
+            /* Navbar */
+            .kb-navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .kb-navbar-in {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 120px;
+                background: none;
+                color: #fff;
+                position: relative;
+            }
+
+            /* Logo */
+            .kb-logo {
+                font-size: 24px;
+                font-weight: bold;
+                color: #00d4ff;
+            }
+
+            /* Menu */
+            .kb-nav-menu {
+                display: flex;
+                list-style: none;
+                gap: 40px;
+            }
+
+            .kb-nav-item {
+                cursor: pointer;
+                padding: 10px;
+                transition: 0.3s;
+            }
+
+            .kb-nav-item:hover {
+                color: #fdb521;
+            }
+
+            /* Right side */
+            .kb-nav-right {
+                display: flex;
+                gap: 20px;
+            }
+
+            .kb-nav-right span {
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .kb-nav-right span:hover {
+                color: #fdb521;
+            }
+
+            /* Mega Menu */
+            .kb-mega-menu {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%) translateY(20px);
+                width: 100%;
+                background: #111;
+                color: #fff;
+                padding: 20px 120px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s ease;
+                border-top: #fdb521 1px solid;
+            }
+
+            /* Content */
+            /* MAIN */
+            .kb-mega-content {
+                display: flex;
+            }
+
+            /* LEFT: flex ngang */
+            .kb-mega-left {
+                flex: 2;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 30px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* mỗi group = 1 cột */
+            .kb-menu-group {
+                width: calc(25% - 22.5px);
+                animation: fadeIn 0.3s ease;
+            }
+
+            /* LIMIT: ẩn bớt */
+            .kb-limit .kb-menu-group:nth-child(n + 5) {
+                display: none;
+            }
+
+            /* title */
+            .kb-menu-title {
+                margin-bottom: 10px;
+                font-weight: bold;
+                text-align: left;
+                color: #fdb521;
+                border-bottom: solid 0.3px #fdb521;
+            }
+
+            /* list */
+            .kb-menu-list {
+                list-style: none;
+                padding-left: 0 !important;
+            }
+
+            .kb-menu-list li {
+                padding: 6px 0;
+                cursor: pointer;
+                transition: 0.3s;
+                position: relative;
+            }
+
+            /* hover */
+            .kb-menu-list li:hover {
+                color: #fdb521;
+                transform: translateX(5px);
+            }
+
+            /* underline effect */
+            .kb-menu-list li::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0%;
+                height: 2px;
+                background: #fdb521;
+                transition: 0.3s;
+            }
+
+            .kb-menu-list li:hover::after {
+                width: 100%;
+            }
+
+            /* RIGHT */
+            .kb-mega-right {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* image */
+            .kb-mega-right img {
+                width: 100%;
+                max-width: 350px;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+            }
+
+            /* Hover effect show menu */
+            .kb-has-mega:hover .kb-mega-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .kb-view-more {
+                display: inline-block;
+                padding: 8px 20px;
+                color: #fdb521;
+                text-decoration: none;
+                transition: 0.3s;
+                text-decoration: underline;
+            }
+
+            .kb-view-more:hover {
+                color: #fff;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .kb-simple-menu {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .kb-simple-link {
+                color: #fff;
+                text-decoration: none;
+                padding: 8px 0;
+                transition: 0.3s;
+                position: relative;
+            }
+
+            /* Hover giống menu bên trái */
+            .kb-simple-link:hover {
+                color: #fdb521;
+                transform: translateX(5px);
+            }
+
+            .kb-simple-link::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0%;
+                height: 2px;
+                background: #fdb521;
+                transition: 0.3s;
+            }
+
+            .kb-simple-link:hover::after {
+                width: 100%;
+            }
+
+            .kb-fixed-bar {
+                position: fixed;
+                right: 1%;
+                top: 50%;
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                transform-origin: top right; /* 🔥 mấu chốt */
+
+                z-index: 9999;
+                background: #fdb521;
+                border-radius: 12px 12px 12px 12px;
+                padding: 10px 0;
+
+                width: max-content;
+                overflow: hidden;
+
+                transition: all 0.3s ease;
+            }
+
+            /* Trạng thái bình thường → thu nhỏ */
+            .kb-fixed-bar {
+                transform: translateY(-50%) scale(0.8);
+            }
+
+            /* Hover → phóng to từ góc phải trên */
+            .kb-fixed-bar:hover {
+                transform: translateY(-50%) scale(1);
+            }
+
+            /* item */
+            .kb-bar-item {
+                display: flex;
+                align-items: center;
+                justify-content: center; /* mặc định center */
+
+                padding: 14px 10px;
+                color: #111;
+                text-decoration: none;
+
+                transition: 0.3s;
+            }
+
+            /* icon to đẹp */
+            .kb-bar-item .icon {
+                font-size: 22px; /* 🔥 tăng size */
+                min-width: 30px;
+                text-align: center;
+            }
+
+            .kb-bar-item .icon:hover {
+                color: #fff;
+            }
+
+            /* text */
+            .kb-bar-item .text {
+                width: 0;
+                opacity: 0;
+                overflow: hidden;
+                white-space: nowrap;
+                margin-left: 0;
+                transition: all 0.3s ease;
+            }
+
+            .kb-bar-item .text:hover {
+                color: #fff;
+            }
+
+            /* khi hover → dàn lại layout */
+            .kb-fixed-bar:hover .kb-bar-item {
+                justify-content: flex-start; /* 🔥 icon + text nằm trái */
+                padding-left: 15px;
+            }
+
+            /* hiện chữ */
+            .kb-fixed-bar:hover .text {
+                width: max-content;
+                opacity: 1;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="kb-navbar">
+            <div class="kb-navbar-in">
+                <!-- Logo -->
+                <div class="kb-logo">MyLogo</div>
+
+                <!-- Menu center -->
+                <ul class="kb-nav-menu">
+                    <li class="kb-nav-item">Home</li>
+
+                    <li class="kb-nav-item kb-has-mega">
+                        Menu
+                        <div class="kb-mega-menu">
+                            <div class="kb-mega-content">
+                                <!-- LEFT: flex ngang -->
+                                <div class="kb-mega-left kb-limit">
+                                    <div class="kb-menu-group">
+                                        <div class="kb-menu-title">
+                                            <h4>Food</h4>
+                                        </div>
+                                        <ul class="kb-menu-list">
+                                            <li data-img="img/pizza.jpg">
+                                                Pizza
+                                            </li>
+                                            <li data-img="img/burger.jpg">
+                                                Burger
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="kb-menu-group">
+                                        <div class="kb-menu-title">
+                                            <h4>Food</h4>
+                                        </div>
+                                        <ul class="kb-menu-list">
+                                            <li data-img="img/pizza.jpg">
+                                                Pizza
+                                            </li>
+                                            <li data-img="img/burger.jpg">
+                                                Burger
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="kb-menu-group">
+                                        <div class="kb-menu-title">
+                                            <h4>Food</h4>
+                                        </div>
+                                        <ul class="kb-menu-list">
+                                            <li data-img="img/pizza.jpg">
+                                                Pizza
+                                            </li>
+                                            <li data-img="img/burger.jpg">
+                                                Burger
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                            <li data-img="img/pasta.jpg">
+                                                Pasta
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="kb-menu-group">
+                                        <div class="kb-menu-title">
+                                            <h4>Drink</h4>
+                                        </div>
+                                        <ul class="kb-menu-list">
+                                            <li data-img="img/coffee.jpg">
+                                                Coffee
+                                            </li>
+                                            <li data-img="img/tea.jpg">Tea</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="kb-menu-group">
+                                        <div class="kb-menu-title">
+                                            <h4>Dessert</h4>
+                                        </div>
+                                        <ul class="kb-menu-list">
+                                            <li data-img="img/cake.jpg">
+                                                Cake
+                                            </li>
+                                            <li data-img="img/icecream.jpg">
+                                                Ice Cream
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="kb-menu-group">
+                                        <div class="kb-menu-title">
+                                            <h4>Combo</h4>
+                                        </div>
+                                        <ul class="kb-menu-list">
+                                            <li data-img="img/combo1.jpg">
+                                                Combo 1
+                                            </li>
+                                            <li data-img="img/combo2.jpg">
+                                                Combo 2
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="kb-menu-group">
+                                        <div class="kb-menu-title">
+                                            <h4>Combo</h4>
+                                        </div>
+                                        <ul class="kb-menu-list">
+                                            <li data-img="img/combo1.jpg">
+                                                Combo 1
+                                            </li>
+                                            <li data-img="img/combo2.jpg">
+                                                Combo 2
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="kb-overlay">
+                                    <a class="kb-view-more">Xem thêm</a>
+                                </div>
+
+                                <!-- RIGHT: image -->
+                                <div class="kb-mega-right">
+                                    <img
+                                        id="kb-preview-img"
+                                        src="img/pizza.jpg"
+                                        alt="preview"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="kb-nav-item">Blog</li>
+
+                    <li class="kb-nav-item kb-has-mega">
+                        Support
+                        <div class="kb-mega-menu">
+                            <div class="kb-mega-content kb-simple-menu">
+                                <a href="/#" class="kb-simple-link">Guide</a>
+                                <a href="/#" class="kb-simple-link"
+                                    >Contact Us</a
+                                >
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Right side -->
+                <div class="kb-nav-right">
+                    <span>Login</span>
+                    <span>Cart 🛒</span>
+                    <span>EN ▼</span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="kb-fixed-bar">
+            <a href="/wishlist" class="kb-bar-item">
+                <i class="bi bi-heart-fill icon"></i>
+                <span class="text">Wishlist</span>
+            </a>
+
+            <a href="/sale" class="kb-bar-item">
+                <i class="bi bi-tags-fill icon"></i>
+                <span class="text">Sale</span>
+            </a>
+
+            <a href="/new" class="kb-bar-item">
+                <i class="bi bi-stars icon"></i>
+                <span class="text">New</span>
+            </a>
+        </div>
+    </body>
+    <script>
+        const items = document.querySelectorAll(".kb-menu-list li");
+        const preview = document.getElementById("kb-preview-img");
+
+        items.forEach((item) => {
+            item.addEventListener("mouseenter", () => {
+                const img = item.getAttribute("data-img");
+
+                preview.style.opacity = 0;
+                preview.style.transform = "scale(0.95)";
+
+                setTimeout(() => {
+                    preview.src = img;
+                    preview.style.opacity = 1;
+                    preview.style.transform = "scale(1)";
+                }, 150);
+            });
+        });
+
+        const menu = document.querySelector(".kb-mega-left");
+        const btn = document.getElementById("kb-toggle-menu");
+        const groups = document.querySelectorAll(
+            ".kb-mega-left .kb-menu-group",
+        );
+
+        // 👉 Auto detect: nếu <=4 thì ẩn luôn overlay
+        if (groups.length <= 4) {
+            document.querySelector(".kb-overlay").style.display = "none";
+        }
+
+        // Toggle
+        let expanded = false;
+
+        btn.addEventListener("click", () => {
+            expanded = !expanded;
+
+            if (expanded) {
+                menu.classList.remove("kb-limit");
+                menu.classList.add("kb-expanded");
+                btn.innerText = "Thu gọn";
+            } else {
+                menu.classList.add("kb-limit");
+                menu.classList.remove("kb-expanded");
+                btn.innerText = "Xem thêm";
+            }
+        });
+
+        document.getElementById("kb-scroll-top").onclick = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        };
+    </script>
+</html>

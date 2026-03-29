@@ -41,7 +41,7 @@
     <script src="{{ asset('js/security.js') }}"></script>
     <script src="{{asset('js/modalNologin.js')}}"></script>
     {{-- <script src="{{asset('js/tooltip.js')}}"></script> --}}
-    <script src="{{ asset('js/block-dev-tool.js') }}"></script>
+    {{-- <script src="{{ asset('js/block-dev-tool.js') }}"></script> --}}
 @endsection
 
 @section('body')
