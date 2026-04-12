@@ -364,20 +364,22 @@ class CartService
     {
         $totalPrice = 0;
         foreach ($products as $product) {
-            if ($product->coupons()->exists()) {
-                $coupons = $product->coupons()->get();
-                $total = 0;
-                foreach ($coupons as $coupon) {
-                    if ($coupon->product_id && !$coupon->coupon_code && now() >= $coupon->coupon_release && now() < $coupon->coupon_expired) {
-                        $total = (float)($coupon->coupon_price ? $product->product_price - $coupon->coupon_price : $product->product_price - ($product->product_price * $coupon->coupon_per_hundred / 100));
-                        break;
-                    } else {
-                        $total = (float)$product->product_price;
+            if ($product->post->post_status == Post::STATUS_RELEASE) {
+                if ($product->coupons()->exists()) {
+                    $coupons = $product->coupons()->get();
+                    $total = 0;
+                    foreach ($coupons as $coupon) {
+                        if ($coupon->product_id && !$coupon->coupon_code && now() >= $coupon->coupon_release && now() < $coupon->coupon_expired) {
+                            $total = (float)($coupon->coupon_price ? $product->product_price - $coupon->coupon_price : $product->product_price - ($product->product_price * $coupon->coupon_per_hundred / 100));
+                            break;
+                        } else {
+                            $total = (float)$product->product_price;
+                        }
                     }
+                    $totalPrice += $total;
+                } else {
+                    $totalPrice += (float)$product->product_price;
                 }
-                $totalPrice += $total;
-            } else {
-                $totalPrice += (float)$product->product_price;
             }
         }
         return $totalPrice;
@@ -393,20 +395,22 @@ class CartService
     {
         $totalPrice = 0;
         foreach ($products as $product) {
-            if ($product->coupons()->exists()) {
-                $coupons = $product->coupons()->get();
-                $total = 0;
-                foreach ($coupons as $coupon) {
-                    if ($coupon->product_id && !$coupon->coupon_code && now() >= $coupon->coupon_release && now() < $coupon->coupon_expired) {
-                        $total = (float)($coupon->coupon_price ? $product->product_price - $coupon->coupon_price : $product->product_price - ($product->product_price * $coupon->coupon_per_hundred / 100));
-                        break;
-                    } else {
-                        $total = (float)$product->product_price;
+            if ($product->post->post_status == Post::STATUS_RELEASE) {
+                if ($product->coupons()->exists()) {
+                    $coupons = $product->coupons()->get();
+                    $total = 0;
+                    foreach ($coupons as $coupon) {
+                        if ($coupon->product_id && !$coupon->coupon_code && now() >= $coupon->coupon_release && now() < $coupon->coupon_expired) {
+                            $total = (float)($coupon->coupon_price ? $product->product_price - $coupon->coupon_price : $product->product_price - ($product->product_price * $coupon->coupon_per_hundred / 100));
+                            break;
+                        } else {
+                            $total = (float)$product->product_price;
+                        }
                     }
+                    $totalPrice += $total;
+                } else {
+                    $totalPrice += (float)$product->product_price;
                 }
-                $totalPrice += $total;
-            } else {
-                $totalPrice += (float)$product->product_price;
             }
         }
 

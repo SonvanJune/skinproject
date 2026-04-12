@@ -154,7 +154,7 @@ class GetProductDTO
     {
         $result = [];
         foreach ($products as $product) {
-            if($product->post->post_status != Post::TYPE_POST_DELETE){
+            if($product->post->post_status == Post::STATUS_RELEASE){
                 $result[] = self::fromModel($product, $user);
             }
         }
