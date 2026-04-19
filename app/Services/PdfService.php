@@ -28,7 +28,6 @@ class PdfService
     public function createInvoiceSnapshot(
         array $data,
         User $user,
-        UserService $userService
     ) {
         $validator = Validator::make(
             $data,
@@ -82,6 +81,7 @@ class PdfService
 
         $fileName = 'invoice_' . $order->order_id . '.pdf';
         $fullPath = public_path('payment-snapshot/' . $fileName);
+        $fullPath = str_replace('\\', '/', $fullPath);
 
         if (!file_exists(dirname($fullPath))) {
             mkdir(dirname($fullPath), 0755, true);

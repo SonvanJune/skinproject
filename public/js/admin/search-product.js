@@ -96,8 +96,8 @@ function importProducts(products, searchTerm) {
                             </a>
                         </form>
                         <button class="btn btn-white btn-sm view-product-btn"
-                            data-product='${JSON.stringify(product)}'
-                            onclick="openModalViewProduct(JSON.parse(this.dataset.product))">
+                            data-product='${btoa(unescape(encodeURIComponent(JSON.stringify(product))))}'
+                            onclick="openModalViewProduct(this.dataset.product)">
                             <i class="bi-eye-fill me-1"></i>
                         </button>
                     </td>

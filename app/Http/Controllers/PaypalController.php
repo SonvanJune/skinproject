@@ -34,7 +34,7 @@ class PayPalController extends Controller
     public function payment(Request $request)
     {
         $user = parent::checkTokenWhenReload($request, $this->userService, true);
-        if(parent::checkMaintenance($user) == "off"){
+        if (parent::checkMaintenance($user) == "off") {
             return redirect()->route('maintenance');
         }
         if ($request->price && $user) {
@@ -89,7 +89,7 @@ class PayPalController extends Controller
     public function paymentSuccess(Request $request)
     {
         $user = parent::checkTokenWhenReload($request, $this->userService, true, false);
-        if(parent::checkMaintenance($user) == "off"){
+        if (parent::checkMaintenance($user) == "off") {
             return redirect()->route('maintenance');
         }
         if ($request->query('order_id')) {
@@ -103,7 +103,13 @@ class PayPalController extends Controller
             switch ($finishPayment->status) {
                 case PaypalService::STATUS_FINISH_PAYMENT:
                     $invoicePath = $this->pdfService->createInvoiceSnapshot($request->all(), $user, $this->userService);
-                    $this->mailService->sendEmailFinishPayment($request->all(), $user, $this->userService, $invoicePath);
+                    if ($invoicePath) {
+                        $this->mailService->sendEmailFinishPayment($request->all(), $user, $this->userService, $invoicePath);
+                    } else {
+                        return redirect()->route($finishPayment->link)->with('warning', "We couldn’t send the email at this time. Please try again later.
+                                In the meantime, you can download your product anytime from your Order History.
+                                ");
+                    }
                     return redirect()->route($finishPayment->link)->with('success', $finishPayment->message);
                 default:
                     return redirect()->route($finishPayment->link)->with('error', $finishPayment->message);

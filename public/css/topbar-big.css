@@ -1,17 +1,18 @@
 /* Navbar */
 .kb-navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 2%;
+    left: 1%;
+    right: 1%;
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
     z-index: 9999;
+    border-radius: 30px;
 }
 
 .kb-navbar.hide {
-    transform: translateY(-100%);
+    transform: translateY(-120%);
     transition: transform 0.3s ease;
 }
 
@@ -46,7 +47,7 @@
     padding: 5px 0;
 }
 
-.kb-logo .logo-title{
+.kb-logo .logo-title {
     text-decoration: none;
     font-weight: bold;
     background: linear-gradient(135deg,
@@ -104,7 +105,7 @@
     list-style: none;
 }
 
-.kb-nav-right li a{
+.kb-nav-right li a {
     color: #000;
     text-decoration: none;
 }
@@ -186,7 +187,7 @@
     position: relative;
 }
 
-.kb-menu-list li a{
+.kb-menu-list li a {
     text-decoration: none;
     color: #fff !important;
 }
@@ -234,6 +235,11 @@
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
+}
+
+.kb-navbar:has(.kb-has-mega:hover) {
+    border-radius: 30px 30px 0 0 !important;
+
 }
 
 .kb-view-more {
@@ -385,7 +391,7 @@
     left: 100%;
     bottom: 100%;
     z-index: 2;
-    padding-right: 3px; 
+    padding-right: 3px;
 }
 
 /* search */
@@ -416,15 +422,8 @@
 
 @media (max-width: 1024px) {
     .kb-navbar-in {
-        padding: 15px 40px; /* giảm padding */
-    }
-
-    .kb-logo .logo img {
-        height: 45px; /* logo nhỏ lại */
-    }
-
-    .kb-nav-menu {
-        gap: 20px; /* giảm khoảng cách menu */
+        padding: 15px 40px;
+        /* giảm padding */
     }
 
     .kb-nav-item .kb-nav-item-title {
@@ -447,17 +446,15 @@
     }
 
     .kb-menu-group {
-        width: calc(50% - 15px); /* 🔥 từ 4 cột → 2 cột */
-    }
-
-    .kb-mega-right {
-        display: none; /* 🔥 ẩn hình cho gọn */
+        width: calc(50% - 15px);
+        /* 🔥 từ 4 cột → 2 cột */
     }
 }
 
 @media (max-width: 1024px) {
     .kb-fixed-bar {
-        transform: translateY(-50%) scale(0.7); /* nhỏ hơn */
+        transform: translateY(-50%) scale(0.7);
+        /* nhỏ hơn */
     }
 
     .kb-bar-item .icon {
@@ -466,5 +463,48 @@
 
     .kb-fixed-bar:hover {
         transform: translateY(-50%) scale(0.9);
+    }
+}
+
+@media (max-width: 1238px) {
+    .kb-logo .logo img {
+        width: 20px;
+    }
+
+    .kb-logo .logo-title {
+        font-size: 0.9em;
+    }
+
+    .kb-nav-menu {
+        gap: 10px;
+    }
+
+    .kb-navbar {
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 820px) {
+    .kb-nav-item{
+        gap: 5px;
+    }
+
+    .kb-nav-right{
+        gap: 5px;
+    }
+
+    .kb-navbar {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .kb-nav-item .kb-nav-item-title {
+        font-size: 0.7rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .kb-nav-right li {
+        font-size: 0.7rem;
     }
 }

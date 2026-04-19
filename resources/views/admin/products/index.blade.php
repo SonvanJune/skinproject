@@ -356,6 +356,10 @@
     <script src="{{ asset('js/admin/product-table.js') }}"></script>
     <script>
         function openModalViewProduct(product) {
+            if(typeof product === 'string'){
+                product = JSON.parse(decodeURIComponent(escape(atob(product))));
+            }
+            
             document.getElementById('productName').innerText = product.product_name || '';
             document.getElementById('productSlug').innerText = product.product_slug || '';
             document.getElementById('productFilePath').innerText = product.product_file_path || '';

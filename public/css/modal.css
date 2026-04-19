@@ -3,7 +3,7 @@
     position: fixed;
     z-index: 10004;
     right: 10%;
-    top: 1%;
+    top: 3%;
     width: 30%;
     height: max-content;
     transition: opacity 0.3s ease;

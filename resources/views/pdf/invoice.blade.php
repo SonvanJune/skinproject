@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Invoice</title>
@@ -10,156 +9,140 @@
             font-family: DejaVu Sans, sans-serif;
             font-size: 12px;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.5;
+            margin: 20px;
         }
 
         h2 {
-            text-align: center;
-            margin-bottom: 20px;
+            margin: 0;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .info {
-            margin-bottom: 20px;
-        }
-
-        .info p {
-            margin: 2px 0;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 6px;
         }
 
         th {
-            background-color: #f5f5f5;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            vertical-align: middle;
-        }
-
-        td.text-center {
+            background: #f5f5f5;
             text-align: center;
         }
 
-        td.text-right {
-            text-align: right;
-        }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
 
-        tr:nth-child(even) {
-            background-color: #fafafa;
-        }
-
-        .summary {
-            width: 100%;
-            margin-top: 20px;
+        .no-border td {
+            border: none;
         }
 
         .summary td {
             border: none;
-            padding: 6px 8px;
+            padding: 5px;
         }
 
         .summary .label {
             text-align: right;
             font-weight: bold;
-            width: 80%;
         }
 
         .summary .value {
             text-align: right;
-            width: 20%;
         }
 
         .total {
-            font-size: 14px;
             font-weight: bold;
-            border-top: 2px solid #333;
-            padding-top: 8px;
+            border-top: 1px solid #000;
+        }
+
+        /* 🔥 QUAN TRỌNG cho dompdf */
+        table, tr, td {
+            page-break-inside: avoid;
+        }
+
+        img {
+            max-height: 60px;
+        }
+
+        .header-table td {
+            border: none;
         }
 
         .footer {
-            margin-top: 40px;
+            margin-top: 30px;
             font-size: 11px;
             text-align: center;
             color: #777;
-        }
-
-        .logo-in {
-            display: flex;
-            line-height: 1;
-            align-items: center;
-            justify-content: center;
         }
     </style>
 </head>
 
 <body>
 
-    <div style="margin-bottom: 20px">
-        <!-- Logo bên trái -->
-        <div style="float: left">
-            <div class="logo-in" style="display: flex">
-                <div class="logo">
-                    <a href="#"><img src="{{ public_path('images/logo.png') }}"/>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <!-- Header -->
+    <table class="header-table">
+        <tr>
+            <td>
+                <img src="{{ public_path('images/logo.png') }}">
+            </td>
+            <td style="text-align:right">
+                <h2>Invoice Detail</h2>
+            </td>
+        </tr>
+    </table>
 
-        <!-- Title bên phải -->
-        <div style="text-align: right">
-            <h2 style="margin: 0">Invoice Detail</h2>
-        </div>
+    <br>
 
-        <div style="clear: both"></div>
-    </div>
+    <!-- Info -->
+    <table class="no-border">
+        <tr><td><strong>Full name:</strong> {{ $name }}</td></tr>
+        <tr><td><strong>Phone:</strong> {{ $phone }}</td></tr>
+        <tr><td><strong>Email:</strong> {{ $email }}</td></tr>
+        <tr><td><strong>Payment Time:</strong> {{ $paymentTime }}</td></tr>
+    </table>
 
-    <div class="info">
-        <p><strong>Full name:</strong> {{ $name }}</p>
-        <p><strong>Phone:</strong> {{ $phone }}</p>
-        <p><strong>Email:</strong> {{ $email }}</p>
-        <p><strong>Payment Time:</strong> {{ $paymentTime }}</p>
-    </div>
+    <br>
 
+    <!-- Product Table -->
     <table>
         <thead>
             <tr>
                 <th>No.</th>
                 <th>Product Name</th>
-                <th>Quantity</th>
+                <th>Qty</th>
                 <th>Unit Price</th>
-                <th>Discount Price</th>
-                <th>Total (USD)</th>
+                <th>Discount</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($invoice_products as $index => $product)
-                <tr>
-                    <td class="text-center">{{ $index + 1 }}</td>
-                    <td>{{ $product->product_name }}</td>
-                    <td class="text-center">{{ $product->product_quantity }}</td>
-                    <td class="text-right">${{ $product->product_price }}</td>
-                    <td class="text-right">${{ $product->product_price_sale ?? 'No sale' }}</td>
-                    <td class="text-right">${{ $product->product_price_sale ?? $product->product_price }}</td>
-                </tr>
+            <tr>
+                <td class="text-center">{{ $index + 1 }}</td>
+                <td>{{ $product->product_name }}</td>
+                <td class="text-center">{{ $product->product_quantity }}</td>
+                <td class="text-right">${{ $product->product_price }}</td>
+                <td class="text-right">
+                    {{ $product->product_price_sale ? '$'.$product->product_price_sale : 'No sale' }}
+                </td>
+                <td class="text-right">
+                    ${{ $product->product_price_sale ?? $product->product_price }}
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
 
+    <br>
+
+    <!-- Summary -->
     <table class="summary">
         <tr>
-            <td class="label">Total Products Price</td>
+            <td class="label">Subtotal</td>
             <td class="value">${{ $subtotal }}</td>
         </tr>
         <tr>
@@ -167,11 +150,11 @@
             <td class="value">{{ $coupon ?? 'No coupon' }}</td>
         </tr>
         <tr>
-            <td class="label">VAT({{ $vat_detail }})</td>
+            <td class="label">VAT ({{ $vat_detail }})</td>
             <td class="value">${{ $vat_value }}</td>
         </tr>
         <tr>
-            <td class="label total">Total Amount</td>
+            <td class="label total">Total</td>
             <td class="value total">${{ $order_price }}</td>
         </tr>
     </table>
@@ -181,5 +164,4 @@
     </div>
 
 </body>
-
 </html>
