@@ -40,7 +40,7 @@ class SearchService
 
         $products = Product::where('product_name', 'like', $searchTerm . '%')
             ->whereHas('post', function ($query) {
-                $query->where('post_status', '!=', Post::TYPE_POST_DELETE)
+                $query->where('post_status', POST::STATUS_RELEASE)
                 ->where('post_type', Post::TYPE_PRODUCT);
             })
             ->get();
@@ -48,7 +48,7 @@ class SearchService
         $maxDepth = CategoryService::getMaxParentDepth();
         $relations = implode('.', array_fill(0, $maxDepth, 'parent'));
 
-        $categories = Category::where('category_status', '!=', Category::CATEGORY_STATUS_DELETE)
+        $categories = Category::where('category_status', Category::CATEGORY_STATUS_ACTIVE)
             ->where('category_name', 'like', $searchTerm . '%')
             ->where('category_type', '=', Category::CATEGORY_TYPE_DEFAULT)
             ->with($relations)
@@ -56,7 +56,7 @@ class SearchService
             ->filter(function ($category) {
                 return !CategoryService::hasDisabledAncestor($category);
             });
-        $branhs = Category::where('category_status', '!=', Category::CATEGORY_STATUS_DELETE)
+        $branhs = Category::where('category_status', Category::CATEGORY_STATUS_ACTIVE)
             ->where('category_name', 'like', $searchTerm . '%')
             ->where('category_type', '=', Category::CATEGORY_TYPE_BRAND)
             ->with($relations)
@@ -64,7 +64,7 @@ class SearchService
             ->filter(function ($category) {
                 return !CategoryService::hasDisabledAncestor($category);
             });
-        $post = Post::where('post_status', '!=', Post::TYPE_POST_DELETE)->where('post_type', Post::TYPE_POST)->where('post_name', 'like', $searchTerm . '%')->get();
+        $post = Post::where('post_status', Post::STATUS_RELEASE)->where('post_type', Post::TYPE_POST)->where('post_name', 'like', $searchTerm . '%')->get();
         return SearchDTO::create($products, $categories, $branhs, $post, new UserService, $user);
     }
 
@@ -90,7 +90,7 @@ class SearchService
         $searchTerm = $request->query('s');
         $maxDepth = CategoryService::getMaxParentDepth();
         $relations = implode('.', array_fill(0, $maxDepth, 'parent'));
-        $categories = Category::where('category_status', '!=', Category::CATEGORY_STATUS_DELETE)
+        $categories = Category::where('category_status', Category::CATEGORY_STATUS_ACTIVE)
             ->where('category_name', 'like', $searchTerm . '%')
             ->with($relations)
             ->get()
@@ -121,7 +121,7 @@ class SearchService
 
         $searchTerm = $request->query('s');
         $products = Product::whereHas('post', function ($query) {
-            $query->where('post_status', '!=', Post::TYPE_POST_DELETE);
+            $query->where('post_status', Post::STATUS_RELEASE);
         })->where('product_name', 'like', '%' . $searchTerm . '%')->get();
         return GetProductAdminDTO::fromModels($products);
     }
@@ -146,7 +146,7 @@ class SearchService
         }
 
         $searchTerm = $request->query('s');
-        $posts = Post::where('post_status', '!=', Post::TYPE_POST_DELETE)->where('post_type', '!=', Post::TYPE_PRODUCT)->where('post_name', 'like', '%' . $searchTerm . '%')->get();
+        $posts = Post::where('post_status', Post::STATUS_RELEASE)->where('post_type', '!=', Post::TYPE_PRODUCT)->where('post_name', 'like', '%' . $searchTerm . '%')->get();
         return PostAdminPageDTO::fromListModels($posts, $userService);
     }
 

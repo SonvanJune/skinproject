@@ -8,14 +8,13 @@
         const url = routeSearch + "?s=" + searchTerm;
         const contentDiv = document.getElementById("search-modal-content");
         const searchSpinner = document.getElementById("searchSpinner");
+        contentDiv.innerHTML = '';
         if (searchTerm.trim() === "") {
-            contentDiv.innerHTML = '';
             searchModal.style.display = "none";
             searchSpinner.style.display = "none";
         } else {
             searchModal.style.display = "flex";
             searchSpinner.style.display = "block";
-            contentDiv.innerHTML = '';
             fetch(url, {
                     method: "Get",
                     headers: {
@@ -24,6 +23,7 @@
                 })
                 .then((r) => r.json())
                 .then((data) => {
+                    contentDiv.innerHTML = '';
                     searchSpinner.style.display = "none";
                     if (data.products.length === 0 && data.categories.length === 0 && data.brands.length === 0 &&
                         data.posts.length === 0) {
@@ -92,11 +92,19 @@
             </a>
         `;
     } else {
-        return `
-            <a class="item" href="${baseUrl}/brand/${item.slug}">
-                <img src="${routeGetFileTemplate.replace(":filename", item.image_path)}" alt="${item.image_alt}" class="item-image">
-                <p class="item-name"><span class="highlight">${item.name.charAt(0)}</span>${item.name.slice(1)}</p>
-            </a>
+        return ` <
+            a class = "item"
+        href = "${baseUrl}/brand/${item.slug}" >
+            <
+            img src = "${routeGetFileTemplate.replace(": filename ", item.image_path)}"
+        alt = "${item.image_alt}"
+        class = "item-image" >
+        <
+        p class = "item-name" > < span class = "highlight" > $ {
+            item.name.charAt(0)
+        } < /span>${item.name.slice(1)}</p >
+        <
+        /a>
         `;
     }
     }).join("")}
@@ -117,7 +125,7 @@
         ${items.map((item) => `
             <a class="item" href="${baseUrl}/blog/${item.slug}">
                 <img src="${routeGetFileTemplate.replace(":filename", item.image_path)}" alt="${item.image_alt}" class="item-image">
-                <p class="item-name">${item.name}</p>
+                <p class="item-name"><span class="highlight">${item.name.charAt(0)}</span>${item.name.slice(1)}</p>
             </a>
         `).join("")}
     </div>
