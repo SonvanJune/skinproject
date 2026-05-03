@@ -19,7 +19,7 @@
     width: 100%;
     height: 2rem;
     line-height: 0;
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    background: #1C1C1E;
 }
 
 .elementor-shape.pri{
@@ -39,7 +39,7 @@
 }
 
 .shape-mid {
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    background: #1C1C1E;
     width: 100%;
     height: 100px;
     padding-top: 35px;
@@ -74,7 +74,7 @@
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: 14px 11px 13px rgba(194, 86, 86, 0.49);
-    color: #000000;
+    color: #fff;
     flex: 1;
     text-align: center;
 }

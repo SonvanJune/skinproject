@@ -541,9 +541,12 @@
     right: 0;
     width: 100%;
     height: 8%;
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
     z-index: 10000;
-    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: space-between;
     padding: 20px 20px 20px 20px;
@@ -562,7 +565,9 @@
 .topbar-sm .bottom-bar .btbar-item.center {
     text-align: center;
     align-items: center;
-    background: #0F0F16;
+    background: rgba(20, 20, 20, 0.6);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    border: none;
     padding: 30px;
     width: 12%;
     height: 15%;
@@ -572,21 +577,19 @@
 
 .topbar-sm .bottom-bar .btbar-item.center i {
     font-size: 1.5em;
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
     font-weight: bold;
 }
 
 .topbar-sm .bottom-bar .btbar-item span {
     font-size: 1em;
-    color: #000000;
+    color: #fff;
     font-weight: bold;
 }
 
 .topbar-sm .bottom-bar .btbar-item i {
     font-size: 1.5em;
-    color: #000000;
+    color: #fff;
     font-weight: bold;
 }
 
@@ -681,8 +684,9 @@
 
 /* Main content styles */
 .topbar-sm .main-content {
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
-    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: #000000;
     transition: transform 0.6s ease;
     position: fixed;
     left: 0%;
@@ -702,7 +706,7 @@
 .topbar-sm-search-btn {
     background: none;
     border: none;
-    color: #000000;
+    color: #fff;
     font-size: 1.5rem;
     padding: 0.4em 0.6em;
     border-radius: 0.5rem;
@@ -761,12 +765,12 @@
     border-radius: 999px;
     border: 1px solid #ddd;
     background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
-    color: #000000;
+    color: #fff;
     flex: 1;
 }
 
 #topbarsm-searchBtn {
-  flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 

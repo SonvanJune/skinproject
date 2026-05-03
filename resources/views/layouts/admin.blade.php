@@ -58,6 +58,8 @@
             </div>
         </main>
     </div>
+    
+    <script src="{{ asset('js/handleHtml.js') }}"></script>
     <script>
         const routeGetFileTemplate = @json(route('get.file', ['filename' => ':filename']));
     </script>
@@ -137,7 +139,7 @@
             renderModal('folderPathModal');
         });
     </script>
-    <script src="{{ asset('js/block-dev-tool.js') }}"></script>
+    {{-- <script src="{{ asset('js/block-dev-tool.js') }}"></script> --}}
 </body>
 
 </html>

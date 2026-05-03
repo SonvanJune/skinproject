@@ -10,10 +10,10 @@ const columns = [
 ];
 
 const columnInTableFilterContainer = document.querySelector(
-    "#column-in-tabel-filter-container"
+    "#column-in-tabel-filter-container",
 );
 const columnFilterContainer = document.querySelector(
-    "#column-filter-container"
+    "#column-filter-container",
 );
 const tableContent = document.querySelector("tbody");
 
@@ -104,7 +104,7 @@ const postImage = document.querySelector("#view-post-modal .card-img-top");
 const postTitle = document.querySelector("#view-post-modal .card-title");
 const postContent = document.querySelector("#view-post-modal .card-text");
 const postReleaseDate = document.querySelector(
-    "#view-post-modal #publish-date"
+    "#view-post-modal #publish-date",
 );
 const postAuthor = document.querySelector("#view-post-modal #author-name");
 
@@ -118,7 +118,21 @@ function openView(title, imagePath, imageAlt, content, releaseDate, author) {
     postImage.src = imagePath;
     postImage.alt = imageAlt;
     postTitle.textContent = title;
-    postContent.innerHTML = content;
+    const rawHtml = content;
+    renderSmartContent(rawHtml, "post-container");
+    postReleaseDate.textContent = releaseDate;
+    postAuthor.textContent = author;
+}
+
+function openSearchView(title, imagePath, imageAlt, content, releaseDate, author) {
+    if (typeof content === "string") {
+        content = JSON.parse(decodeURIComponent(escape(atob(content))));
+    }
+    postImage.src = imagePath;
+    postImage.alt = imageAlt;
+    postTitle.textContent = title;
+    const rawHtml = content;
+    renderSmartContent(rawHtml, "post-container");
     postReleaseDate.textContent = releaseDate;
     postAuthor.textContent = author;
 }
@@ -127,7 +141,7 @@ function confirmDelete(element) {
     const form = element.closest("form");
 
     const modal = new bootstrap.Modal(
-        document.getElementById("deleteConfirmationModal")
+        document.getElementById("deleteConfirmationModal"),
     );
     modal.show();
 
@@ -136,4 +150,3 @@ function confirmDelete(element) {
         modal.hide();
     };
 }
-

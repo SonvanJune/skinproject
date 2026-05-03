@@ -309,8 +309,7 @@
                                 <h1 class="card-title"></h1>
                                 <p class="text-muted">Posted at <span id="publish-date"></span> by <span
                                         id="author-name"></span></p>
-                                <p class="card-text">
-                                </p>
+                                <div id="post-container" class="card-text"></div>
                             </div>
                         </div>
                     </div>

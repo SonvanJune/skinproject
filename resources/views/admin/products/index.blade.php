@@ -8,7 +8,8 @@
         <div class="row align-items-center mb-3">
             <div class="col-sm mb-2 mb-sm-0">
                 <h1 class="page-header-title">Products <span id="total-products"
-                        class="badge bg-soft-dark text-dark ms-2">{{ count($paginatedDTO->data) > 0 ? $paginatedDTO->totalArr : 0 }} items</span>
+                        class="badge bg-soft-dark text-dark ms-2">{{ count($paginatedDTO->data) > 0 ? $paginatedDTO->totalArr : 0 }}
+                        items</span>
                 </h1>
             </div>
 
@@ -48,7 +49,8 @@
                             <i class="bi-search"></i>
                         </div>
                         <input id="search-input" type="search" class="form-control" placeholder="Search Product..."
-                            aria-label="Search..." oninput="searchProductApi()" name="key" value="{{ request()->get('key') }}">
+                            aria-label="Search..." oninput="searchProductApi()" name="key"
+                            value="{{ request()->get('key') }}">
 
                         <div id="searchResultCount"
                             class="bg-light border border-primary rounded px-3 py-2 mt-2 text-primary small"
@@ -356,10 +358,10 @@
     <script src="{{ asset('js/admin/product-table.js') }}"></script>
     <script>
         function openModalViewProduct(product) {
-            if(typeof product === 'string'){
+            if (typeof product === 'string') {
                 product = JSON.parse(decodeURIComponent(escape(atob(product))));
             }
-            
+
             document.getElementById('productName').innerText = product.product_name || '';
             document.getElementById('productSlug').innerText = product.product_slug || '';
             document.getElementById('productFilePath').innerText = product.product_file_path || '';
@@ -437,7 +439,8 @@
                 container.appendChild(wrapper);
             });
 
-            document.getElementById('productContent').innerHTML = product.post_content || '';
+            const rawHtml = product.post_content;
+            renderSmartContent(rawHtml, "productContent");
 
             const imagesContainer = document.getElementById('productImages');
             imagesContainer.innerHTML = '';

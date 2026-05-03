@@ -89,12 +89,12 @@ function importPosts(posts, searchTerm) {
                 </form>
         
                 <a class="btn btn-white btn-sm"
-                    onclick="openView(this.dataset.name, this.dataset.image_path, this.dataset.image_alt, this.dataset.content, this.dataset.release, this.dataset.author)"
+                    onclick="openSearchView(this.dataset.name, this.dataset.image_path, this.dataset.image_alt, this.dataset.content, this.dataset.release, this.dataset.author)"
                     href="#" data-bs-toggle="modal" data-bs-target="#view-post-modal"
                     data-name="${post.name}"
                     data-image_path="${link}"
                     data-image_alt="${post.image_alt}"
-                    data-content="${post.content}"
+                    data-content="${btoa(unescape(encodeURIComponent(JSON.stringify(post.content))))}"
                     data-release="${post.release}"
                     data-author="${post.author}">
                     <i class="bi bi-eye-fill me-1"></i>

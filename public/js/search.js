@@ -2,9 +2,11 @@ function truncateTitleByLength() {
     const maxLength = 30;
     const cardTitles = document.querySelectorAll(".card-title");
 
-    cardTitles.forEach(cardTitle => {
+    cardTitles.forEach((cardTitle) => {
         if (cardTitle.textContent.trim().length > maxLength) {
-            cardTitle.textContent = cardTitle.textContent.trim().substring(maxLength, length) + "...";
+            cardTitle.textContent =
+                cardTitle.textContent.trim().substring(maxLength, length) +
+                "...";
         }
     });
 }
@@ -21,43 +23,43 @@ function toggleVisibility() {
     const brandItems = document.querySelectorAll(".brand-item");
     const postItems = document.querySelectorAll(".post-item");
 
-    productItems.forEach(item => {
+    productItems.forEach((item) => {
         item.style.display = filterProducts.checked ? "block" : "none";
     });
 
-    categoryItems.forEach(item => {
+    categoryItems.forEach((item) => {
         item.style.display = filterCategories.checked ? "block" : "none";
     });
 
-    brandItems.forEach(item => {
+    brandItems.forEach((item) => {
         item.style.display = filterBrands.checked ? "block" : "none";
     });
 
-    postItems.forEach(item => {
+    postItems.forEach((item) => {
         item.style.display = filterPosts.checked ? "block" : "none";
     });
     updateFilteredBadges();
 }
 
 function updateFilteredBadges() {
+    const filteredBadges = document.getElementById("filtered-badges");
+    filteredBadges.innerHTML = "";
     const filterProducts = document.getElementById("filter-products");
     const filterCategories = document.getElementById("filter-categories");
     const filterBrands = document.getElementById("filter-brands");
     const filterPosts = document.getElementById("filter-posts");
-    const filteredBadges = document.getElementById("filtered-badges");
-    filteredBadges.innerHTML = '';    
 
     if (filterProducts.checked) {
-        addBadge(productTitle, 'filter-products');
+        addBadge(productTitle, "filter-products");
     }
     if (filterCategories.checked) {
-        addBadge(categoryTitle, 'filter-categories');
+        addBadge(categoryTitle, "filter-categories");
     }
     if (filterBrands.checked) {
-        addBadge(brandTitle, 'filter-brands');
+        addBadge(brandTitle, "filter-brands");
     }
     if (filterPosts.checked) {
-        addBadge(postTitle, 'filter-posts');
+        addBadge(postTitle, "filter-posts");
     }
 }
 
@@ -69,7 +71,7 @@ function addBadge(label, filterId) {
     filteredBadges.appendChild(badge);
 }
 
-window.removeBadge = function(filterId) {
+window.removeBadge = function (filterId) {
     const checkbox = document.getElementById(filterId);
     if (checkbox) {
         checkbox.checked = false;

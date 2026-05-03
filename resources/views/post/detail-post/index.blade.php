@@ -20,7 +20,8 @@
                         <a href="">{{ __('message.blog') }}</a>
                         <i class="fa-solid fa-chevron-right"></i>
                         @isset($post)
-                            <a href="{{ url(App::getLocale() . '/blog' . '/' . $post->slug) }}" class="post-name">{{ $post->name }}</a>
+                            <a href="{{ url(App::getLocale() . '/blog' . '/' . $post->slug) }}"
+                                class="post-name">{{ $post->name }}</a>
                         @else
                             <a href="">{{ __('message.postDetail') }}</a>
                         @endisset
@@ -34,15 +35,14 @@
                 <div class="col-md-8">
                     @isset($post)
                         <div class="card mb-4 shadow-sm">
-                            <img src="{{route('get.file', ['filename' => $post->image_path]) }}"
-                                class="card-img-top" alt="{{ $post->image_alt }}">
+                            <img src="{{ route('get.file', ['filename' => $post->image_path]) }}" class="card-img-top"
+                                alt="{{ $post->image_alt }}">
                             <div class="card-body">
                                 <h1 class="card-title">{{ $post->name }}</h1>
-                                <p class="text-muted">{{ __('message.published') }} <span id="publish-date">{{ $post->release->format('Y-m-d H:i:s') }}</span> {{ __('message.by') }} <span
-                                        id="author-name">{{ $post->author }}</span></p>
-                                <p class="card-text">
-                                    {!! $post->content !!}
-                                </p>
+                                <p class="text-muted">{{ __('message.published') }} <span
+                                        id="publish-date">{{ $post->release->format('Y-m-d H:i:s') }}</span>
+                                    {{ __('message.by') }} <span id="author-name">{{ $post->author }}</span></p>
+                                <div id="post-container" class="card-text"></div>
                             </div>
                         </div>
                     @else
@@ -108,5 +108,7 @@
                 commentInput.value = '';
             });
         });
+        const rawHtml = @json($post->content);
+        renderSmartContent(rawHtml, "post-container");
     </script>
 @endpush

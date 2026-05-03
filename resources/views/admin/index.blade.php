@@ -300,16 +300,16 @@
 
                 // Gộp tên các sản phẩm
                 const productNames = order.cart.products.map(p => p.product_name).join(', ');
-                // const productPrices = order.cart.products.map(p => `$${p.product_price}`).join(' + ');
-                // const productSalePrices = order.cart.products.map(product => {
-                //     let salePrice = product.product_price_sale;
+                const productPrices = order.cart.products.map(p => `$${p.product_price}`).join(' + ');
+                const productSalePrices = order.cart.products.map(product => {
+                    let salePrice = product.product_price_sale;
 
-                //     if (order.discounts.hasOwnProperty(product.product_id)) {
-                //         salePrice = order.discounts[product.product_id];
-                //     }
+                    if (order.discounts.hasOwnProperty(product.product_id)) {
+                        salePrice = order.discounts[product.product_id];
+                    }
 
-                //     return '$' + salePrice;
-                // }).join(' + ');
+                    return '$' + salePrice;
+                }).join(' + ');
 
                 const vatDes = order.vat_detail;
                 const vatValue = '$' + parseFloat(order.vat_value);
@@ -341,7 +341,9 @@
 
                 // Hành động (ví dụ có thể là nút chi tiết hoặc sửa)
                 const action = `<button class="btn btn-info btn-sm"
-                onclick='showOrderDetails(${JSON.stringify(order.cart.products)}, ${JSON.stringify(order.discounts)})'>
+                data-order='${btoa(unescape(encodeURIComponent(JSON.stringify(order.cart.products))))}'
+                data-discount='${JSON.stringify(order.discounts)}'
+                onclick="showOrderDetails(this.dataset.order,this.dataset.discount)">
                 Details
                 </button>`;
 
@@ -352,6 +354,8 @@
                <td class="fw-bold">${date}</td>
                <td>${coupon}</td>
                <td>${productNames}</td>
+               <td>${productPrices}</td>
+               <td>${productSalePrices}</td>
                <td class="revenue">${vatDes}</td>
                <td class="revenue">${vatValue}</td>
                <td class="revenue">${totalPrice}</td>
@@ -388,11 +392,13 @@
         }
 
         function showOrderDetails(products, discounts) {
+            productLists = JSON.parse(decodeURIComponent(escape(atob(products))));
+            
             var modalProduct = document.getElementById("productModal");
             var spanClose = document.getElementsByClassName("closeBtn")[0];
             var productList = '';
 
-            products.forEach(function(product) {
+            productLists.forEach(function(product) {
                 productList += '<div class="card w-100 mb-3" style="max-width: 100%;">';
                 productList += '<div class="d-flex align-items-center">';
                 const getFileUrl = routeGetFileTemplate.replace(":filename", product.post_image_path);
@@ -401,7 +407,7 @@
 
                 productList += '<div class="card-body w-60">';
                 productList += '<a href="' + '{{ url(App::getLocale()) }}' + '/product/' + product.product_slug +
-                    '" class="card-title">' + product.product_name + '</a>';
+                    '" class="card-title d-block text-truncate">' + product.product_name + '</a>';
 
                 let salePrice = product.product_price_sale;
                 if (discounts.hasOwnProperty(product.product_id)) {

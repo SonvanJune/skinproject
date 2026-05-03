@@ -8,7 +8,9 @@
             height: 48px;
             z-index: 999;
             display: none;
-            background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5) !important;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid #000;
         }
 
         @media (max-width: 500px) {

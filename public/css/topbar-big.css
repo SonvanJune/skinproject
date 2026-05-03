@@ -310,7 +310,9 @@
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: top right;
     z-index: 9999;
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5) !important;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid #000;
     border-radius: 12px 12px 12px 12px;
     padding: 10px 0;
     width: max-content;

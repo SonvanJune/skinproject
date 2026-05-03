@@ -54,7 +54,7 @@
                                     <img src="{{ route('get.file', ['filename' => $image->product_image_path]) }}"
                                         alt="{{ $image->product_image_alt }}" class="thumbnail"
                                         data-src="{{ route('get.file', ['filename' => $image->product_image_path]) }}" />
-                                </div>  
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -84,9 +84,7 @@
                         @endif
                         {{ '$' . $product->product_price_sale }}
                     </div>
-                    <h6>
-                        {!! $product->post_content !!}
-                    </h6>
+                    <div id="post-container"></div>
                     @if (count($categories_detail) > 0)
                         <h6 class="mb-2">{{ __('message.categories') }}:</h6>
                         <div class="d-flex flex-wrap gap-2" id="productCategories">
@@ -164,6 +162,8 @@
                 product_image_path: routeGetFileTemplate.replace(":filename", image.product_image_path)
             };
         });
+        const rawHtml = @json($product->post_content);
+        renderSmartContent(rawHtml, "post-container");
     </script>
     <script src="{{ asset('js/product-image.js') }}"></script>
 @endpush

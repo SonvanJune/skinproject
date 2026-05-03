@@ -33,7 +33,7 @@ class AccessProductService
         ]);
 
         if ($validator->fails()) {
-            throw new ValidationException($validator);
+            return;
         }
 
         $userId   = $request->input('user_id');

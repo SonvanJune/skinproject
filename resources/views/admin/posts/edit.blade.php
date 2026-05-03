@@ -238,8 +238,7 @@
                                 <p class="text-muted">Posted at <span id="publish-date"></span> by <span
                                         id="author-name">{{ $user->user_first_name . ' ' . $user->user_last_name }}</span>
                                 </p>
-                                <p class="card-text">
-                                </p>
+                                <div id="post-container" class="card-text"></div>
                             </div>
                         </div>
                     </div>
@@ -281,7 +280,8 @@
             previewPostImage.src = routeGetFileTemplate.replace(":filename", imagePath.value);
             previewPostImage.alt = imageAlt.value;
             previewPostTitle.textContent = postTitle.value;
-            previewPostContent.innerHTML = editor.innerHTML;
+            const rawHtml = editor.innerHTML;
+            renderSmartContent(rawHtml, "post-container");
             previewPostReleaseDate.textContent = postReleaseDate.value;
         }
     </script>

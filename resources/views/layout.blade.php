@@ -5,6 +5,18 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:title" content="PPFTEMPLATE.COM" />
+    <meta property="og:description"
+        content="Download PPF Template & Artistic Wrap Design Files for cars from many popular brands such as Mercedes-Benz, BMW, Audi, Toyota, Tesla, and more.
+Files are available in CDR, SVG, DXF, AI, and PDF formats, ready for precise cutting on most plotter machines. Each template and design is accurately created and tested to ensure perfect fitment for PPF installation and artistic vinyl wraps, helping installers achieve clean edges, faster workflow, and professional-quality results with standard automotive wrap and paint protection materials." />
+    <meta property="og:image" content="https://ppftemplate.com/images/logo.png" />
+    <meta property="og:url" content="https://ppftemplate.com" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PPFTEMPLATE.COM">
+    <meta name="twitter:description" content="Download PPF Template & Artistic Wrap Design Files for cars from many popular brands such as Mercedes-Benz, BMW, Audi, Toyota, Tesla, and more.
+Files are available in CDR, SVG, DXF, AI, and PDF formats, ready for precise cutting on most plotter machines. Each template and design is accurately created and tested to ensure perfect fitment for PPF installation and artistic vinyl wraps, helping installers achieve clean edges, faster workflow, and professional-quality results with standard automotive wrap and paint protection materials.">
+    <meta name="twitter:image" content="https://ppftemplate.com/images/logo.png">
 
     <link rel="stylesheet" href="{{ asset('css/track-css.css') }}">
 
@@ -21,12 +33,14 @@
 
     {{-- title --}}
     <title>{{ __('message.webName') }} - @yield('title')</title>
-    <link rel="icon" type="image/png" href="{{asset('images/logo.png')}}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
     {{-- Example import css , js , image --}}
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('leaflet.css') }}">
+
+    <script src="{{ asset('js/handleHtml.js') }}"></script>
 
     <script>
         const routeGetFileTemplate = @json(route('get.file', ['filename' => ':filename']));
@@ -39,7 +53,7 @@
     @include('component.search-modal.import-js')
     {{-- security --}}
     <script src="{{ asset('js/security.js') }}"></script>
-    <script src="{{asset('js/modalNologin.js')}}"></script>
+    <script src="{{ asset('js/modalNologin.js') }}"></script>
     {{-- <script src="{{asset('js/tooltip.js')}}"></script> --}}
     {{-- <script src="{{ asset('js/block-dev-tool.js') }}"></script> --}}
 @endsection
