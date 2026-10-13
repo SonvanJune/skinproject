@@ -1,13 +1,15 @@
-// script.js
 const prevButton = document.querySelector(".carousel-custom-button.prev");
 const nextButton = document.querySelector(".carousel-custom-button.next");
 const carouselInner = document.querySelector(".carousel-custom-inner");
 const carouselItems = document.querySelectorAll(".carousel-custom-item");
 const paginationContainer = document.querySelector(".pagination");
-const totalItems = document.getElementById("countCate").value;
-const itemWidth = carouselItems[0].offsetWidth;
-const visibleItems = 3;
-let currentIndex = 0;
+const countCateEl = document.getElementById("countCate");
+
+if (carouselItems && carouselItems.length > 0 && countCateEl && carouselInner) {
+    const totalItems = parseInt(countCateEl.value, 10);
+    const itemWidth = carouselItems[0].offsetWidth;
+    const visibleItems = 3;
+    let currentIndex = 0;
 
 // Create pagination dots
 function createPaginationDots() {
@@ -77,3 +79,4 @@ updatePagination();
 
 // Optional: Auto-slide functionality
 setInterval(goToNext, 3000);
+}

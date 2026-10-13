@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Cart Detail')
+@section('title', __('message.cartDetail'))
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
@@ -78,7 +78,7 @@
                         <div class="row mt-4">
                             <div class="col-md-6">
                                 <a class="btn btn-secondary btn-block"
-                                    href="{{ url(App::getLocale() . '/product-category' . '/' . $categories[0]->slug) }}">{{ __('message.continueShoppingButton') }}</a>
+                                    href="{{ !empty($categories[0]->slug) ? url(App::getLocale() . '/product-category/' . $categories[0]->slug) : url(App::getLocale() . '/') }}">{{ __('message.continueShoppingButton') }}</a>
                             </div>
                             <div class="col-md-6 text-right">
                                 <div class="card">

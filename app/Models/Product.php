@@ -23,7 +23,8 @@ class Product extends Model
         'product_price',
         'product_file_path',
         'post_id',
-        'coupon_id',
+        'product_fake_views',
+        'product_status_views',
         'product_views'
     ];
 

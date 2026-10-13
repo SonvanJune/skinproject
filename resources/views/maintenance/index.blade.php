@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Website Under Maintenance</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstraps/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
         body {
             margin: 0;

@@ -6,15 +6,22 @@ wishlistItems.forEach((item, index) => {
     item.style.animationDelay = `${(index + 1) * 0.2}s`;
 });
 
-if(btn){
-btn.addEventListener("click", function(event) {
-    btn.disabled = true;
-    notiSuc.classList.remove("d-none");
-    form.submit();
-});
+if (btn) {
+    btn.addEventListener("click", function(event) {
+        btn.disabled = true;
+        const notiSuc = document.getElementById("notiSuc");
+        if (notiSuc) {
+            notiSuc.classList.remove("d-none");
+        }
+        if (form) {
+            form.submit();
+        }
+    });
 }
 
-
 function like() {
-    notiSuc.classList.remove('d-none');
+    const notiSuc = document.getElementById('notiSuc');
+    if (notiSuc) {
+        notiSuc.classList.remove('d-none');
+    }
 }

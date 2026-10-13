@@ -15,9 +15,10 @@ function closeCartModal() {
     setTimeout(() => (modal.style.display = "none"), 300); // Ẩn modal sau khi hiệu ứng hoàn tất
 }
 
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.classList.remove("show");
-        setTimeout(() => (modal.style.display = "none"), 300); // Ẩn modal sau khi hiệu ứng hoàn tất
+document.addEventListener("click", function (event) {
+    if (modal && modal.classList.contains("show")) {
+        if (!modal.contains(event.target) && !event.target.closest("#openModal") && !event.target.closest(".cart")) {
+            closeCartModal();
+        }
     }
-};
+});

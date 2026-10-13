@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class, // Calls the RoleSeeder to populate the 'roles' table
             PermissionSeeder::class, // Calls the PermissionSeeder to populate the 'permissions' table
+            ProductSeeder::class, // Seeds realistic products across all categories
         ]);
     }
 }

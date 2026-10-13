@@ -25,17 +25,17 @@
                         <aside class="col-md-4">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    Filter
+                                    {{ __('message.filter') }}
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label class="form-label fw-bold">Filtered:</label>
+                                        <label class="form-label fw-bold">{{ __('message.filtered') }}</label>
                                         <div id="filtered-badges">
                                         </div>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="job-titles" class="form-label fw-bold">Filter Selection</label>
+                                        <label for="job-titles" class="form-label fw-bold">{{ __('message.filterSelection') }}</label>
                                         <ul class="list-group">
                                             <li class="list-group-item">
                                                 @if (count($searchResult->products) > 0)

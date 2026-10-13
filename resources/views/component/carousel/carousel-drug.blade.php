@@ -12,15 +12,15 @@
                     @foreach ($categories as $item)
                         @if ($item->image_path != null)
                             <div class="carousel-custom-item">
-                                <img src="{{route('get.file', ['filename' => $item->image_path])}}" alt="{{$item->image_alt}}">
+                                <img src="{{route('get.file', ['filename' => $item->image_path])}}" alt="{{$item->image_alt ?? 'PPF Template Category'}}" loading="lazy">
                             </div>
                         @endif
                     @endforeach
                     <div class="carousel-custom-item-no">
-                        <img src="{{asset('images/logo.png')}}" alt="">
+                        <img src="{{asset('images/logo.png')}}" alt="PPFTEMPLATE" loading="lazy">
                     </div>
                     <div class="carousel-custom-item-no">
-                        <img src="{{asset('images/logo.png')}}" alt="">
+                        <img src="{{asset('images/logo.png')}}" alt="PPFTEMPLATE" loading="lazy">
                     </div>
                 @endisset
             </div>

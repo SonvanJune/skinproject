@@ -47,7 +47,7 @@ class CartController extends Controller
         }
         if ($user != null) {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
 
             $cart = $this->cartService->createCart($user->user_id);
@@ -80,7 +80,7 @@ class CartController extends Controller
         }
         if ($user != null) {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
 
             $delete = $this->cartService->removeProductFromCart($request, $user->user_id);
@@ -114,7 +114,7 @@ class CartController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 

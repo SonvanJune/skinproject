@@ -1,2 +1,24 @@
 User-agent: *
-Disallow:
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+Disallow: /login
+Disallow: /logout
+Disallow: /register
+Disallow: /forget-password
+Disallow: /otp
+Disallow: /wishlist
+Disallow: /admin
+Disallow: /*/cart
+Disallow: /*/checkout
+Disallow: /*/account
+Disallow: /*/login
+Disallow: /*/logout
+Disallow: /*/register
+Disallow: /*/forget-password
+Disallow: /*/otp
+Disallow: /*/wishlist
+
+Allow: /
+
+Sitemap: https://ppftemplate.com/sitemap.xml

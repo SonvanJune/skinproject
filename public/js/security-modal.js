@@ -43,22 +43,31 @@ function generateCaptcha() {
 // Draw CAPTCHA on canvas
 function drawCaptcha() {
     const canvas = document.getElementById("captchaCanvas");
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#f2f2f2";
+    ctx.fillStyle = isLight ? "#f4f1ea" : "#1a1a24";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = "30px Arial";
-    ctx.fillStyle = "#333";
+
+    ctx.font = "bold 30px 'Outfit', Arial";
+    ctx.fillStyle = isLight ? "#8f6226" : "#dfb77c";
     ctx.setTransform(
         1,
-        Math.random() * 0.3,
-        Math.random() * 0.3,
+        (Math.random() - 0.5) * 0.25,
+        (Math.random() - 0.5) * 0.25,
         1,
         Math.random() * 5,
         Math.random() * 5
     );
-    ctx.fillText(captchaText, 20, 50);
+    ctx.fillText(captchaText, 20, 48);
 }
+
+window.addEventListener("themeChanged", () => {
+    if (captchaText) drawCaptcha();
+});
 
 // Validate CAPTCHA
 function validateCaptcha() {

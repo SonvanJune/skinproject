@@ -148,3 +148,10 @@ function renderSafeHTML(rawHtml, mount) {
     mount.innerHTML = "";
     mount.appendChild(wrapper);
 }
+
+function like() {
+    const notiSuc = document.getElementById('notiSuc');
+    if (notiSuc) {
+        notiSuc.classList.remove('d-none');
+    }
+}

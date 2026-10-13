@@ -1,32 +1,29 @@
+/* ==========================================================================
+   FOOTER - LUXURY DUAL THEME (LIGHT & DARK MODE)
+   ========================================================================== */
 .footer {
     margin-top: 100px;
     height: max-content;
     width: 100%;
+    background: transparent !important;
+    background-color: transparent !important;
 }
 
 .footer .elementor-shape {
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    line-height: 0;
-    height: 3rem;
-    background-color: #11101D;
+    display: none !important;
 }
 
-.footer .elementor-shape-fill {
-    fill: #fff;
-    transform-origin: center;
-    transform: rotateY(0deg);
-}
-
-.footer .shape-mid {
-    padding: 130px 0 50px 0;
-    background-color: #11101D;
+.footer .shape-mid,
+.footer .shape-mid.pri,
+.footer .pri {
+    padding: 70px 0 40px 0;
+    background: transparent !important;
+    background-color: transparent !important;
+    border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
     height: max-content;
 }
 
-.footer .shape-mid .logo{
+.footer .shape-mid .logo {
     width: 100px;
     height: 100px;
     margin: 0 auto;
@@ -38,19 +35,22 @@
 }
 
 .footer .shape-mid h6 {
-    font-weight: 600;
-    color: #ced5cf;
+    font-weight: 400;
+    color: var(--text-muted, #9ca3af);
     padding: 20px 10px 10px 10px;
-    line-height: 2;
+    line-height: 1.8;
+    font-size: 0.92rem;
 }
 
-.footer .title {
-    color: #FFFFFF;
-    font-family: "Righteous", Sans-serif;
+.footer .title h4 {
+    color: var(--bronze-light, #dfb77c);
+    font-family: 'Italiana', serif;
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
+    letter-spacing: 1.5px;
     margin-left: 10px;
+    font-size: 1.25rem;
 }
 
 .footer .under {
@@ -58,156 +58,191 @@
 }
 
 .footer .list {
-    font-family: "Righteous", Sans-serif;
-    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
     text-transform: uppercase;
     text-align: center;
     display: flex;
     flex-direction: column;
+    letter-spacing: 0.5px;
 }
 
 .footer .list .item {
     text-decoration: none;
-    color: #FFFFFF;
+    color: var(--text-body, #d4cbbe);
+    transition: all 0.25s ease;
+    font-size: 0.88rem;
+    padding: 3px 0;
 }
 
 .footer .list i {
     font-size: 0.8em;
-    margin-right: 15px;
+    margin-right: 12px;
     margin-top: 10px;
-    color: #ECE40D;
+    color: var(--bronze-primary, #c59b63);
+    transition: color 0.25s ease;
 }
 
 .footer .list .item:hover {
-    color: #ECE40D;
+    color: var(--bronze-light, #dfb77c);
     cursor: pointer;
+    transform: translateX(3px);
 }
 
 .footer .list .item:hover i {
-    color: #1bafed !important;
+    color: var(--bronze-light, #dfb77c) !important;
 }
 
-.footer .contact {
-    color: #FFFFFF;
-    font-family: "Ribeye Marrow", Sans-serif;
-    font-weight: 300;
+.footer .contact h4 {
+    color: var(--bronze-light, #dfb77c);
+    font-family: 'Italiana', serif;
+    font-weight: 600;
     text-align: center;
-    position: relative;
-    margin-top: 60px;
+    letter-spacing: 1.5px;
+    font-size: 1.25rem;
+    margin-top: 0;
 }
 
 .footer .line {
-    border-top: 1px solid #7B7979;
-    width: 60%;
-    position: absolute;
-    top: 17%;
-    left: 20%;
+    display: none !important;
 }
 
 .footer .contact .list-btn {
-    font-family: "Righteous", Sans-serif !important;
+    font-family: 'Outfit', sans-serif !important;
     display: flex;
     flex-direction: column;
-    margin-top: 60px;
+    margin-top: 20px;
     width: 100%;
     align-items: center;
 }
 
 .footer .contact .bt {
-    border-radius: 25px 25px 25px 25px;
-    padding: 10px 10px 10px 10px;
+    border-radius: 25px;
+    padding: 10px 18px;
     text-decoration: none;
     text-transform: uppercase;
     color: #fff;
-    width: 60%;
-    transition: all 0.5s;
+    width: max-content;
+    min-width: 180px;
+    transition: all 0.35s ease;
     margin-bottom: 10px;
+    font-size: 0.88rem;
+    letter-spacing: 1px;
 }
 
 .footer .contact .bt i {
     font-size: 1em;
-    margin-right: 15px;
-}
-
-.footer .contact .conta {
-    background-color: #0866ff;
-    box-shadow: 0px 0px 30px 0px rgba(16.557065590568218, 82.6915263954769, 230.79545974731445, 0.5);
-}
-
-.footer .contact .conta:hover {
-    background-color: #B03636;
+    margin-right: 10px;
 }
 
 .footer .contact .whatapp {
-    background-color: #397B00;
-    box-shadow: 1px 0px 64px 0px rgba(95.73212430067025, 230.79545974731445, 16.557065590568218, 0.55);
+    background: var(--bronze-gradient, linear-gradient(135deg, #dfb77c, #c59b63));
+    color: #070709 !important;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 4px 20px rgba(197, 155, 99, 0.35);
 }
 
 .footer .contact .whatapp:hover {
-    background-color: hwb(128 38% 19%);
+    background: linear-gradient(135deg, #f3e8df, #dfb77c);
+    color: #070709 !important;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(223, 183, 124, 0.5);
 }
 
-.footer .contact .insta {
-    background-color: #BA3187A1;
-    box-shadow: 1px 0px 64px 0px rgba(255, 0, 222.84782608695653, 0.5);
+/* Guarantee & Supported Payments Section */
+.footer-guarantee-row {
+    border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+    color: var(--text-body, #d4cbbe);
 }
 
-.footer .contact .insta:hover {
-    background-color: hsl(322, 81%, 53%);
+.footer-guarantee-title {
+    color: var(--bronze-light, #dfb77c);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
 }
 
-.footer .contact .youtube {
-    background-color: #F01C1CA1;
-    box-shadow: 1px 0px 64px 0px rgba(255, 0, 0, 0.55);
+.footer-guarantee-title i {
+    color: var(--bronze-light, #dfb77c);
 }
 
-.footer .contact .youtube:hover {
-    background-color: hwb(0 15% 9%);
+.footer-guarantee-text {
+    color: var(--text-muted, #9ca3af);
+    line-height: 1.6;
+    font-size: 0.85rem;
 }
 
+.footer-payments-title {
+    color: var(--text-heading, #fff6ed);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.footer-payment-badge {
+    background: var(--bg-card, #12100f);
+    color: var(--text-body, #d4cbbe);
+    border: 1px solid var(--border-bronze, rgba(223, 183, 124, 0.35));
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.78rem;
+    padding: 6px 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.25s ease;
+}
+
+.footer-payment-badge:hover {
+    border-color: var(--bronze-light, #dfb77c);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--bronze-glow, rgba(197, 155, 99, 0.25));
+}
+
+.footer-payment-badge.brand-paypal {
+    background: rgba(0, 112, 186, 0.12);
+    border-color: rgba(0, 112, 186, 0.45);
+    color: #0070ba;
+}
+
+.footer-payment-badge.brand-stripe {
+    background: rgba(99, 91, 255, 0.12);
+    border-color: rgba(99, 91, 255, 0.45);
+    color: #635bff;
+}
+
+.footer-payment-badge.brand-ssl {
+    background: rgba(40, 167, 69, 0.12);
+    border-color: rgba(40, 167, 69, 0.45);
+    color: #28a745;
+}
+
+:root[data-theme="dark"] .footer-payment-badge.brand-paypal {
+    color: #4da3ff;
+}
+
+:root[data-theme="dark"] .footer-payment-badge.brand-stripe {
+    color: #8c85ff;
+}
+
+:root[data-theme="dark"] .footer-payment-badge.brand-ssl {
+    color: #4cd964;
+}
+
+/* Copyright Bar */
 .copy-right {
-    padding: 10px;
+    padding: 16px;
     width: 100%;
-    color: #FFFFFF;
-    font-family: "Arial", Sans-serif;
-    font-size: 17px;
-    font-weight: 100;
-    background-color: #000;
+    color: var(--text-muted, #9ca3af);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: transparent;
+    border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.05));
     text-align: center;
 }
 
-@keyframes zoomInFromTopRight {
-    0% {
-        transform: translateX(-50%) scale(0.5);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(-50%) scale(1);
-        opacity: 1;
-    }
-}
-
-.alert {
-    animation: zoomInFromTopRight 0.5s ease-out forwards;
-    position: fixed;
-    z-index: 10041;
-    width: 20%;
-    height: max-content;
-    top: 50%;
-    left: 50%;
-}
-
-.page-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 10030 !important;
-}
-
+/* Overlay & Alert */
+.page-overlay,
 .page-overlay-noti {
     position: fixed;
     top: 0;
@@ -218,14 +253,8 @@
     z-index: 10030 !important;
 }
 
-@media (max-width: 768px) {
-    .alert{
-        width: 60%;
-    }
-}
-
 @media (max-width: 500px) {
-    .copy-right{
+    .copy-right {
         margin-bottom: 3.5em;
     }
 }

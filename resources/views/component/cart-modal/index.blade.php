@@ -2,8 +2,8 @@
     <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
 @endpush
 <div id="modal" class="cart-modal">
-    <div class="modal-content">
-        <button class="close" onclick="closeCartModal()">&times;</button>
+    <div class="modal-content position-relative">
+        <button type="button" class="close" onclick="closeCartModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
         <div class="container mt-1">
             <div class="cart-header">
                 <p>{{ __('message.cart') }}</p>
@@ -32,7 +32,7 @@
                 @else
                     <div class="alert alert-warning text-center mt-5">
                         <p class="alert-heading" style="font-size: 1em;">{{ __('message.emptyCart') }}</p>
-                        <a href="{{ url(App::getLocale() . '/product-category' . '/' . $categories[0]->slug) }}"
+                        <a href="{{ !empty($categories[0]->slug) ? url(App::getLocale() . '/product-category/' . $categories[0]->slug) : url(App::getLocale() . '/') }}"
                             class="btn btn-primary" style="width: 100%; font-size: 1em">{{ __('message.shoppingNow') }}</a>
                     </div>
                 @endif

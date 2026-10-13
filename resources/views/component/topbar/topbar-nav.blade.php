@@ -57,13 +57,16 @@
                     @endif
                     <li class="nav-item">
                         <button class="nav-link icon cart" href="#" id="openModal" onclick="openCartModal()">
-                            <i class="fa-solid fa-cart-shopping">
-                                @isset($cart)
-                                    <div class="quantity-item"><span>{{ count($cart->products) }}</span></div>
-                                @else
-                                    <div class="quantity-item"><span>0</span></div>
-                                @endisset
-                            </i>
+                            <span class="cart-icon-wrapper">
+                                <i class="bi bi-cart3"></i>
+                                <span class="quantity-item">
+                                    @isset($cart)
+                                        {{ count($cart->products) }}
+                                    @else
+                                        0
+                                    @endisset
+                                </span>
+                            </span>
                         </button>
                     </li>
                     @if (!empty($user_name))

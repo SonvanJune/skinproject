@@ -1,6 +1,31 @@
-@extends('layout')
+@php
+    $postImage = !empty($post->image_path) ? route('get.file', ['filename' => $post->image_path]) : asset('images/logo.png');
+    $cleanDesc = !empty($post->content)
+        ? \Illuminate\Support\Str::limit(strip_tags($post->content), 160)
+        : ($post->name ?? 'PPFTEMPLATE Blog');
+@endphp
 
-@section('title', $post->name ?? __('message.postDetail'))
+@section('title', ($post->name ?? __('message.postDetail')) . ' | PPFTEMPLATE Blog')
+@section('meta_title', ($post->name ?? __('message.postDetail')) . ' | PPFTEMPLATE Blog')
+@section('meta_description', $cleanDesc)
+@section('og_image', $postImage)
+@section('og_type', 'article')
+
+@isset($post)
+@push('schema')
+    @include('component.schema.index', [
+        'type' => 'article',
+        'post' => $post,
+        'image' => $postImage,
+        'description' => $cleanDesc,
+        'breadcrumbs' => [
+            ['name' => __('message.home'), 'url' => url(App::getLocale())],
+            ['name' => __('message.blog'), 'url' => url(App::getLocale() . '/blog')],
+            ['name' => $post->name, 'url' => url()->current()],
+        ]
+    ])
+@endpush
+@endisset
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/post-detail.css') }}">
@@ -17,7 +42,7 @@
                     <div class="col-md-6 col-sm-12 path">
                         <a href="/"><i class="fa-solid fa-house"></i></a>
                         <i class="fa-solid fa-chevron-right"></i>
-                        <a href="">{{ __('message.blog') }}</a>
+                        <a href="{{ url(App::getLocale() . '/blog') }}">{{ __('message.blog') }}</a>
                         <i class="fa-solid fa-chevron-right"></i>
                         @isset($post)
                             <a href="{{ url(App::getLocale() . '/blog' . '/' . $post->slug) }}"
@@ -36,13 +61,20 @@
                     @isset($post)
                         <div class="card mb-4 shadow-sm">
                             <img src="{{ route('get.file', ['filename' => $post->image_path]) }}" class="card-img-top"
-                                alt="{{ $post->image_alt }}">
+                                alt="{{ $post->image_alt }}" loading="lazy">
                             <div class="card-body">
                                 <h1 class="card-title">{{ $post->name }}</h1>
                                 <p class="text-muted">{{ __('message.published') }} <span
                                         id="publish-date">{{ $post->release->format('Y-m-d H:i:s') }}</span>
                                     {{ __('message.by') }} <span id="author-name">{{ $post->author }}</span></p>
-                                <div id="post-container" class="card-text"></div>
+                                <div id="post-container" class="card-text post-body-content">
+                                    {!! $post->content !!}
+                                </div>
+                                <noscript>
+                                    <div class="post-body-fallback">
+                                        {!! $post->content !!}
+                                    </div>
+                                </noscript>
                             </div>
                         </div>
                     @else

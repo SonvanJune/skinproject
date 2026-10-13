@@ -1,128 +1,135 @@
 /* menu */
 .menu {
-    background: #1C1C1E;
+    background: transparent;
+    border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+    border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+    padding: 10px 0;
 }
 
 .menu .flex-item {
-    font-family: Righteous;
-    font-weight: bold;
-    text-decoration: underline;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
     text-transform: uppercase;
     border-radius: 0.25rem;
-    padding: 1rem;
-    margin: 0.5rem;
+    padding: 0.8rem 1rem;
+    margin: 0.3rem;
     text-wrap: nowrap;
-    color: #DADAE3;
+    color: var(--text-heading, #e5e7eb);
+    letter-spacing: 1px;
 }
 
 .menu .flex-fill i {
-    color: #DADAE3;
+    color: var(--bronze-primary, #dfb77c);
 }
 
 .menu .flex-item h2 {
-    font-size: 1rem !important;
-    font-weight: bold;
+    font-size: 0.95rem !important;
+    font-weight: 500;
     text-wrap: nowrap;
 }
 
 .menu .flex-fill:hover {
-    transform: scale(1.1);
-    color: #D73A10;
+    transform: translateY(-2px);
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.3s ease;
 }
 
 .menu .flex-fill:hover .flex-item {
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
+    background: var(--bronze-gradient, linear-gradient(135deg, #dfb77c, #c59b63));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .menu .flex-fill:hover i {
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--bronze-light, #fff6ed);
+    filter: drop-shadow(0 0 8px rgba(197, 155, 99, 0.6));
 }
 
 .menu i {
-    font-family: Righteous;
-    font-weight: bold;
     font-size: 1.1em;
-    margin-right: -20px;
-    margin-top: 22px;
-    color: #000000;
+    margin-right: -10px;
+    margin-top: 18px;
+    color: var(--bronze-primary, #dfb77c);
 }
 
 /* daily */
 .daily {
-    margin-top: 70px;
+    margin-top: 50px;
     width: 100%;
     height: max-content;
-    background-color: #0F0F16;
-    padding: 20px;
+    background: var(--bg-card, rgba(18, 18, 24, 0.45));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-bronze, rgba(197, 155, 99, 0.25));
+    border-radius: 20px;
+    padding: 30px 20px;
     text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .daily img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     background: none;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
 }
 
 .daily .btn-daily {
-    border-radius: 5px;
-    border: #DADAE3 1px solid;
+    border-radius: 30px;
+    border: 1px solid rgba(197, 155, 99, 0.5);
+    background: linear-gradient(135deg, #dfb77c, #c59b63);
     width: max-content;
-    margin: 0 auto;
+    margin: 15px auto 0 auto;
     display: flex;
-    padding: 5px;
+    align-items: center;
+    padding: 10px 28px;
+    box-shadow: 0 4px 20px rgba(197, 155, 99, 0.35);
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .daily .btn-daily:hover {
-    border: orange 1px solid;
-    transform: scale(1.1);
+    background: linear-gradient(135deg, #f3e8df, #dfb77c);
+    border-color: #dfb77c;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 30px rgba(223, 183, 124, 0.5);
     cursor: pointer;
-    transition: all 0.5s;
 }
 
 .daily .btn-daily:hover .item h1 {
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #070709;
 }
 
 .daily .btn-daily:hover i {
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #070709;
 }
 
 .daily .btn-daily .item {
-    font-family: Righteous;
+    font-family: 'Outfit', sans-serif;
     text-transform: uppercase;
-    color: #DADAE3;
+    color: #070709;
     padding-left: 10px;
 }
 
 .daily .btn-daily .item h1 {
-    font-size: 2em;
-    text-decoration: underline;
+    font-size: 1.1rem;
     line-height: normal !important;
-    font-weight: bold;
-    margin-top: 5px;
+    font-weight: 700;
+    margin-top: 0;
+    color: #070709;
+    letter-spacing: 1px;
 }
 
 .daily .btn-daily i {
-    font-family: Righteous;
-    font-size: 2.5em;
-    color: #DADAE3;
+    font-size: 1.4em;
+    color: #070709;
 }
 
 .daily p {
-    font-family: sans-serif;
-    font-size: 1.2em;
-    color: #DADAE3;
-    margin-top: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    color: var(--text-muted, #9ca3af);
+    margin-top: 15px;
 }
 
 /* new */
@@ -134,19 +141,20 @@
 /* thank */
 .thank {
     margin-top: 40px;
-    margin-bottom: 100px;
-    padding: 10px 0 5px 0;
+    margin-bottom: 80px;
+    padding: 20px 0;
     width: 100%;
     text-align: center;
-    background: #1C1C1E;
+    background: transparent;
 }
 
 .thank h4 {
-    color: #fff;
-    font-family: "Roboto", Sans-serif;
-    font-weight: 900;
-    text-shadow: 6px 5px 5px rgba(255, 255, 255, 0.65);
-    animation: bounce 2s;
+    color: #dfb77c;
+    font-family: 'Italiana', serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(197, 155, 99, 0.4);
 }
 
 @keyframes bounce {
@@ -176,4 +184,142 @@
 
 .products .detail .cart {
     display: inline-block !important;
+}
+
+/* ==========================================================================
+   FULL-PAGE VERTICAL SCROLL-SNAP & VERTICAL CAROUSEL (Landing Page)
+   ========================================================================== */
+html.is-vscroll-page,
+body.is-vscroll-page {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+.vscroll-viewport {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.vscroll-track {
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vscroll-slide {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    max-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 75px;
+    padding-bottom: 25px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+}
+
+.vscroll-slide::-webkit-scrollbar {
+    display: none;
+}
+
+.vslide-inner {
+    width: 100%;
+    margin: auto 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Slide Specific Layout Refinements for 100vh */
+.vscroll-slide-hero .hero {
+    margin: auto 0;
+    padding: 0;
+    width: 100%;
+}
+
+.vscroll-slide-daily .daily {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.vscroll-slide-daily .daily img {
+    width: 130px;
+    height: 130px;
+}
+
+.vscroll-slide-daily .menu {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px 0;
+}
+
+.vscroll-slide-mirror .mirror-hall-section {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.vscroll-slide-products .new {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.vscroll-slide-category .card {
+    margin-top: 0;
+}
+
+.vscroll-slide-category .card .list {
+    margin: 10px 0 20px 0;
+}
+
+.vscroll-slide-brand .thank {
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding: 10px 0;
+}
+
+.vscroll-slide-footer {
+    padding-top: 60px;
+    padding-bottom: 0;
+    justify-content: flex-end;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.vscroll-slide-footer .vslide-inner,
+.vscroll-slide-footer .footer,
+.vscroll-slide-footer .shape-mid {
+    width: 100%;
+    margin-top: auto;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+@media (max-width: 768px) {
+    .vscroll-slide {
+        padding-top: 65px;
+        padding-bottom: 20px;
+        justify-content: flex-start;
+    }
+    .vslide-inner {
+        margin: 0;
+    }
+    .vscroll-slide-daily .daily img {
+        width: 100px;
+        height: 100px;
+    }
 }

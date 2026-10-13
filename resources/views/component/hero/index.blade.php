@@ -11,13 +11,13 @@
             <div class="col-md-6 hero-text">
                 <h1 class="display-4 fw-bold">{{__('message.heroBigTitle')}}</h1>
                 <p class="lead">{{__('message.heroSmallTitle')}}</p>
-                <a href="{{ url(App::getLocale() . '/product-category' . '/' . $categories[0]->slug) }}" class="btn btn-racing btn-lg mt-3">{{__('message.explore')}}&nbsp;<i class="bi bi-arrow-right"></i></a>
+                <a href="{{ !empty($categories[0]) ? url(App::getLocale() . '/product-category/' . $categories[0]->slug) : url(App::getLocale() . '/') }}" class="btn btn-racing btn-lg mt-3">{{__('message.explore')}}&nbsp;<i class="bi bi-arrow-right"></i></a>
             </div>
 
             <!-- CAR -->
             <div class="col-md-6 position-relative">
                 <div class="car-wrapper">
-                    <img src="{{ asset('images/hero.png') }}" alt="Car">
+                    <img src="{{ asset('images/hero.png') }}" alt="PPF Template Precision Cutting Car Wrap">
                     <div class="car-shadow"></div>
                     <div class="smoke"></div>
                 </div>

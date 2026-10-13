@@ -1,5 +1,5 @@
 .description-brand .item{
-    color: #fff;
+    color: var(--text-body, #d1d5db);
     font-size: 1.2rem;
     font-weight: 400;
 }

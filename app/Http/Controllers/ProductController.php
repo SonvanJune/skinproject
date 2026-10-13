@@ -48,7 +48,7 @@ class ProductController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 

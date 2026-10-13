@@ -1,31 +1,31 @@
 .help-us {
     padding-top: 80px;
     height: 100%;
+    color: var(--text-body);
 }
 
 .help-us body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: linear-gradient(180deg, #f6fbff, #eef6ff);
-    color: #0f172a;
+    font-family: 'Outfit', sans-serif;
+    background: transparent !important;
+    color: var(--text-body);
 }
 
 .help-us .logo-img {
     height: 68px;
-    /* chỉ set chiều cao */
     width: auto;
-    /* chiều rộng tự động theo tỷ lệ ảnh */
     border-radius: 14px;
 }
-
 
 .help-us .step .icon {
     min-width: 64px;
     height: 64px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #fff, #f3f8ff);
+    border-radius: 14px;
+    background: var(--bg-card) !important;
+    color: var(--bronze-light) !important;
     display: grid;
     place-items: center;
-    border: 1px solid rgba(15, 23, 42, 0.04);
+    border: 1px solid var(--border-bronze, rgba(197, 155, 99, 0.35)) !important;
+    box-shadow: 0 4px 15px var(--card-shadow);
 }
 
 .help-us .thumb img {

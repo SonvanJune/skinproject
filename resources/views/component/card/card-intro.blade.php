@@ -6,8 +6,7 @@
     <div class="title-big">
         {{ $titleBig }}
     </div>
-    <div class="card-body"
-        @if (isset($background)) style="background: url({{ $background }}) {{ $fixed }} ; background-size: cover; background-position: center center;" @endif>
+    <div class="card-body">
         <div class="container">
             <div class="title-small">
                 <h2 class="">{{ $titleSmall }}</h2>

@@ -58,12 +58,12 @@ class PageController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
         if ($user_name == -2) {
-            return redirect()->route('login')->with('permission_denied', "Wrong account or password");
+            return redirect()->route('login')->with('permission_denied', __('message.wrongAccountOrPassword'));
         }
 
         $slideImages = $this->slideshowService->getListSlideshowImage();
@@ -101,7 +101,7 @@ class PageController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -157,7 +157,7 @@ class PageController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -188,7 +188,7 @@ class PageController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -219,7 +219,7 @@ class PageController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -257,7 +257,7 @@ class PageController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -285,7 +285,7 @@ class PageController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 

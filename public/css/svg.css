@@ -1,9 +1,11 @@
 .svg-form {
     display: block;
+    position: relative;
+    overflow: hidden;
 }
 
 .elementor-shape-fill {
-    fill: #fff;
+    fill: #070709 !important;
     transform-origin: center;
     transform: rotateY(0deg);
 }
@@ -13,24 +15,22 @@
 }
 
 .elementor-shape {
+    display: none !important;
     overflow: hidden;
     position: absolute;
     left: 0;
     width: 100%;
     height: 2rem;
     line-height: 0;
-    background: #1C1C1E;
+    background: transparent !important;
 }
 
-.elementor-shape.pri{
-    background: #0F0F16 !important;
+.elementor-shape.pri {
+    background: transparent !important;
 }
 
 .elementor-shape svg {
-    display: block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none !important;
 }
 
 .elementor-shape-bottom {
@@ -39,14 +39,16 @@
 }
 
 .shape-mid {
-    background: #1C1C1E;
+    background: transparent !important;
     width: 100%;
-    height: 100px;
-    padding-top: 35px;
+    height: auto;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.shape-mid.pri{
-    background: #0F0F16 !important;
+.shape-mid.pri {
+    background: transparent !important;
 }
 
 .title-block {
@@ -54,27 +56,45 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .title-block .view-all-link {
     margin-left: auto;
-    background: #000000;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #dfb77c !important;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(197, 155, 99, 0.3);
+    background: rgba(197, 155, 99, 0.08);
+    transition: all 0.3s ease;
+    -webkit-text-fill-color: initial !important;
 }
 
 .title-block .view-all-link:hover {
-    background: linear-gradient(135deg, #F45B3A, #F9A23B, #B56BB3, #6A6FF5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #070709 !important;
+    background: linear-gradient(135deg, #dfb77c, #c59b63);
+    box-shadow: 0 4px 15px rgba(197, 155, 99, 0.35);
+    transform: translateX(4px);
+    -webkit-text-fill-color: initial !important;
 }
 
 .title-block .titleBig {
-    font-family: Righteous;
-    font-weight: bold;
+    font-family: 'Italiana', serif !important;
+    font-weight: 400 !important;
     text-transform: uppercase;
-    text-shadow: 14px 11px 13px rgba(194, 86, 86, 0.49);
-    color: #fff;
+    letter-spacing: 2px;
+    color: #fff6ed !important;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    text-shadow: 0 4px 20px rgba(197, 155, 99, 0.25);
     flex: 1;
     text-align: center;
 }
@@ -84,30 +104,46 @@
 }
 
 .title-block .titleSmall {
-    font-family: Righteous;
-    font-weight: bold;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
     text-transform: uppercase;
-    text-decoration: underline;
+    letter-spacing: 1px;
     padding-top: 10px;
-    color: 000000;
+    color: #dfb77c;
     position: relative;
     white-space: wrap;
 }
 
 .title-block .titleSmall:hover {
-    transform: scale(1.1);
-    color: blue;
+    color: #fff6ed;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .title-block .dot {
     position: absolute;
-    background-color: #D73A10;
+    background: #c59b63;
     display: block;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    top: 5%;
-    right: -20%;
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+    box-shadow: 0 0 8px rgba(197, 155, 99, 0.6);
+}
+
+@media (max-width: 768px) {
+    .shape-mid {
+        height: auto;
+        padding: 20px 0;
+    }
+    .title-block {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    .title-block .view-all-link {
+        margin: 0 auto;
+    }
 }

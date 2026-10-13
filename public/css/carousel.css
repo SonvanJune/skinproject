@@ -1,19 +1,466 @@
-/* carousel */
-.nor .carousel-item {
-    width: 100%;
-    z-index: 0;
+/* ============================================================
+   MIRROR HALL 3D CAROUSEL & LUXURY SHOWROOM
+   Inspired by GetLayers Mirror Hall (3D Cylinder Corridor & Reflection)
+   ============================================================ */
+
+:root {
+    --mh-gold-primary: #dfb77c;
+    --mh-gold-light: #f3e8df;
+    --mh-gold-dark: #c59b63;
+    --mh-card-w: 240px;
+    --mh-card-h: 340px;
+    --mh-stage-h: 550px;
 }
 
-.nor .carousel-item img{
-    width: 100%;
+@media (max-width: 1200px) {
+    :root {
+        --mh-card-w: 210px;
+        --mh-card-h: 300px;
+        --mh-stage-h: 500px;
+    }
 }
 
-/* custom carousel */
+@media (max-width: 768px) {
+    :root {
+        --mh-card-w: 175px;
+        --mh-card-h: 255px;
+        --mh-stage-h: 440px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --mh-card-w: 150px;
+        --mh-card-h: 220px;
+        --mh-stage-h: 390px;
+    }
+}
+
+/* Section Wrapper */
+.mirror-hall-section {
+    position: relative;
+    width: 100%;
+    margin: 30px auto 50px auto;
+    padding: 10px 0 20px 0;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Header */
+.mirror-hall-header {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 10;
+    padding: 0 20px;
+}
+
+.mirror-hall-eyebrow {
+    margin-bottom: 12px;
+}
+
+.mirror-hall-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--mh-gold-primary);
+    background: rgba(223, 183, 124, 0.08);
+    border: 1px solid rgba(223, 183, 124, 0.25);
+    padding: 6px 16px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.mirror-hall-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0 0 8px 0;
+    background: linear-gradient(135deg, #ffffff 20%, #dfb77c 70%, #c59b63 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.mirror-hall-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+    font-weight: 400;
+    color: rgba(229, 231, 235, 0.65);
+    max-width: 650px;
+    margin: 0 auto;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+}
+
+/* Stage / Viewport */
+.mirror-hall-stage {
+    position: relative;
+    width: 100%;
+    height: var(--mh-stage-h);
+    perspective: 1300px;
+    -webkit-perspective: 1300px;
+    perspective-origin: 50% 36%;
+    -webkit-perspective-origin: 50% 36%;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.mirror-hall-stage:active,
+.mirror-hall-stage.is-dragging {
+    cursor: grabbing;
+}
+
+/* Reflective Floor Ground Glow & Horizon */
+.mirror-hall-water-glow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    height: 100px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(223, 183, 124, 0.12) 0%, rgba(197, 155, 99, 0.04) 45%, transparent 75%);
+    pointer-events: none;
+    z-index: 1;
+    filter: blur(10px);
+}
+
+.mirror-hall-water-horizon {
+    position: absolute;
+    top: calc(var(--mh-card-h) + 20px);
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(223, 183, 124, 0.15) 25%, rgba(223, 183, 124, 0.28) 50%, rgba(223, 183, 124, 0.15) 75%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+/* Track / Cylinder Root */
+.mirror-hall-track {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Individual Card */
+.mirror-hall-card {
+    position: absolute;
+    width: var(--mh-card-w);
+    height: var(--mh-card-h);
+    left: calc(var(--mh-card-w) / -2);
+    top: 0;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    will-change: transform, opacity;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+    -webkit-box-reflect: below 8px linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 15%, rgba(7,7,9,0.85) 60%, #070709 100%);
+}
+
+/* Card Overhead Label */
+.mirror-hall-card-header {
+    text-align: center;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.mirror-hall-card-tag {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e5e7eb;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    white-space: nowrap;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.mirror-hall-card.is-active .mirror-hall-card-tag {
+    color: var(--mh-gold-primary);
+    opacity: 1;
+    text-shadow: 0 0 12px rgba(223, 183, 124, 0.5);
+}
+
+/* Card Body */
+.mirror-hall-card-body {
+    width: 100%;
+    height: calc(100% - 24px);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 25%, rgba(42, 35, 52, 0.6) 0%, rgba(12, 10, 16, 0.95) 85%);
+    border: 1px solid rgba(223, 183, 124, 0.22);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 20px rgba(223, 183, 124, 0.08);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.mirror-hall-card.is-active .mirror-hall-card-body {
+    border-color: rgba(223, 183, 124, 0.65);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(223, 183, 124, 0.3);
+}
+
+.mirror-hall-card:hover .mirror-hall-card-body {
+    border-color: rgba(223, 183, 124, 0.85);
+    box-shadow: 0 30px 65px rgba(0, 0, 0, 0.95), 0 0 45px rgba(223, 183, 124, 0.45);
+}
+
+/* Subtle glossy sheen line across card */
+.mirror-hall-card-sheen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Image inside card */
+.mirror-hall-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 12px;
+    display: block;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.7)) contrast(1.05);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.mirror-hall-card:hover .mirror-hall-card-img {
+    transform: scale(1.06);
+}
+
+/* Hover Action Button */
+.mirror-hall-card-overlay {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mirror-hall-card:hover .mirror-hall-card-overlay,
+.mirror-hall-card.is-active .mirror-hall-card-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mirror-hall-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(223, 183, 124, 0.25);
+    border: 1px solid rgba(223, 183, 124, 0.5);
+    color: #ffffff;
+    font-size: 0.9rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.mirror-hall-view-btn:hover {
+    background: linear-gradient(135deg, #dfb77c, #c59b63);
+    color: #070709;
+    transform: scale(1.1);
+}
+
+/* Supplementary Water Reflection for universal browser support */
+.mirror-hall-reflection {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    height: calc(55% - 12px);
+    transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    opacity: 0.42;
+    filter: blur(1.5px);
+    -webkit-filter: blur(1.5px);
+    pointer-events: none;
+    z-index: -1;
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 65%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 65%, transparent 100%);
+}
+
+.mirror-hall-reflection-body {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: radial-gradient(circle at 50% 25%, rgba(42, 35, 52, 0.5) 0%, rgba(12, 10, 16, 0.95) 85%);
+    border: 1px solid rgba(223, 183, 124, 0.15);
+    overflow: hidden;
+    position: relative;
+}
+
+.mirror-hall-reflection-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 12px;
+    display: block;
+    filter: brightness(0.8) contrast(1.1);
+}
+
+/* Subtle ripples over reflection */
+.mirror-hall-water-ripples {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 6px,
+        rgba(223, 183, 124, 0.04) 7px,
+        transparent 8px
+    );
+    pointer-events: none;
+}
+
+/* Navigation Buttons */
+.mirror-hall-nav {
+    position: absolute;
+    top: calc(var(--mh-card-h) / 2);
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(14, 12, 18, 0.65);
+    border: 1px solid rgba(223, 183, 124, 0.3);
+    color: var(--mh-gold-primary);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(223, 183, 124, 0.08);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mirror-hall-prev {
+    left: 20px;
+}
+
+.mirror-hall-next {
+    right: 20px;
+}
+
+.mirror-hall-nav:hover {
+    background: rgba(223, 183, 124, 0.2);
+    border-color: var(--mh-gold-primary);
+    color: #ffffff;
+    transform: translateY(-50%) scale(1.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(223, 183, 124, 0.45);
+}
+
+/* HUD / Footer Controls */
+.mirror-hall-hud {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 10;
+}
+
+.mirror-hall-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--mh-gold-primary);
+    background: rgba(14, 12, 18, 0.7);
+    border: 1px solid rgba(223, 183, 124, 0.3);
+    padding: 6px 18px;
+    border-radius: 999px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(223, 183, 124, 0.1);
+}
+
+.mirror-hall-counter .sep {
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 400;
+}
+
+.mirror-hall-counter .total {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Pagination Dots */
+.mirror-hall-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mirror-hall-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mirror-hall-dot:hover {
+    background: rgba(223, 183, 124, 0.6);
+    transform: scale(1.3);
+}
+
+.mirror-hall-dot.is-active {
+    width: 24px;
+    height: 6px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--mh-gold-primary), var(--mh-gold-dark));
+    box-shadow: 0 0 12px rgba(223, 183, 124, 0.6);
+}
+
+/* Retain standard carousel custom styles for carousel-drug */
 .carousel-custom {
     position: relative;
     width: 100%;
     max-width: 1300px;
-    /* Adjust as needed */
     margin: auto;
     overflow: hidden;
 }

@@ -52,12 +52,12 @@ class UserController extends Controller
         }
 
         if (!in_array(RoleService::USER_ROLE, $user->roles)) {
-            return redirect()->route('login')->with('failed', "Wrong account or password");
+            return redirect()->route('login')->with('failed', __('message.wrongAccountOrPassword'));
         }
         $isNeedSecurity = !$this->userService->checkUserSecurity($request, $user->user_id, $this->questionService);
 
         return redirect()->route('home')->with([
-            'need_security' => $isNeedSecurity == true ? 'Security building steps need to be taken' : null,
+            'need_security' => $isNeedSecurity == true ? __('message.securityStepsNeeded') : null,
         ]);
     }
 
@@ -80,7 +80,7 @@ class UserController extends Controller
             ]);
         } else {
             $this->userService->logoutUser($request);
-            return redirect()->route('admin.login')->with('failed', "Wrong account or password");
+            return redirect()->route('admin.login')->with('failed', __('message.wrongAccountOrPassword'));
         }
     }
 
@@ -139,7 +139,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
     }
@@ -169,7 +169,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
     }
@@ -199,7 +199,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
     }
@@ -266,7 +266,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
     }
@@ -327,7 +327,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -365,7 +365,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -402,7 +402,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -452,7 +452,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 
@@ -494,7 +494,7 @@ class UserController extends Controller
             }
         } else {
             if (is_int($user)) {
-                return redirect()->route('login')->with('token_expired', "Login session expired");
+                return redirect()->route('login')->with('token_expired', __('message.sessionExpired'));
             }
         }
 

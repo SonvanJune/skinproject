@@ -3,9 +3,9 @@
         <!-- Logo -->
         <div class="kb-logo">
             <div class="logo">
-                <a class="navbar-brand"><img src="{{ asset('images/logo.png') }}" class="img-fluid"></a>
+                <a class="navbar-brand" href="{{ url(App::getLocale() . '/') }}"><img src="{{ asset('images/logo.png') }}" class="img-fluid" alt="PPFTEMPLATE"></a>
             </div>
-            <a href="#" class="logo-title">
+            <a href="{{ url(App::getLocale() . '/') }}" class="logo-title">
                 {{ __('message.webName') }}
             </a>
         </div>
@@ -49,13 +49,13 @@
                             @endisset
                         </div>
 
-                        @isset($categories)
+                        @if (!empty($categories) && !empty($categories[0]))
                             <div class="kb-overlay">
                                 <a class="kb-view-more"
-                                    href="{{ url(App::getLocale() . '/product-category' . '/' . $categories[0]->slug) }}">{{ __('message.all') }}
+                                    href="{{ url(App::getLocale() . '/product-category/' . $categories[0]->slug) }}">{{ __('message.all') }}
                                     <i class="bi bi-arrow-right"></i></a>
                             </div>
-                        @endisset
+                        @endif
 
                         <!-- RIGHT: image -->
                         <div class="kb-mega-right">
@@ -123,17 +123,26 @@
 
         <!-- Right side -->
         <ul class="kb-nav-right">
+            <li class="theme-toggle-li">
+                <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+                    <i class="bi bi-sun-fill icon-sun"></i>
+                    <i class="bi bi-moon-stars-fill icon-moon"></i>
+                </button>
+            </li>
             <li>@include('component.language-modal.button')</li>
             <li>
                 <div class="icon cart" id="openModal" onclick="openCartModal()">
-                    {{ __('message.cart') }}
-                    <i class="fa-solid fa-cart-shopping">
-                        @isset($cart)
-                            <div class="quantity-item">{{ count($cart->products) }}</div>
-                        @else
-                            <div class="quantity-item">0</div>
-                        @endisset
-                    </i>
+                    <span>{{ __('message.cart') }}</span>
+                    <span class="cart-icon-wrapper">
+                        <i class="bi bi-cart3"></i>
+                        <span class="quantity-item">
+                            @isset($cart)
+                                {{ count($cart->products) }}
+                            @else
+                                0
+                            @endisset
+                        </span>
+                    </span>
                 </div>
             </li>
             @if (!empty($user_name))
@@ -155,16 +164,16 @@
 <div class="kb-fixed-bar">
     <a href="{{ url(App::getLocale() . '/wishlist') }}" class="kb-bar-item">
         <i class="bi bi-heart-fill icon"></i>
-        <span class="text">Wishlist</span>
+        <span class="text">{{ __('message.wishList') }}</span>
     </a>
 
     <a href="{{ url(App::getLocale() . '/sales') }}" class="kb-bar-item">
         <i class="bi bi-tags-fill icon"></i>
-        <span class="text">Sale</span>
+        <span class="text">{{ __('message.sale') }}</span>
     </a>
 
     <a href="{{ url(App::getLocale() . '/new-products') }}" class="kb-bar-item">
         <i class="bi bi-stars icon"></i>
-        <span class="text">New</span>
+        <span class="text">{{ __('message.new') }}</span>
     </a>
 </div>

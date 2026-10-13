@@ -4,9 +4,12 @@
 }
 
 .cart-page .title{
-    background-color: #f5f1f1;
+    background-color: var(--bg-glass, #f5f1f1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     width: 100%;
     padding: 20px 0 20px 0;
+    border-bottom: 1px solid var(--border-bronze, rgba(223, 183, 124, 0.35));
 }
 
 .cart-page .title .path{
@@ -18,17 +21,18 @@
 .cart-page .title .path a{
     padding: 0 5px 0 5px;
     text-decoration: none;
-    color: black;
+    color: var(--text-muted, #9ca3af);
     font-size: 0.9em;
 }
 
 .cart-page .title .path a:hover{
-    color: #6EC1E4;
+    color: var(--bronze-light, #dfb77c);
 }
 
 .cart-page .title .path .fa-chevron-right{
     padding-top: 7px;
     font-size: 0.6em;
+    color: var(--bronze-primary, #c59b63);
 }
 
 .cart-page tr img{
@@ -36,28 +40,32 @@
 }
 
 .cart-page .table-striped>tbody>tr:nth-of-type(odd){
-    --bs-table-accent-bg: #fff !important;
+    --bs-table-accent-bg: transparent !important;
+    color: var(--text-body);
 }
 
 .cart-page .table-striped>tbody>tr:nth-of-type(even){
-    --bs-table-accent-bg: #fff !important;
+    --bs-table-accent-bg: transparent !important;
+    color: var(--text-body);
 }
 
 .cart-page .table-striped>tbody>tr:hover{
-    --bs-table-accent-bg: #f5f5f5 !important;
+    --bs-table-accent-bg: rgba(223, 183, 124, 0.08) !important;
     cursor: pointer;
 }
 
 .cart-page .table-striped {
-    background-color: #f5f5f5;
-    border-radius: 8px;  /* Bo góc của bảng */
-    transition: all 0.3s ease;  /* Hiệu ứng chuyển đổi mượt mà */
+    background-color: var(--bg-card, #f5f5f5);
+    color: var(--text-body);
+    border: 1px solid var(--border-bronze, rgba(223, 183, 124, 0.35));
+    border-radius: 12px;
+    transition: all 0.3s ease;
 }
 
 .cart-page .table-striped:hover {
-    box-shadow: 0 12px 20px rgba(117, 117, 255, 0.4);  /* Bóng đổ mạnh hơn khi hover */
-    transform: translateY(-5px);  /* Nâng bảng lên một chút */
-    background-color: #fff;
+    box-shadow: 0 12px 25px var(--card-shadow, rgba(0, 0, 0, 0.15));
+    transform: translateY(-2px);
+    background-color: var(--bg-card);
 }
 
 .cart-page .empty-list{

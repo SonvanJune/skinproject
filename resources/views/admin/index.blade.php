@@ -222,7 +222,7 @@
     <script>
         const webName = '{{ __('message.webName') }}';
     </script>
-    <script src="{{ asset('js/excel/excel.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             fetchOrders();

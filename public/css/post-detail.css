@@ -4,9 +4,12 @@
 }
 
 .post-detail .title{
-    background-color: #f5f5f5;
+    background-color: var(--bg-glass, #f5f5f5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     width: 100%;
     padding: 20px 0 20px 0;
+    border-bottom: 1px solid var(--border-bronze, rgba(223, 183, 124, 0.35));
 }
 
 .post-detail .title .path{
@@ -18,22 +21,25 @@
 .post-detail .title .path a{
     padding: 0 5px 0 5px;
     text-decoration: none;
-    color: black;
+    color: var(--text-muted, #9ca3af);
     font-size: 0.9em;
 }
 
 .post-detail .title .path a:hover{
-    color: #6EC1E4;
+    color: var(--bronze-light, #dfb77c);
 }
 
 .post-detail .title .path .fa-chevron-right{
     padding-top: 7px;
     font-size: 0.6em;
+    color: var(--bronze-primary, #c59b63);
 }
 
 .post-detail .card {
-    border: none;
-    border-radius: 8px;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-bronze, rgba(197, 155, 99, 0.35)) !important;
+    border-radius: 14px;
+    color: var(--text-body);
 }
 
 .post-detail .card-img-top {
@@ -46,8 +52,10 @@
 }
 
 .post-detail .comments-section .card {
-    background-color: #e9ecef;
-    border-radius: 8px;
+    background-color: var(--bg-glass, #e9ecef) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 12px;
+    color: var(--text-body);
 }
 
 .post-detail .btn-primary, .btn-danger, .btn-success {

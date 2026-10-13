@@ -6,16 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstraps/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome/all.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome/solid.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome/brands.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome/regular.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome/regular.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/file-management.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skeleton-loading.css') }}">
-    <script src="{{ asset('js/axios/axios.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -69,7 +64,7 @@
     </div>
 
 
-    <script src="{{ asset('js/bootstraps/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const defaultImagePath = "{{ asset('images/image-default.png') }}";
     </script>

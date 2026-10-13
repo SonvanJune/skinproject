@@ -8,7 +8,7 @@
             <div class="sale"><img src="{{ asset('images/sale.png') }}" alt="sale"></div>
         @endif
         <img src="{{ route('get.file', ['filename' => $product->post_image_path]) }}"
-            alt="{{ $product->post_image_alt }}">
+            alt="{{ $product->post_image_alt }}" loading="lazy">
         <div class="view">{{ __('message.quickView') }} <i class="bi bi-eye-fill"></i></div>
 
         @if (!empty($user_name))
@@ -16,10 +16,10 @@
                 @csrf
                 <input type="text" value="{{ $product->product_id }}" hidden name="product_id">
                 @if ($product->is_like)
-                    <button class="like isLike" id="likebtn" onclick="like()"><i
+                    <button class="like isLike" type="submit" onclick="like()"><i
                             class="bi bi-suit-heart-fill"></i></button>
                 @else
-                    <button class="like" id="likebtn" onclick="like()"><i
+                    <button class="like" type="submit" onclick="like()"><i
                             class="bi bi-suit-heart-fill"></i></button>
                 @endif
             </form>
@@ -60,10 +60,10 @@
         @endif
         @if (!empty($user_name))
             @if ($product->can_download == false)
-                <form action="{{ route('cart.add') }}" method="POST" class="form-add-cart" id="formAddToCart">
+                <form action="{{ route('cart.add') }}" method="POST" class="form-add-cart">
                     @csrf
                     <input type="hidden" name="product_slug" value="{{ $product->product_slug }}">
-                    <button type="submit" id="addTocart" class="cart"><i
+                    <button type="submit" class="cart"><i
                             class="bi bi-bag-plus"></i>&nbsp;{{ __('message.cart') }}</button>
                 </form>
             @endif
@@ -76,16 +76,8 @@
                 </form>
             @endif
         @else
-            <button type="button" id="addTocartNoLogin" onclick="openModalLoginRegis()" class="cart"><i
+            <button type="button" onclick="openModalLoginRegis()" class="cart"><i
                     class="bi bi-bag-plus"></i>&nbsp;{{ __('message.cart') }}</button>
         @endif
     </div>
 </div>
-
-@push('js')
-    <script>
-        function like() {
-            document.getElementById('notiSuc').classList.remove('d-none');
-        }
-    </script>
-@endpush

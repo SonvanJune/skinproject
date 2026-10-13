@@ -53,7 +53,13 @@
                             </a>
                         @endif
                     </div>
-                    <div class="col">
+                    <div class="col-auto">
+                        <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+                            <i class="bi bi-sun-fill icon-sun"></i>
+                            <i class="bi bi-moon-stars-fill icon-moon"></i>
+                        </button>
+                    </div>
+                    <div class="col-auto">
                         @include('component.language-modal.button')
                     </div>
                 </div>

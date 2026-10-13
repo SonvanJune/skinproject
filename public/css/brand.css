@@ -1,83 +1,94 @@
-.brand{
-    padding-top: 80px;
+/* ==========================================================================
+   BRAND PAGE - DUAL THEME (LIGHT & DARK MODE)
+   ========================================================================== */
+.brand {
+    padding-top: 100px;
+    padding-bottom: 60px;
 }
 
-.brand .image-type1{
-    background: #000;
-    padding: 10px 0 10px 0;
-    position: relative;
+.brand .image-type1,
+.brand .image-type2 {
+    background: var(--bg-card, #12100f);
+    border: 1px solid var(--border-bronze, rgba(223, 183, 124, 0.35));
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-.brand .image-type1 img{
-    background-size: cover;
+.brand .brand-hero-img {
+    max-height: 110px;
+    width: auto;
     max-width: 100%;
-    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
 }
 
-.brand .image-type1 h2{
-    color: #FFFFFF;
-    font-family: "Aladin", Sans-serif;
-    font-size: clamp(1rem, 2vw + 1rem, 3rem);
+.brand h2 {
+    color: var(--text-heading, #fff6ed);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
     font-weight: 600;
-    text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.67);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 8px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
 }
 
-/* type 2 */
-.brand .image-type2{
-    background: #000;
-    padding: 10px 0 10px 0;
+.brand .brand-list {
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
-.brand .image-type2 img{
-    background-size: cover;
-    max-width: 100%;
+.brand-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--text-heading, #fff6ed);
+}
+
+.brand .empty-list {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.brand .empty-list img {
+    max-width: 140px;
     height: auto;
+    border-radius: 16px;
+    border: 1px solid var(--border-bronze);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    margin: 10px auto;
 }
 
-.brand .image-type2 h2{
-    color: #FFFFFF;
-    font-family: "Aladin", Sans-serif;
-    font-size: clamp(1rem, 2vw + 1rem, 2.5rem);
-    font-weight: 600;
-    text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.67);
-    padding: 40px 0 40px 0;
-    text-align: center;
-    width: 100%;
-}
-
-.brand .brand-list{
-    margin-top: 50px;
-}
-
-
-.brand .empty-list{
-    text-align: center;
-}
-
-.brand .empty-list img{
-    width: 40%;
-    height: 40%;
-}
-
-.brand .empty-list .empty-text{
-    transform: translateX(-1%);
+.brand .empty-list .empty-text {
+    color: var(--text-heading);
+    font-family: 'Italiana', serif;
+    font-size: 1.15rem;
+    margin-top: 8px;
 }
 
 @media (max-width: 769px) {
-    .brand-list .list{
+    .brand-list .list {
         justify-content: center;
     }
 }
-@media (max-width: 500px) {
-    .brand{
-        padding-top: 60px;
-    }
 
-    .brand .image-type1 h2{
-        font-size: 0.7rem;
+@media (max-width: 500px) {
+    .brand {
+        padding-top: 80px;
     }
+}
+
+/* ==========================================================================
+   BRAND PAGE - LIGHT MODE ADAPTATION
+   ========================================================================== */
+:root[data-theme="light"] .brand .image-type1,
+:root[data-theme="light"] .brand .image-type2 {
+    background: #ffffff !important;
+    border-color: rgba(168, 121, 59, 0.3) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="light"] .brand h2,
+:root[data-theme="light"] .brand-section-title {
+    color: var(--text-heading, #1f1f23) !important;
 }

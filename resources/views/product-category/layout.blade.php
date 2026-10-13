@@ -1,6 +1,19 @@
 @extends('layout')
 
-@section('title', $category_detail->name)
+@section('title', __('message.categoryMetaTitle', ['name' => $category_detail->name]))
+@section('meta_title', __('message.categoryMetaTitle', ['name' => $category_detail->name]))
+@section('meta_description', __('message.categoryMetaDescription', ['name' => $category_detail->name]))
+
+@push('schema')
+    @include('component.schema.index', [
+        'type' => 'breadcrumb',
+        'breadcrumbs' => [
+            ['name' => __('message.home'), 'url' => url(App::getLocale())],
+            ['name' => __('message.categories'), 'url' => url(App::getLocale() . '/product-category/' . $category_detail->slug)],
+            ['name' => $category_detail->name, 'url' => url()->current()],
+        ]
+    ])
+@endpush
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/product-category.css') }}">

@@ -3,6 +3,7 @@
 @section('title', __('message.contactUs'))
 
 @push('css')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="{{ asset('css/contact-us.css') }}">
 @endpush
 
@@ -104,6 +105,6 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('js/leaflet/leaflet.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="{{ asset('js/contact.js') }}"></script>
 @endpush
