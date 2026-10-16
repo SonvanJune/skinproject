@@ -1,0 +1,221 @@
+/**
+ * ============================================================================
+ * LUXURY TOAST NOTIFICATIONS - GLOBAL DESIGN SYSTEM
+ * Glassmorphism, metallic bronze accents, glowing status indicators,
+ * smooth spring entrance, countdown progress bar, and dark/light support.
+ * ============================================================================
+ */
+
+/* Override & enhance Toastify defaults */
+.toastify {
+    position: fixed;
+    z-index: 100080 !important;
+    display: flex !important;
+    align-items: stretch;
+    min-width: 320px;
+    max-width: 440px;
+    padding: 0 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    color: #f3f4f6 !important;
+    background: rgba(18, 18, 24, 0.94) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    overflow: hidden;
+    cursor: default;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    opacity: 0;
+    transform: translateY(-15px) scale(0.96);
+}
+
+.toastify.on {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+}
+
+/* Toast Card Inner Content */
+.luxury-toast-body {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    width: 100%;
+    position: relative;
+}
+
+/* Status Icon Container */
+.luxury-toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    position: relative;
+}
+
+/* Text Content */
+.luxury-toast-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.luxury-toast-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.luxury-toast-message {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: rgba(243, 244, 246, 0.85);
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+/* Close Button */
+.luxury-toast-close {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+    align-self: flex-start;
+    transition: color 0.2s, transform 0.2s;
+    outline: none;
+}
+
+.luxury-toast-close:hover {
+    color: #ffffff;
+    transform: scale(1.15) rotate(90deg);
+}
+
+/* Bottom Countdown Progress Bar */
+.luxury-toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    opacity: 0.85;
+    animation: luxuryToastDrain linear forwards;
+}
+
+@keyframes luxuryToastDrain {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* ============================================================================
+   STATUS THEMES (Dark Mode Default)
+   ============================================================================ */
+
+/* 1. SUCCESS: Emerald / Mint Glow */
+.toastify.toast-success {
+    border-left: 4px solid #22c55e !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(34, 197, 94, 0.22) !important;
+}
+.toastify.toast-success .luxury-toast-icon {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    box-shadow: 0 0 14px rgba(34, 197, 94, 0.3);
+}
+.toastify.toast-success .luxury-toast-progress {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+/* 2. ERROR / DANGER: Crimson / Ruby Glow */
+.toastify.toast-error {
+    border-left: 4px solid #ef4444 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(239, 68, 68, 0.25) !important;
+}
+.toastify.toast-error .luxury-toast-icon {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.3);
+}
+.toastify.toast-error .luxury-toast-progress {
+    background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+/* 3. WARNING: Warm Gold / Metallic Bronze Glow */
+.toastify.toast-warning {
+    border-left: 4px solid #dfb77c !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(223, 183, 124, 0.25) !important;
+}
+.toastify.toast-warning .luxury-toast-icon {
+    background: rgba(223, 183, 124, 0.15);
+    color: #dfb77c;
+    box-shadow: 0 0 14px rgba(223, 183, 124, 0.35);
+}
+.toastify.toast-warning .luxury-toast-progress {
+    background: linear-gradient(90deg, #b07e38, #dfb77c);
+}
+
+/* 4. INFO: Ice Blue / Cyan Glow */
+.toastify.toast-info {
+    border-left: 4px solid #3b82f6 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(59, 130, 246, 0.22) !important;
+}
+.toastify.toast-info .luxury-toast-icon {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    box-shadow: 0 0 14px rgba(59, 130, 246, 0.3);
+}
+.toastify.toast-info .luxury-toast-progress {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+/* ============================================================================
+   LIGHT MODE OVERRIDES ([data-theme="light"])
+   ============================================================================ */
+[data-theme="light"] .toastify {
+    background: rgba(255, 255, 255, 0.96) !important;
+    color: #1f2937 !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .luxury-toast-title {
+    color: #111827;
+}
+
+[data-theme="light"] .luxury-toast-message {
+    color: #4b5563;
+}
+
+[data-theme="light"] .luxury-toast-close {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .luxury-toast-close:hover {
+    color: #111827;
+}
+
+[data-theme="light"] .toastify.toast-warning {
+    border-left-color: #96672d !important;
+}
+[data-theme="light"] .toastify.toast-warning .luxury-toast-icon {
+    background: rgba(150, 103, 45, 0.12);
+    color: #96672d;
+}
+
+/* Responsive adjustment for Mobile */
+@media (max-width: 576px) {
+    .toastify {
+        min-width: calc(100vw - 32px) !important;
+        max-width: calc(100vw - 32px) !important;
+        margin: 0 auto;
+    }
+}
