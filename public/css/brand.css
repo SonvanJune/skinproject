@@ -6,6 +6,32 @@
     padding-bottom: 60px;
 }
 
+.brand-breadcrumbs .breadcrumb {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    font-family: 'Outfit', sans-serif;
+}
+
+.brand-breadcrumbs .breadcrumb-item a {
+    color: var(--bronze-primary, #dfb77c);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.brand-breadcrumbs .breadcrumb-item a:hover {
+    color: var(--bronze-light, #fff6ed);
+}
+
+.brand-breadcrumbs .breadcrumb-item.active {
+    color: var(--text-muted, #9ca3af);
+}
+
+.brand-breadcrumbs .breadcrumb-item + .breadcrumb-item::before {
+    color: var(--text-muted, #9ca3af);
+    content: "›";
+    padding: 0 8px;
+}
+
 .brand .image-type1,
 .brand .image-type2 {
     background: var(--bg-card, #12100f);

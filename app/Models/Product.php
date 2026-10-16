@@ -33,6 +33,12 @@ class Product extends Model
         'product_views' => 'integer'
     ];
 
+    public function getUrlAttribute(): string
+    {
+        $slug = $this->post?->post_slug;
+        return url(app()->getLocale() . '/p/' . ($slug ?? ''));
+    }
+
     public function post()
     {
         return $this->belongsTo(Post::class, 'post_id', 'post_id');

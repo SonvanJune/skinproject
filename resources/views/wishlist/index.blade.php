@@ -64,10 +64,10 @@
                                 @foreach ($wistList->data as $product)
                                     <div class="wishlist-item">
                                         <img src="{{ route('get.file', ['filename' => $product->post_image_path]) }}"
-                                            alt="{{ $product->post_image_alt }}" onclick="window.location.href='{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}'"/>
+                                            alt="{{ $product->post_image_alt }}" onclick="window.location.href='{{ $product->url }}'"/>
 
                                         <div class="item-details">
-                                            <h6 class="item-title" onclick="window.location.href='{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}'">{{ $product->product_name }}</h6>
+                                            <h6 class="item-title" onclick="window.location.href='{{ $product->url }}'">{{ $product->product_name }}</h6>
                                             @if ($product->product_price != $product->product_price_sale)
                                                 <p class="item-price"><span>${{ $product->product_price }}</span>
                                                     ${{ $product->product_price_sale }}</p>
@@ -75,7 +75,7 @@
                                                 <p class="item-price">${{ $product->product_price }}</p>
                                             @endif
                                             <div class="item-action">
-                                                <a href="{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}"
+                                                <a href="{{ $product->url }}"
                                                     class="see-more-btn icon-container">
                                                     <i class="bi bi-eye"></i>
                                                     <span class="tooltip">{{ __('message.viewDetailPost') }}</span>

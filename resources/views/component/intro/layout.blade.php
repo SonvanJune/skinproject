@@ -22,15 +22,16 @@
             </div>
             @yield('form')
         </div>
-        @include('component.noticationNoData.notification.index', ['notification' => 'register_failed' , 'type' => 'error'])
-        @include('component.noticationNoData.notification.index', ['notification' => 'failed' , 'type' => 'error'])
-        @include('component.noticationNoData.notification.index', ['notification' => 'reset_success', 'type' => 'success'])
-        @include('component.noticationNoData.notification.index', ['notification' => 'permission_denied', 'type' => 'warning'])
-        @include('component.noticationNoData.notification.index', ['notification' => 'token_expired', 'type' => 'warning'])
-        @include('component.noticationNoData.notification.index', ['notification' => 'success', 'type' => 'success'])
-        @include('component.noticationNoData.notification.index', ['notification' => 'error' , 'type' => 'error'])
     </div>
+    @include('component.noticationNoData.notification.index', ['notification' => 'register_failed' , 'type' => 'error'])
+    @include('component.noticationNoData.notification.index', ['notification' => 'failed' , 'type' => 'error'])
+    @include('component.noticationNoData.notification.index', ['notification' => 'reset_success', 'type' => 'success'])
+    @include('component.noticationNoData.notification.index', ['notification' => 'permission_denied', 'type' => 'warning'])
+    @include('component.noticationNoData.notification.index', ['notification' => 'token_expired', 'type' => 'warning'])
+    @include('component.noticationNoData.notification.index', ['notification' => 'success', 'type' => 'success'])
+    @include('component.noticationNoData.notification.index', ['notification' => 'error' , 'type' => 'error'])
 @endsection
 
 @push('js')
+    <script src="{{ asset('js/alert.js') }}"></script>
 @endpush

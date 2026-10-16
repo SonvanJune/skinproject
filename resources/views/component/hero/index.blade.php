@@ -11,7 +11,7 @@
             <div class="col-md-6 hero-text">
                 <h1 class="display-4 fw-bold">{{__('message.heroBigTitle')}}</h1>
                 <p class="lead">{{__('message.heroSmallTitle')}}</p>
-                <a href="{{ !empty($categories[0]) ? url(App::getLocale() . '/product-category/' . $categories[0]->slug) : url(App::getLocale() . '/') }}" class="btn btn-racing btn-lg mt-3">{{__('message.explore')}}&nbsp;<i class="bi bi-arrow-right"></i></a>
+                <a href="{{ !empty($categories[0]->url) ? $categories[0]->url : url(App::getLocale() . '/') }}" class="btn btn-racing btn-lg mt-3">{{__('message.explore')}}&nbsp;<i class="bi bi-arrow-right"></i></a>
             </div>
 
             <!-- CAR -->

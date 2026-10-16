@@ -27,6 +27,22 @@
 
 @section('content')
     <div class="brand">
+        {{-- Luxury Breadcrumb Navigation --}}
+        <div class="brand-breadcrumbs container mb-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ url(App::getLocale() . '/') }}">
+                            <i class="fa-solid fa-house me-1"></i> {{ __('message.home') }}
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ $category->name }}
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
         @if ($description != null)
             <div class="image-type2">
                 <div class="container">

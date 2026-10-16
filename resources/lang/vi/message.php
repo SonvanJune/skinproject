@@ -276,4 +276,12 @@ return [
     'wrongAccountOrPassword' => 'Tài khoản hoặc mật khẩu không chính xác',
     'securityStepsNeeded' => 'Cần thực hiện các bước thiết lập bảo mật',
     'noRecentProducts' => 'Chưa có sản phẩm nào được truy cập',
+    'search' => 'Tìm kiếm',
+    'themeToggle' => 'Chuyển đổi giao diện Sáng/Tối',
+    'selectLanguage' => 'Chọn ngôn ngữ',
+    'viewCart' => 'Xem giỏ hàng',
+    'myAccount' => 'Tài khoản của tôi',
+    'addToCartSuccess' => 'Đã thêm vào giỏ hàng thành công!',
+    'addToCartFailed' => 'Thêm vào giỏ hàng thất bại',
+    'pleaseLoginCart' => 'Vui lòng đăng nhập để thêm vào giỏ hàng',
 ];

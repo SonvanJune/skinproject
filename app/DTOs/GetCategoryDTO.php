@@ -35,6 +35,9 @@ class GetCategoryDTO
     public ?int $product_count;
     /** @var string The description of the category */
     public ?string $category_description;
+    /** @var ?string The hierarchical path of the category */
+    public ?string $path = null;
+
     /**
      * GetCategoryDTO constructor.
      *
@@ -49,6 +52,7 @@ class GetCategoryDTO
      * @param ?int $topbar_index The index for the topbar category.
      * @param ?int $home_index The index for the homepage category.
      * @param string $release The release date of the category.
+     * @param ?string $path The category hierarchical path.
      */
     public function __construct(
         string $name,
@@ -63,7 +67,8 @@ class GetCategoryDTO
         ?int $home_index,
         string $release,
         ?int    $product_count,
-        ?string $category_description
+        ?string $category_description,
+        ?string $path = null
     ) {
         $this->name = $name;
         $this->slug = $slug;
@@ -78,6 +83,23 @@ class GetCategoryDTO
         $this->release = $release;
         $this->product_count = $product_count;
         $this->category_description = $category_description;
+        $this->path = $path;
+    }
+
+    public function getUrl(): string
+    {
+        if ($this->type === Category::CATEGORY_TYPE_BRAND) {
+            return url(app()->getLocale() . '/b/' . $this->slug);
+        }
+        return url(app()->getLocale() . '/c/' . $this->slug);
+    }
+
+    public function __get($property)
+    {
+        if ($property === 'url') {
+            return $this->getUrl();
+        }
+        return null;
     }
 
     /**
@@ -104,7 +126,8 @@ class GetCategoryDTO
                     $category->category_home_index,
                     $category->category_release ? (new DateTime($category->category_release))->format('Y-m-d H:i:s') : now()->format('Y-m-d H:i:s'),
                     null,
-                    $category->category_description ?? null
+                    $category->category_description ?? null,
+                    $category->category_path ?? null
                 );
             }
     
@@ -131,7 +154,8 @@ class GetCategoryDTO
                 $category->category_home_index,
                 $category->category_release ? (new DateTime($category->category_release))->format('Y-m-d H:i:s') : now()->format('Y-m-d H:i:s'),
                 $product_count,
-                $category->category_description ?? null
+                $category->category_description ?? null,
+                $category->category_path ?? null
             );
         }
         else{

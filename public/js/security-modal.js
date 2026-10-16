@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     securityModal.show();
     generateCaptcha();
+    updateAvailableQuestions();
 });
 
 // Generate CAPTCHA
@@ -151,9 +152,35 @@ function prevSlide1() {
     bootstrapCarousel.prev();
 }
 
+// Cập nhật danh sách câu hỏi: Không hiển thị/cho phép chọn lại câu hỏi đã được chọn ở select khác
+function updateAvailableQuestions() {
+    const selectedValues = Array.from(questions)
+        .map(q => q.value)
+        .filter(val => val !== "" && val !== null);
+
+    questions.forEach(select => {
+        const currentVal = select.value;
+        Array.from(select.options).forEach(option => {
+            if (!option.value) return; // Bỏ qua option placeholder mặc định
+
+            // Nếu câu hỏi này đã được chọn ở select khác -> ẩn và vô hiệu hóa
+            if (selectedValues.includes(option.value) && option.value !== currentVal) {
+                option.hidden = true;
+                option.disabled = true;
+                option.style.display = "none";
+            } else {
+                option.hidden = false;
+                option.disabled = false;
+                option.style.display = "";
+            }
+        });
+    });
+}
+
 // Hàm kiểm tra nhập trường select
 function onInputSelectForm(selectElement) {
     errorMessageSelect.style.display = "none";
+    updateAvailableQuestions();
     if (checkSelectForm()) {
         next3.disabled = false;
     } else {

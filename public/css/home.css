@@ -187,138 +187,115 @@
 }
 
 /* ==========================================================================
-   FULL-PAGE VERTICAL SCROLL-SNAP & VERTICAL CAROUSEL (Landing Page)
+   SECTION-BY-SECTION SNAP LAYOUT ("Mỗi lần lướt xuống là qua 1 phần")
    ========================================================================== */
-html.is-vscroll-page,
-body.is-vscroll-page {
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
+html.is-home-snap {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    height: auto;
 }
 
-.vscroll-viewport {
+body.is-home-snap {
+    overflow-y: scroll; /* Preserves luxury bronze scrollbar across all browsers */
+}
+
+.home-snap-container {
     width: 100%;
-    height: 100vh;
-    height: 100dvh;
     position: relative;
-    overflow: hidden;
     background: transparent;
 }
 
-.vscroll-track {
+.home-section {
     width: 100%;
-    height: 100%;
-    will-change: transform;
-    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.vscroll-slide {
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
     min-height: 100vh;
-    max-height: 100vh;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 75px;
-    padding-bottom: 25px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
     position: relative;
+    padding-top: 85px;
+    padding-bottom: 40px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always; /* Browser enforces 1 section per scroll */
 }
 
-.vscroll-slide::-webkit-scrollbar {
-    display: none;
-}
-
-.vslide-inner {
+.home-section-inner {
     width: 100%;
     margin: auto 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Slide Specific Layout Refinements for 100vh */
-.vscroll-slide-hero .hero {
+/* Section 1: Hero Section */
+.home-section.hero-section .hero {
     margin: auto 0;
     padding: 0;
     width: 100%;
 }
 
-.vscroll-slide-daily .daily {
+/* Section 2: Daily Offer & Quick Categories */
+.home-section.daily-section .daily {
     margin-top: 0;
     margin-bottom: 20px;
     padding: 20px;
 }
 
-.vscroll-slide-daily .daily img {
+.home-section.daily-section .daily img {
     width: 130px;
     height: 130px;
 }
 
-.vscroll-slide-daily .menu {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 6px 0;
+.home-section.daily-section .menu {
+    border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+    border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+    padding: 8px 0;
+    margin-top: 10px;
 }
 
-.vscroll-slide-mirror .mirror-hall-section {
+/* Section 3: Mirror Hall 3D Showcase */
+.home-section.mirror-section .mirror-hall-section {
     margin: 0 auto;
     padding: 0;
 }
 
-.vscroll-slide-products .new {
+/* Section 4 & 5: Products */
+.home-section.news-section .new,
+.home-section.populars-section .new {
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-.vscroll-slide-category .card {
+/* Section 6: Category Intros */
+.home-section.category-section .card {
     margin-top: 0;
 }
 
-.vscroll-slide-category .card .list {
+.home-section.category-section .card .list {
     margin: 10px 0 20px 0;
 }
 
-.vscroll-slide-brand .thank {
+/* Section 7: Brand & Thank you */
+.home-section.brand-section .thank {
     margin-top: 0;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     padding: 10px 0;
 }
 
-.vscroll-slide-footer {
-    padding-top: 60px;
-    padding-bottom: 0;
-    justify-content: flex-end;
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-.vscroll-slide-footer .vslide-inner,
-.vscroll-slide-footer .footer,
-.vscroll-slide-footer .shape-mid {
-    width: 100%;
-    margin-top: auto;
-    background: transparent !important;
-    background-color: transparent !important;
+/* Footer Section */
+html.is-home-snap .footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    margin-top: 0 !important;
+    padding-top: 40px;
 }
 
 @media (max-width: 768px) {
-    .vscroll-slide {
+    .home-section {
         padding-top: 65px;
-        padding-bottom: 20px;
-        justify-content: flex-start;
+        padding-bottom: 25px;
+        min-height: auto;
     }
-    .vslide-inner {
-        margin: 0;
-    }
-    .vscroll-slide-daily .daily img {
+    .home-section.daily-section .daily img {
         width: 100px;
         height: 100px;
     }

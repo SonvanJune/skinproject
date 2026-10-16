@@ -276,4 +276,12 @@ return [
     'wrongAccountOrPassword' => '账号或密码错误',
     'securityStepsNeeded' => '需要完成安全设置步骤',
     'noRecentProducts' => '暂无最近访问的产品',
+    'search' => '搜索',
+    'themeToggle' => '切换明/暗主题',
+    'selectLanguage' => '选择语言',
+    'viewCart' => '查看购物车',
+    'myAccount' => '我的账户',
+    'addToCartSuccess' => '已成功加入购物车！',
+    'addToCartFailed' => '加入购物车失败',
+    'pleaseLoginCart' => '请登录后再加入购物车',
 ];

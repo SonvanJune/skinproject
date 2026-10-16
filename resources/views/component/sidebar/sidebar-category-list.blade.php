@@ -4,7 +4,7 @@
         $isActive = isset($category_select) && $category_select && ($category_select->slug == $category->slug);
     @endphp
     <div class="category-branch {{ $isActive ? 'active-branch' : '' }}" data-category-slug="{{ $category->slug }}">
-        <a class="item-category @if ($isActive) active @endif" href="{{ url(App::getLocale() . '/product-category' . '/' . $category->slug) }}">
+        <a class="item-category @if ($isActive) active @endif" href="{{ $category->url }}">
             <div class="radio-form">
                 <div class="radio"></div>
                 <div class="name" title="{{ $category->name }}">{{ $category->name }}</div>

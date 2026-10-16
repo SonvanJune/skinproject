@@ -1,21 +1,122 @@
-.otp-input {
-    width: 30%;
-    height: 50px;
-    margin: 0 5px;
-    text-align: center;
-    font-size: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.otp-container {
+.otp-wrapper {
+    position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
+    margin: 15px 0 5px;
+    cursor: text;
 }
 
-.intro-form .error{
-    color: red;
-    font-weight: bold;
-    font-size: 0.8em;
+/* 1 single master input positioned over the boxes */
+.otp-master-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: transparent;
+    caret-color: transparent;
+}
+
+/* 6 display boxes */
+.otp-boxes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 420px;
+    pointer-events: none; /* clicks pass through to master input */
+}
+
+.otp-box {
+    position: relative;
+    flex: 1;
+    max-width: 54px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(223, 183, 124, 0.3);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: #dfb77c;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .otp-box {
+    background: #ffffff;
+    border: 2px solid rgba(143, 98, 38, 0.35);
+    color: #8f6226;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.otp-box.has-value {
+    border-color: #dfb77c;
+    background: rgba(223, 183, 124, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(223, 183, 124, 0.25);
+}
+
+[data-theme="light"] .otp-box.has-value {
+    border-color: #8f6226;
+    background: rgba(143, 98, 38, 0.08);
+    box-shadow: 0 4px 12px rgba(143, 98, 38, 0.2);
+}
+
+.otp-box.is-active {
+    border-color: #f7d59b;
+    box-shadow: 0 0 16px rgba(247, 213, 155, 0.5);
+    animation: pulseBorder 1.5s infinite;
+}
+
+[data-theme="light"] .otp-box.is-active {
+    border-color: #b07e38;
+    box-shadow: 0 0 14px rgba(176, 126, 56, 0.4);
+}
+
+/* Blinking caret when active box is empty */
+.otp-box.is-active:not(.has-value)::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 28px;
+    background-color: #dfb77c;
+    animation: blinkCaret 1s infinite;
+}
+
+[data-theme="light"] .otp-box.is-active:not(.has-value)::after {
+    background-color: #8f6226;
+}
+
+@keyframes blinkCaret {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@keyframes pulseBorder {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.otp-digit {
+    line-height: 1;
+    user-select: none;
+    font-family: 'Outfit', sans-serif, -apple-system;
+}
+
+.intro-form .error {
+    color: #ff5252;
+    font-weight: 600;
+    font-size: 0.9em;
 }

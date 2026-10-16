@@ -25,7 +25,7 @@
         'description' => $cleanDesc,
         'breadcrumbs' => [
             ['name' => __('message.home'), 'url' => url(App::getLocale())],
-            ['name' => __('message.productTitle'), 'url' => url(App::getLocale() . '/product-category')],
+            ['name' => __('message.productTitle'), 'url' => !empty($categories[0]->url) ? $categories[0]->url : url(App::getLocale())],
             ['name' => $product->product_name, 'url' => url()->current()],
         ]
     ])
@@ -45,12 +45,11 @@
                             <h4>{{ $product->product_name }}</h4>
                         </div>
                         <div class="col-md-6 col-sm-12 path">
-                            <a href="/"><i class="fa-solid fa-house"></i></a>
+                            <a href="{{ url(App::getLocale() . '/') }}"><i class="fa-solid fa-house"></i></a>
                             <i class="fa-solid fa-chevron-right"></i>
-                            <a href="">{{ __('message.productTitle') }}</a>
+                            <a href="{{ !empty($categories[0]->url) ? $categories[0]->url : url(App::getLocale() . '/') }}">{{ __('message.productTitle') }}</a>
                             <i class="fa-solid fa-chevron-right"></i>
-                            <a
-                                href="{{ url(App::getLocale() . '/product-category' . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
+                            <span class="current-crumb">{{ $product->product_name }}</span>
                         </div>
                     </div>
                 </div>
@@ -118,7 +117,7 @@
                                 <div class="blueprint-cutline-border"></div>
 
                                 {{-- Ảnh thật của sản phẩm ($mainImage) --}}
-                                <div class="product-image-container">
+                                <div class="product-image-container img-mask">
                                     <img id="mainImage" alt="{{ $product->product_images[0]->product_image_alt ?? ($product->post_image_alt ?? $product->product_name) }}"
                                         src="{{ $mainImage }}"
                                         class="main-product-img">
@@ -227,7 +226,7 @@
                         <h6 class="mb-2">{{ __('message.categories') }}:</h6>
                         <div class="d-flex flex-wrap gap-2" id="productCategories">
                             @foreach ($categories_detail as $cat)
-                                <a href="{{ url(App::getLocale() . '/product-category' . '/' . $cat->slug) }}"
+                                <a href="{{ $cat->url }}"
                                     class="category-badge d-flex align-items-center border rounded px-2 py-1 text-decoration-none"
                                     style="max-width: 180px;">
                                     <img src="{{ route('get.file', ['filename' => $cat->image_path]) }}"

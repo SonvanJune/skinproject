@@ -117,7 +117,7 @@
                                                         </p>
                                                     @endif
                                                     <a class="btn btn-primary btn-sm me-2 mt-3"
-                                                        href="{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}">
+                                                        href="{{ $product->url }}">
                                                         {{ __('message.viewDetailPost') }}
                                                     </a>
                                                 </div>
@@ -140,7 +140,7 @@
                                                     <span
                                                         class="text-danger fw-bold note-small">★{{ __('message.categoryTitle') }}</span>
                                                     <a class="btn btn-primary btn-sm me-2 mt-3"
-                                                        href="{{ url(App::getLocale() . '/product-category' . '/' . $category->slug) }}">
+                                                        href="{{ $category->url }}">
                                                         {{ __('message.viewDetailPost') }}
                                                     </a>
                                                 </div>
@@ -162,7 +162,7 @@
                                                     </h5>
                                                     <span class="text-danger fw-bold note-small">★{{ __('message.brand') }}</span>
                                                     <a class="btn btn-primary btn-sm me-2 mt-3"
-                                                        href="{{ url(App::getLocale() . '/brand' . '/' . $category->slug) }}">
+                                                        href="{{ $category->url }}">
                                                         {{ __('message.viewDetailPost') }}
                                                     </a>
                                                 </div>

@@ -25,7 +25,7 @@ class BrandController extends Controller
     public function brand(Request $request, $slug)
     {
         if ($slug === 'car-pdf-interrior-template') {
-            return redirect()->route('brand', ['slug' => 'car-pdf-interior-template']);
+            return redirect()->route('brand', ['slug' => 'car-pdf-interior-template'], 301);
         }
 
         $user = parent::checkTokenWhenReload($request, $this->userService);

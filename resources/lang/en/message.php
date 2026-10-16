@@ -280,4 +280,12 @@ return [
     'wrongAccountOrPassword' => 'Wrong account or password',
     'securityStepsNeeded' => 'Security building steps need to be taken',
     'noRecentProducts' => 'No recently accessed products',
+    'search' => 'Search',
+    'themeToggle' => 'Toggle Light/Dark Theme',
+    'selectLanguage' => 'Select Language',
+    'viewCart' => 'View Cart',
+    'myAccount' => 'My Account',
+    'addToCartSuccess' => 'Added to cart successfully!',
+    'addToCartFailed' => 'Failed to add to cart',
+    'pleaseLoginCart' => 'Please log in to add items to cart',
 ];

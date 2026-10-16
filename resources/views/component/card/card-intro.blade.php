@@ -21,7 +21,7 @@
                                     <div class="d-flex flex-wrap flex-md-nowrap">
                                         @foreach ($chunk as $key => $category)
                                             @if (isset($category->name))
-                                                <a class="flex-fill d-flex item" href="{{url(App::getLocale() . '/product-category' . '/' . $category->slug) }}">
+                                                <a class="flex-fill d-flex item" href="{{ $category->url }}">
                                                     <i class="fa-solid {{'fa-' . strtolower($categoryName) ?? '' }}"></i>
                                                     <div class="flex-item">{{ $category->name }}</div>
                                                 </a>

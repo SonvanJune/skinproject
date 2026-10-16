@@ -78,7 +78,7 @@
                         <div class="row mt-4">
                             <div class="col-md-6">
                                 <a class="btn btn-secondary btn-block"
-                                    href="{{ !empty($categories[0]->slug) ? url(App::getLocale() . '/product-category/' . $categories[0]->slug) : url(App::getLocale() . '/') }}">{{ __('message.continueShoppingButton') }}</a>
+                                    href="{{ !empty($categories[0]->url) ? $categories[0]->url : url(App::getLocale() . '/') }}">{{ __('message.continueShoppingButton') }}</a>
                             </div>
                             <div class="col-md-6 text-right">
                                 <div class="card">

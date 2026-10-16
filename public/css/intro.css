@@ -107,3 +107,29 @@
 .pagination-dot{
     background-color: #111 !important;
 }
+
+/* Modal Alert Notification for Intro Pages */
+.alert.zoom-in {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10050 !important;
+    min-width: 320px;
+    max-width: 480px;
+    width: 90%;
+    margin: 0 !important;
+    padding: 22px 48px 22px 24px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6) !important;
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.alert.zoom-in .btn-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 10px;
+}

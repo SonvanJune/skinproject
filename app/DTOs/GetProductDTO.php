@@ -110,6 +110,19 @@ class GetProductDTO
         $this->product_purchases = $data['product_purchases'];
     }
 
+    public function getUrl(): string
+    {
+        return url(app()->getLocale() . '/p/' . ($this->product_slug ?? ''));
+    }
+
+    public function __get($property)
+    {
+        if ($property === 'url') {
+            return $this->getUrl();
+        }
+        return null;
+    }
+
     /**
      * Create a GetProductDTO instance from a Product model.
      *

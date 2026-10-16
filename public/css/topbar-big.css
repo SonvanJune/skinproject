@@ -583,3 +583,74 @@
         font-size: 0.7rem;
     }
 }
+
+/* Custom luxury tooltip for navbar icons */
+.tooltip {
+    z-index: 100050 !important;
+    pointer-events: none !important;
+}
+
+.tooltip.show {
+    opacity: 1 !important;
+}
+
+.tooltip .tooltip-inner {
+    background: rgba(22, 22, 30, 0.96) !important;
+    color: #dfb77c !important;
+    border: 1px solid rgba(223, 183, 124, 0.4) !important;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 10px rgba(223, 183, 124, 0.15);
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .tooltip .tooltip-inner {
+    background: #ffffff !important;
+    color: #8f6226 !important;
+    border: 1px solid rgba(143, 98, 38, 0.35) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before,
+.tooltip.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
+    border-bottom-color: rgba(22, 22, 30, 0.96) !important;
+}
+
+[data-theme="light"] .tooltip.bs-tooltip-bottom .tooltip-arrow::before,
+[data-theme="light"] .tooltip.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
+    border-bottom-color: #ffffff !important;
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before,
+.tooltip.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
+    border-top-color: rgba(22, 22, 30, 0.96) !important;
+}
+
+[data-theme="light"] .tooltip.bs-tooltip-top .tooltip-arrow::before,
+[data-theme="light"] .tooltip.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
+    border-top-color: #ffffff !important;
+}
+
+.tooltip.bs-tooltip-left .tooltip-arrow::before,
+.tooltip.bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
+    border-left-color: rgba(22, 22, 30, 0.96) !important;
+}
+
+[data-theme="light"] .tooltip.bs-tooltip-left .tooltip-arrow::before,
+[data-theme="light"] .tooltip.bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
+    border-left-color: #ffffff !important;
+}
+
+.tooltip.bs-tooltip-right .tooltip-arrow::before,
+.tooltip.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
+    border-right-color: rgba(22, 22, 30, 0.96) !important;
+}
+
+[data-theme="light"] .tooltip.bs-tooltip-right .tooltip-arrow::before,
+[data-theme="light"] .tooltip.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
+    border-right-color: #ffffff !important;
+}

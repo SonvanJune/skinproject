@@ -27,12 +27,11 @@
                         <h4>@yield('name')</h4>
                     </div>
                     <div class="col-md-6 col-sm-12 path">
-                        <a href="/"><i class="fa-solid fa-house"></i></a>
+                        <a href="{{ url(App::getLocale() . '/') }}"><i class="fa-solid fa-house"></i></a>
                         <i class="fa-solid fa-chevron-right"></i>
-                        <a href="">@yield('root')</a>
+                        <a href="{{ !empty($category_detail->url) ? $category_detail->url : url(App::getLocale() . '/c/' . ($category_detail->slug ?? '')) }}">@yield('root')</a>
                         <i class="fa-solid fa-chevron-right"></i>
-                        <a
-                            href="{{ url(App::getLocale() . '/product-category' . '/' . $category_detail->slug) }}">@yield('nameSmall')</a>
+                        <span class="current-crumb">@yield('nameSmall')</span>
                     </div>
                 </div>
             </div>

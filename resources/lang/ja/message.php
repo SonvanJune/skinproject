@@ -276,4 +276,12 @@ return [
     'wrongAccountOrPassword' => 'アカウントまたはパスワードが正しくありません',
     'securityStepsNeeded' => 'セキュリティ設定の手順が必要です',
     'noRecentProducts' => '最近アクセスした商品はありません',
+    'search' => '検索',
+    'themeToggle' => 'ダーク/ライトテーマ切替',
+    'selectLanguage' => '言語を選択',
+    'viewCart' => 'カートを見る',
+    'myAccount' => 'マイアカウント',
+    'addToCartSuccess' => '商品をカートに追加しました！',
+    'addToCartFailed' => 'カートへの追加に失敗しました',
+    'pleaseLoginCart' => 'カートに商品を追加するにはログインしてください',
 ];

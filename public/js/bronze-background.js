@@ -1,4 +1,4 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import * as THREE from './three.module.js';
 
 (function () {
     const canvas = document.getElementById('bronze-bg-canvas');
@@ -17,11 +17,14 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
     const TARGET_FPS = 36;
     const FRAME_INTERVAL = 1000 / TARGET_FPS;
 
+    let targetThemeValue = document.documentElement.getAttribute('data-theme') === 'light' ? 1.0 : 0.0;
+
     const shaderUniforms = {
         uTime: { value: 0 },
         uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
         uMouse: { value: new THREE.Vector2(0, 0) },
-        uScroll: { value: 0 }
+        uScroll: { value: 0 },
+        uTheme: { value: targetThemeValue } // 0.0 for Dark, 1.0 for Light
     };
 
     function updateScrollDimensions() {
@@ -30,16 +33,17 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 
     function init() {
         scene = new THREE.Scene();
-        scene.background = new THREE.Color('#070709');
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        scene.background = isLight ? new THREE.Color('#ede8df') : new THREE.Color('#070709');
 
         camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
         camera.position.set(0, 0, 3.0);
         scene.add(camera);
 
-        // --- Liquid Bronze Wave Shader Plane (attached to camera) ---
+        // --- Liquid Bronze / Champagne Pearl Wave Shader Plane (attached to camera) ---
         createBackgroundShader();
 
-        // --- Forge Sparks ---
+        // --- Forge Sparks / Diamond Mica Dust ---
         createSparks();
 
         // --- WebGL Renderer (Optimized for minimal GPU consumption) ---
@@ -58,7 +62,15 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
         window.addEventListener('scroll', updateScrollDimensions, { passive: true });
         window.addEventListener('themeChanged', updateThemeMode);
         document.addEventListener('visibilitychange', onVisibilityChange);
-        updateThemeMode();
+
+        // Pre-render 1st frame to ensure WebGL buffer is ready before revealing canvas
+        renderer.render(scene, camera);
+
+        // Gracefully fade in luxury background over ambient underlay
+        requestAnimationFrame(() => {
+            canvas.classList.add('is-ready');
+            updateThemeMode();
+        });
 
         requestAnimationFrame(animate);
     }
@@ -73,8 +85,16 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 
     function updateThemeMode() {
         const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        canvas.style.opacity = isLight ? '0.18' : '1.0';
-        canvas.style.transition = 'opacity 0.4s ease';
+        targetThemeValue = isLight ? 1.0 : 0.0;
+        if (scene) {
+            scene.background = isLight ? new THREE.Color('#ede8df') : new THREE.Color('#070709');
+        }
+        if (sparkParticles) {
+            sparkParticles.material.opacity = isLight ? 0.12 : 0.85;
+        }
+        if (canvas.classList.contains('is-ready')) {
+            canvas.style.opacity = '1.0';
+        }
     }
 
     function createBackgroundShader() {
@@ -92,18 +112,7 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
             uniform vec2 uResolution;
             uniform vec2 uMouse;
             uniform float uScroll;
-
-            float hash(float n) { return fract(sin(n) * 43758.5453123); }
-            float noise(in vec3 x) {
-                vec3 p = floor(x);
-                vec3 f = fract(x);
-                f = f * f * (3.0 - 2.0 * f);
-                float n = p.x + p.y * 57.0 + 113.0 * p.z;
-                return mix(mix(mix(hash(n +   0.0), hash(n +   1.0), f.x),
-                               mix(hash(n +  57.0), hash(n +  58.0), f.x), f.y),
-                           mix(mix(hash(n + 113.0), hash(n + 114.0), f.x),
-                               mix(hash(n + 170.0), hash(n + 171.0), f.x), f.y), f.z);
-            }
+            uniform float uTheme; // 0.0 = Midnight Bronze, 1.0 = Champagne Pearl & Ivory Gold
 
             void main() {
                 vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
@@ -121,12 +130,12 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
                 float freq3 = 4.0;
                 
                 vec2 warpedUv = uv;
-                float scrollDeform = scroll * 5.0;
+                float scrollDeform = scroll * 4.5;
                 
-                warpedUv.x += sin(uv.y * 2.5 + time * 0.2 + scrollDeform) * 0.35;
-                warpedUv.y += cos(uv.x * 2.5 - time * 0.15 - scrollDeform * 0.8) * 0.35;
+                warpedUv.x += sin(uv.y * 2.5 + time * 0.22 + scrollDeform) * 0.35;
+                warpedUv.y += cos(uv.x * 2.5 - time * 0.16 - scrollDeform * 0.8) * 0.35;
                 
-                warpedUv.x += sin(uv.y * 1.2 - time * 0.1 - scrollDeform * 1.5) * 0.25;
+                warpedUv.x += sin(uv.y * 1.2 - time * 0.12 - scrollDeform * 1.4) * 0.25;
                 warpedUv.y += cos(uv.x * 1.2 + time * 0.18 + scrollDeform * 1.2) * 0.25;
                 
                 vec2 scrollDrift = vec2(scroll * 0.04, -scroll * 0.02);
@@ -147,33 +156,60 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
                 float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.0);
                 float crest = wideSheen * 0.5 + crispSpecular * 0.9;
                 
-                // Palette: Molten Bronze (Scroll = 0.0) -> Deep Sapphire (Scroll = 1.0)
-                vec3 c0_shadow = vec3(0.0010, 0.0006, 0.0004);
-                vec3 c0_wave1  = vec3(0.085, 0.040, 0.015);
-                vec3 c0_wave2  = vec3(0.050, 0.022, 0.008);
-                vec3 c0_crest  = vec3(0.45, 0.30, 0.18);
-                
-                vec3 c1_shadow = vec3(0.0004, 0.0006, 0.0012);
-                vec3 c1_wave1  = vec3(0.015, 0.035, 0.065);
-                vec3 c1_wave2  = vec3(0.008, 0.020, 0.045);
-                vec3 c1_crest  = vec3(0.18, 0.35, 0.55);
-                
                 float t = smoothstep(0.0, 1.0, scroll);
-                vec3 colShadow = mix(c0_shadow, c1_shadow, t);
-                vec3 colWave1  = mix(c0_wave1, c1_wave1, t);
-                vec3 colWave2  = mix(c0_wave2, c1_wave2, t);
-                vec3 colCrest  = mix(c0_crest, c1_crest, t);
+
+                // --- 1. DARK MODE: Molten Bronze (Scroll = 0) -> Deep Sapphire (Scroll = 1) ---
+                vec3 dark_c0_shadow = vec3(0.0010, 0.0006, 0.0004);
+                vec3 dark_c0_wave1  = vec3(0.085, 0.040, 0.015);
+                vec3 dark_c0_wave2  = vec3(0.050, 0.022, 0.008);
+                vec3 dark_c0_crest  = vec3(0.45, 0.30, 0.18);
                 
-                vec3 color = colShadow;
-                color = mix(color, colWave2, smoothstep(-0.6, 0.2, waveField));
-                color = mix(color, colWave1, smoothstep(0.0, 0.8, waveField));
+                vec3 dark_c1_shadow = vec3(0.0004, 0.0006, 0.0012);
+                vec3 dark_c1_wave1  = vec3(0.015, 0.035, 0.065);
+                vec3 dark_c1_wave2  = vec3(0.008, 0.020, 0.045);
+                vec3 dark_c1_crest  = vec3(0.18, 0.35, 0.55);
                 
-                color += colCrest * crest * 1.4;
+                vec3 dark_colShadow = mix(dark_c0_shadow, dark_c1_shadow, t);
+                vec3 dark_colWave1  = mix(dark_c0_wave1, dark_c1_wave1, t);
+                vec3 dark_colWave2  = mix(dark_c0_wave2, dark_c1_wave2, t);
+                vec3 dark_colCrest  = mix(dark_c0_crest, dark_c1_crest, t);
                 
-                float vignette = 1.0 - dot(uv, uv) * 0.15;
-                color *= vignette;
-                
-                gl_FragColor = vec4(color, 1.0);
+                vec3 dark_color = dark_colShadow;
+                dark_color = mix(dark_color, dark_colWave2, smoothstep(-0.6, 0.2, waveField));
+                dark_color = mix(dark_color, dark_colWave1, smoothstep(0.0, 0.8, waveField));
+                dark_color += dark_colCrest * crest * 1.4;
+                dark_color *= (1.0 - dot(uv, uv) * 0.15);
+                // --- 2. LIGHT MODE: Soft Cashmere Linen & Gentle Muted Champagne Silk ---
+                // Calming, eye-friendly warm tones (No blinding specular, soft satin sheen)
+                vec3 light_c0_base   = vec3(0.932, 0.915, 0.885); // Warm Cashmere Linen (#eee7dc)
+                vec3 light_c0_wave1  = vec3(0.835, 0.775, 0.695); // Muted Soft Bronze Silk
+                vec3 light_c0_wave2  = vec3(0.890, 0.850, 0.795); // Soft Warm Sand
+                vec3 light_c0_crest  = vec3(0.965, 0.950, 0.925); // Gentle Pearl Highlight
+                vec3 light_c0_gold   = vec3(0.740, 0.610, 0.440); // Soft Antique Bronze Ribbon
+
+                // Scrolled: Soft Slate Cashmere & Muted Sapphire Silk
+                vec3 light_c1_base   = vec3(0.915, 0.922, 0.932);
+                vec3 light_c1_wave1  = vec3(0.785, 0.830, 0.875);
+                vec3 light_c1_wave2  = vec3(0.855, 0.880, 0.910);
+                vec3 light_c1_crest  = vec3(0.955, 0.965, 0.975);
+                vec3 light_c1_gold   = vec3(0.480, 0.600, 0.720);
+
+                vec3 light_colBase  = mix(light_c0_base, light_c1_base, t);
+                vec3 light_colWave1 = mix(light_c0_wave1, light_c1_wave1, t);
+                vec3 light_colWave2 = mix(light_c0_wave2, light_c1_wave2, t);
+                vec3 light_colCrest = mix(light_c0_crest, light_c1_crest, t);
+                vec3 light_colGold  = mix(light_c0_gold, light_c1_gold, t);
+
+                vec3 light_color = light_colBase;
+                light_color = mix(light_color, light_colWave2, smoothstep(-0.6, 0.2, waveField) * 0.45);
+                light_color = mix(light_color, light_colWave1, smoothstep(0.0, 0.8, waveField) * 0.35);
+                light_color = mix(light_color, light_colGold, wideSheen * 0.20);
+                light_color = mix(light_color, light_colCrest, crispSpecular * 0.30);
+                light_color *= (1.0 - dot(uv, uv) * 0.08);
+
+                // Smoothly blend between dark & light mode
+                vec3 finalColor = mix(dark_color, light_color, uTheme);
+                gl_FragColor = vec4(finalColor, 1.0);
             }
         `;
 
@@ -199,8 +235,8 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
         const ctx = c.getContext('2d');
         const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
         gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-        gradient.addColorStop(0.25, 'rgba(255, 255, 255, 0.85)');
-        gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.3)');
+        gradient.addColorStop(0.25, 'rgba(255, 235, 180, 0.85)');
+        gradient.addColorStop(0.6, 'rgba(215, 155, 65, 0.35)');
         gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 16, 16);
@@ -220,15 +256,15 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
             positions[i * 3 + 1] = y;
             positions[i * 3 + 2] = z;
 
-            if (Math.random() < 0.65) {
-                // Molten fiery bronze/orange
-                colors[i * 3] = 1.0;
-                colors[i * 3 + 1] = 0.45 + Math.random() * 0.15;
-                colors[i * 3 + 2] = 0.08 + Math.random() * 0.1;
+            if (Math.random() < 0.70) {
+                // Molten fiery bronze/orange & warm 24K gold
+                colors[i * 3]     = 1.0;
+                colors[i * 3 + 1] = 0.55 + Math.random() * 0.25;
+                colors[i * 3 + 2] = 0.12 + Math.random() * 0.15;
             } else {
-                // Cool sapphire / steel blue
-                colors[i * 3] = 0.55 + Math.random() * 0.15;
-                colors[i * 3 + 1] = 0.82 + Math.random() * 0.12;
+                // Cool sapphire / diamond pearl
+                colors[i * 3]     = 0.65 + Math.random() * 0.25;
+                colors[i * 3 + 1] = 0.85 + Math.random() * 0.15;
                 colors[i * 3 + 2] = 1.0;
             }
 
@@ -246,10 +282,10 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
         geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 0.03,
+            size: 0.032,
             vertexColors: true,
             transparent: true,
-            opacity: 0.8,
+            opacity: 0.85,
             blending: THREE.AdditiveBlending,
             depthWrite: false,
             map: createSparkTexture()
@@ -279,12 +315,24 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
         // Do not render if tab is in the background
         if (document.hidden) return;
 
-        // Frame rate limiter (~36 FPS is completely smooth for ambient backgrounds while cutting GPU/CPU usage by 70%+)
+        // Frame rate limiter
         const elapsed = currentTime - lastRenderTime;
         if (elapsed < FRAME_INTERVAL) return;
         lastRenderTime = currentTime - (elapsed % FRAME_INTERVAL);
 
         const deltaTime = Math.min(clock.getDelta(), 0.1);
+
+        // Smoothly transition theme uniform if switching modes
+        if (Math.abs(targetThemeValue - shaderUniforms.uTheme.value) > 0.005) {
+            shaderUniforms.uTheme.value += (targetThemeValue - shaderUniforms.uTheme.value) * 0.1;
+        } else {
+            shaderUniforms.uTheme.value = targetThemeValue;
+        }
+
+        // Smoothly adjust spark opacity depending on theme (soft 0.12 in light mode to prevent glare)
+        if (sparkParticles) {
+            sparkParticles.material.opacity = THREE.MathUtils.lerp(0.85, 0.12, shaderUniforms.uTheme.value);
+        }
 
         // Read window.scrollY without triggering layout thrashing
         const scrollTop = window.scrollY !== undefined ? window.scrollY

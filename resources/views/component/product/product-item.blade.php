@@ -3,7 +3,7 @@
 @endpush
 
 <div class="d-flex flex-column it-p">
-    <a class="product img-mask" href="{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}">
+    <a class="product img-mask" href="{{ $product->url }}">
         @if ($product->product_price != $product->product_price_sale)
             <div class="sale"><img src="{{ asset('images/sale.png') }}" alt="sale"></div>
         @endif
@@ -28,12 +28,12 @@
     <div class="detail">
         <div class="name">
             @if ($product->can_download == true)
-                <a href="{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}">
+                <a href="{{ $product->url }}">
                     <h3>{{ $product->product_name }}</h3>
                     <span>&nbsp;({{ __('message.hasOwned') }})</span>
                 </a>
             @else
-                <a href="{{ url(App::getLocale() . '/product' . '/' . $product->product_slug) }}">
+                <a href="{{ $product->url }}">
                     <h3>{{ $product->product_name }}</h3>
                 </a>
             @endif

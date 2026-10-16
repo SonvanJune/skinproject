@@ -276,4 +276,12 @@ return [
     'wrongAccountOrPassword' => 'Compte ou mot de passe incorrect',
     'securityStepsNeeded' => 'Des étapes de configuration de sécurité sont nécessaires',
     'noRecentProducts' => 'Aucun produit consulté récemment',
+    'search' => 'Rechercher',
+    'themeToggle' => 'Basculer le thème clair/sombre',
+    'selectLanguage' => 'Choisir la langue',
+    'viewCart' => 'Voir le panier',
+    'myAccount' => 'Mon compte',
+    'addToCartSuccess' => 'Ajouté au panier avec succès !',
+    'addToCartFailed' => 'Échec de l\'ajout au panier',
+    'pleaseLoginCart' => 'Veuillez vous connecter pour ajouter au panier',
 ];

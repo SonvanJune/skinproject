@@ -95,7 +95,7 @@
                                     <div class="b-group">
                                         <i class="bi bi-menu-down"></i>
                                         <a class="btn b-item" type="button"
-                                            href="{{ LaravelLocalization::localizeUrl(url('/product-category' . '/' . $category->slug)) }}">
+                                            href="{{ $category->url }}">
                                             <span>{{ $category->name }}</span>
                                         </a>
                                     </div>

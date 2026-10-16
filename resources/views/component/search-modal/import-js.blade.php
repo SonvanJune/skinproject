@@ -63,7 +63,7 @@
     <h6>${title} (${items.length})</h6>
     <div class="item-list">
         ${items.map((item) => `
-            <a class="item" href="${baseUrl}/product/${item.product_slug}">
+            <a class="item" href="${baseUrl}/p/${item.product_slug}">
                 <img src="${routeGetFileTemplate.replace(":filename", item.post_image_path)}" alt="${item.post_image_alt}" class="item-image">
                 <p class="item-name"><span class="highlight">${item.product_name.charAt(0)}</span>${item.product_name.slice(1)}</p>
             </a>
@@ -85,26 +85,19 @@
     <div class="item-list">
         ${items.map((item) => {
     if (item.type === 1) {
+        const catPath = item.path || item.slug;
         return `
-            <a class="item" href="${baseUrl}/product-category/${item.slug}">
+            <a class="item" href="${baseUrl}/c/${catPath}">
                 <img src="${routeGetFileTemplate.replace(":filename", item.image_path)}" alt="${item.image_alt}" class="item-image">
                 <p class="item-name"><span class="highlight">${item.name.charAt(0)}</span>${item.name.slice(1)}</p>
             </a>
         `;
     } else {
-        return ` <
-            a class = "item"
-        href = "${baseUrl}/brand/${item.slug}" >
-            <
-            img src = "${routeGetFileTemplate.replace(": filename ", item.image_path)}"
-        alt = "${item.image_alt}"
-        class = "item-image" >
-        <
-        p class = "item-name" > < span class = "highlight" > $ {
-            item.name.charAt(0)
-        } < /span>${item.name.slice(1)}</p >
-        <
-        /a>
+        return `
+            <a class="item" href="${baseUrl}/b/${item.slug}">
+                <img src="${routeGetFileTemplate.replace(":filename", item.image_path)}" alt="${item.image_alt}" class="item-image">
+                <p class="item-name"><span class="highlight">${item.name.charAt(0)}</span>${item.name.slice(1)}</p>
+            </a>
         `;
     }
     }).join("")}

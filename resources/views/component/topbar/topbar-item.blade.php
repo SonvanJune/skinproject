@@ -1,6 +1,6 @@
 <div class="cate">
     @if (!empty($category->children))
-        <a class="btn b-item" type="button" href="{{url(App::getLocale() . '/product-category' . '/' . $category->slug) }}">
+        <a class="btn b-item" type="button" href="{{ $category->url }}">
             <span>{{ $category->name }}</span>
             <i class="bi bi-caret-right-fill"></i>
         </a>
@@ -11,7 +11,7 @@
         </div>
     @else
         <div class="cate">
-            <a class="btn b-item" type="button" href="{{url(App::getLocale() . '/product-category' . '/' . $category->slug) }}">
+            <a class="btn b-item" type="button" href="{{ $category->url }}">
                 <span>{{ $category->name }}</span>
             </a>
         </div>

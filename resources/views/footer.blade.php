@@ -19,7 +19,7 @@
                                 class="fa-solid fa-house"></i>{{ __('message.home') }}</a>
                         @isset($categories)
                             @foreach ($categories as $category)
-                                <a href="{{ url(App::getLocale() . '/product-category' . '/' . $category->slug) }}"
+                                <a href="{{ $category->url }}"
                                     class="item"><i
                                         class="{{ 'fa-solid fa-' . strtolower($category->name) }}"></i>{{ $category->name }}</a>
                             @endforeach

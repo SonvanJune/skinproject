@@ -36,6 +36,14 @@ class Category extends Model
         'category_release'
     ];
 
+    public function getUrlAttribute(): string
+    {
+        if ($this->category_type === self::CATEGORY_TYPE_BRAND) {
+            return url(app()->getLocale() . '/b/' . $this->category_slug);
+        }
+        return url(app()->getLocale() . '/c/' . $this->category_slug);
+    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class, 'products_categories', 'category_id', 'product_id');

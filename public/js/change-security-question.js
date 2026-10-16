@@ -43,14 +43,37 @@ document.addEventListener("DOMContentLoaded", function () {
         check();
     }
 
+    function updateAvailableQuestions() {
+        const selectedValues = Array.from(questions)
+            .map(q => q.value)
+            .filter(val => val !== "" && val !== null);
+
+        questions.forEach(select => {
+            const currentVal = select.value;
+            Array.from(select.options).forEach(option => {
+                if (!option.value) return;
+
+                if (selectedValues.includes(option.value) && option.value !== currentVal) {
+                    option.hidden = true;
+                    option.disabled = true;
+                    option.style.display = "none";
+                } else {
+                    option.hidden = false;
+                    option.disabled = false;
+                    option.style.display = "";
+                }
+            });
+        });
+    }
+
     function validateQuestionForm(selectElement) {
         errorMessageSelect.style.display = "none";
+        updateAvailableQuestions();
         if (checkQuestionSelectForm()) {
             isQuestionValid = true;
         } else {
             isQuestionValid = false;
         }
-
 
         if (selectElement.classList) {
             selectElement.classList.toggle(
@@ -88,7 +111,11 @@ document.addEventListener("DOMContentLoaded", function () {
         select.addEventListener("input", (event) => {
             validateQuestionForm(event.target);
         });
+        select.addEventListener("change", (event) => {
+            validateQuestionForm(event.target);
+        });
     });
+    updateAvailableQuestions();
 
     passwordForm.addEventListener("submit", function (event) {
         event.preventDefault();

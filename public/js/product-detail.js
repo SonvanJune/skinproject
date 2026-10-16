@@ -31,34 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // 2. Add To Cart Submission with Luxury Loading Feedback
-    const formAddToCart = document.getElementById("formAddToCart");
-    const btnAddToCart = document.getElementById("addTocart");
-
-    if (btnAddToCart && formAddToCart) {
-        let isSubmitting = false;
-
-        formAddToCart.addEventListener("submit", function (e) {
-            if (isSubmitting) {
-                e.preventDefault();
-                return false;
-            }
-            isSubmitting = true;
-
-            // Apply loading state to luxury shimmer button
-            btnAddToCart.classList.add("disabled", "btn-loading");
-            const btnSpan = btnAddToCart.querySelector("span");
-            if (btnSpan) {
-                btnSpan.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin me-2"></i> Processing...';
-            }
-
-            // Reveal notification loading overlay if present
-            const notiSuc = document.getElementById("notiSuc");
-            if (notiSuc) {
-                notiSuc.classList.remove("d-none");
-            }
-        });
-    }
+    // 2. Add To Cart is handled smoothly via global AJAX (cart-ajax.js)
 
     // 3. Add to Cart for Unauthenticated Users (Modal Trigger & Haptic Pulse)
     const btnNoLogin = document.getElementById("addTocartNoLogin");

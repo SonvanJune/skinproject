@@ -38,6 +38,7 @@ class CategoryController extends Controller
             return redirect()->route('maintenance');
         }
         if($user){
+            
             parent::checkUserInPage($user->roles);
         }
         $categories = $this->categoryService->getListCategoryPerPage($request, CategoryService::ROLE_USER);
@@ -66,6 +67,11 @@ class CategoryController extends Controller
             $page = $request->query('page');
         }
 
+        if (str_contains($slug, '/')) {
+            $segments = explode('/', trim($slug, '/'));
+            $slug = end($segments);
+        }
+
         $slug_not_found = parent::checkCategorySlug($categories, $slug);
         if ($slug_not_found == false) {
             $request->merge(['category_slug' => $slug, 'per_page' => $this->productPerpage, 'page' => $page]);
@@ -78,7 +84,7 @@ class CategoryController extends Controller
             $products = new Collection($productDtos->data);
 
             if ($category->type == Category::CATEGORY_TYPE_BRAND) {
-                return redirect()->route('brand', ['slug' => $category->slug]);
+                return redirect()->route('brand', ['slug' => $category->slug], 301);
             } else {
                 return view('product-category.product-list.index', [
                     "categories" => $categories,

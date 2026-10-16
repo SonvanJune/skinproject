@@ -22,6 +22,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\RedirectLegacyUrlMiddleware::class,
     ];
 
     /**
@@ -67,7 +68,7 @@ class Kernel extends HttpKernel
         'auth.jwt' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
         'localizationRedirect' => \App\Http\Middleware\LocalizationRedirect::class,
         'no-cache' => \App\Http\Middleware\PreventLoginCache::class,
-        'admin' => \App\Http\Middleware\CheckAdmin::class
+        'admin' => \App\Http\Middleware\CheckAdmin::class,
+        'legacy.redirect' => \App\Http\Middleware\RedirectLegacyUrlMiddleware::class,
     ];
-    
 }

@@ -14,9 +14,20 @@
     <meta name="robots" content="@yield('meta_robots', 'index, follow')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
 
-    {{-- Multilingual Hreflang Tags --}}
-    @foreach(Mcamara\LaravelLocalization\Facades\LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-        <link rel="alternate" hreflang="{{ $localeCode }}" href="{{ Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+    {{-- Multilingual Hreflang Tags (ISO 639-1 & Google Search Console Standard) --}}
+    @php
+        $supportedLocales = Mcamara\LaravelLocalization\Facades\LaravelLocalization::getSupportedLocales();
+        $isoLanguageMap = [
+            'zh' => 'zh-Hans',
+            'ja' => 'ja',
+        ];
+    @endphp
+    @foreach($supportedLocales as $localeCode => $properties)
+        @php
+            $hreflangCode = $isoLanguageMap[$localeCode] ?? $localeCode;
+            $localizedUrl = Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL($localeCode, null, [], true);
+        @endphp
+        <link rel="alternate" hreflang="{{ $hreflangCode }}" href="{{ $localizedUrl }}">
     @endforeach
     <link rel="alternate" hreflang="x-default" href="{{ Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
 
@@ -52,6 +63,9 @@
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/track-css.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bronze-luxury-theme.css') }}">
+    {{-- Toastify & Luxury Toast --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="{{ asset('css/luxury-toast.css') }}">
 @endsection
 
 @section('body')
@@ -72,10 +86,14 @@
     @include('component.cart-modal.index')
     @include('component.language-modal.index')
     @include('component.modal.modalNoLogin')
+    @include('component.toast.index')
 
     {{-- Core JavaScripts (Libraries via CDN) --}}
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- Toast Library & Controller --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="{{ asset('js/luxury-toast.js') }}"></script>
     <script src="{{ asset('js/handleHtml.js') }}"></script>
     <script>
         const routeGetFileTemplate = @json(route('get.file', ['filename' => ':filename']));
@@ -85,6 +103,7 @@
     @include('component.search-modal.import-js')
     <script src="{{ asset('js/security.js') }}"></script>
     <script src="{{ asset('js/modalNologin.js') }}"></script>
+    <script src="{{ asset('js/cart-ajax.js') }}"></script>
     <!-- Background Shader: Liquid Bronze & Floating Forge Sparks (Global) -->
     <script type="module" src="{{ asset('js/bronze-background.js') }}"></script>
 @endsection

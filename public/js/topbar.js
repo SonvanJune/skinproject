@@ -57,3 +57,28 @@ items.forEach((item) => {
 });
 
 const menu = document.querySelector(".kb-mega-left");
+
+// Initialize Tooltips for navbar icons
+function initNavbarTooltips() {
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        tooltipTriggerList.forEach((tooltipTriggerEl) => {
+            const existing = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+            if (existing) {
+                existing.dispose();
+            }
+            new bootstrap.Tooltip(tooltipTriggerEl, {
+                trigger: 'hover',
+                container: 'body',
+                offset: [0, 10],
+                boundary: 'window'
+            });
+        });
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavbarTooltips);
+} else {
+    initNavbarTooltips();
+}

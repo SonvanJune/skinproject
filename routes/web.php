@@ -28,6 +28,7 @@ use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
@@ -56,9 +57,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/file-management', [FileManagerController::class, 'fileManager'])->name("file");
     Route::get('/editor', [FileManagerController::class, 'editor'])->name("file");
 
-    Route::get('/product-category/{slug}', [CategoryController::class, 'productCategory'])->name("product.category");
-    Route::get('/product/{slug}', [ProductController::class, 'product'])->name("product");
-    Route::get('/brand/{slug}', [BrandController::class, 'brand'])->name("brand");
+    // Category Route
+    Route::get('/c/{slug}', [CategoryController::class, 'productCategory'])
+        ->where('slug', '^[a-zA-Z0-9\-_\/]+$')
+        ->name('product.category');
+
+    // Canonical Product Route
+    Route::get('/p/{slug}', [ProductController::class, 'product'])->name("product");
+
+    // Canonical Brand Route
+    Route::get('/b/{slug}', [BrandController::class, 'brand'])->name("brand");
     Route::get('/blog/{slug}', [PostController::class, 'postDetail'])->name("post.detail");
     Route::get('/blog', [PostController::class, 'blog'])->name("blog");
     Route::get('/login', [UserController::class, 'login'])->name("login");
@@ -83,6 +91,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::post('/active', [UserController::class, 'handleOtpActiveUser'])->name('activeRegister');
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::post('/cart/delete', [CartController::class, 'deleteItemOfCart'])->name('cart.delete');
+    Route::get('/cart/modal-items', [CartController::class, 'cartModalItems'])->name('cart.modal.items');
     Route::post('/security/setup', [UserController::class, 'handleSetUpSecurity'])->name('security.setup');
 
     Route::get('paypal/payment/success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
@@ -239,16 +248,8 @@ Route::get('/lang/{locale}', [PageController::class, 'setLocale'])->name('setLoc
 Route::get('/get-file/{filename?}', [FileManagerController::class, 'getFile'])->where('filename', '.*')->name('get.file');
 Route::get('/resend-otp/activeUser/{email}', [UserController::class, 'resendOtpRegister'])->name('resend.otp.active');
 Route::get('/resend-otp/forgetPassword/{email}', [UserController::class, 'resendOtpForgetPass'])->name('resend.otp.forget.pass');
-Route::get('/sitemap.xml', function () {
-    $path = base_path('sitemap.xml');
-
-    if (!File::exists($path)) {
-        abort(404, 'Sitemap not found');
-    }
-
-    $content = File::get($path);
-
-    return Response::make($content, 200)
-        ->header('Content-Type', 'application/xml');
-});
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('/sitemap-{locale}.xml', [SitemapController::class, 'localeSitemap'])
+    ->where('locale', 'en|vi|ja|es|fr|zh')
+    ->name('sitemap.locale');
 

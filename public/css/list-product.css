@@ -20,18 +20,23 @@
 }
 
 .products .product {
-    max-width: 320px;
-    width: 90%;
+    max-width: 100%;
+    width: 100%;
     overflow: hidden; 
-    display: flex;
-    justify-content: center;
+    display: block;
+    margin-bottom: 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .products .product img {
-    width: auto; 
+    width: 100%; 
     height: 220px;
     max-width: 100%;
     object-fit: cover;
+    display: block;
+    border-radius: 15px 15px 0 0;
+    margin: 0;
+    padding: 0;
 }
 
 .products .product .sale {
@@ -271,7 +276,9 @@
 }
 
 .products-grid .col .it-p {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -281,18 +288,19 @@
 .products-grid .col .it-p .product {
     width: 100%;
     max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.25);
+    display: block;
+    background: transparent;
     margin-bottom: 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .products-grid .col .it-p .product img {
     width: 100%;
     height: 220px;
-    object-fit: contain;
-    padding: 14px;
+    object-fit: cover;
+    padding: 0;
+    display: block;
+    border-radius: 15px 15px 0 0;
 }
 
 .products-grid .col .it-p .detail {
@@ -310,6 +318,36 @@
 .products-grid .col .it-p .detail .cart {
     margin-top: 10px;
     align-self: flex-start;
+}
+
+/* Uniform card styling for horizontal product lists (Home & Popular) */
+.products .list:not(.products-grid) {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.products .list:not(.products-grid) > .it-p {
+    flex: 1 1 calc(25% - 15px);
+    max-width: calc(25% - 15px);
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 991px) {
+    .products .list:not(.products-grid) > .it-p {
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 575px) {
+    .products .list:not(.products-grid) > .it-p {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
 }
 
 /* ==========================================================================

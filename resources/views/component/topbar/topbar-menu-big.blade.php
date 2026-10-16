@@ -30,7 +30,7 @@
                                 @foreach ($categories as $category)
                                     <div class="kb-menu-group">
                                         <div class="kb-menu-title"
-                                            onclick="window.location.href='{{ url(App::getLocale() . '/product-category' . '/' . $category->slug) }}'">
+                                            onclick="window.location.href='{{ $category->url }}'">
                                             <h4>{{ $category->name }}</h4>
                                         </div>
                                         <ul class="kb-menu-list">
@@ -39,7 +39,7 @@
                                                     <li
                                                         data-img="{{ route('get.file', ['filename' => $child->image_path]) }}">
                                                         <a
-                                                            href="{{ url(App::getLocale() . '/product-category' . '/' . $child->slug) }}">{{ $child->name }}</a>
+                                                            href="{{ $child->url }}">{{ $child->name }}</a>
                                                     </li>
                                                 @endforeach
                                             @endif
@@ -52,7 +52,7 @@
                         @if (!empty($categories) && !empty($categories[0]))
                             <div class="kb-overlay">
                                 <a class="kb-view-more"
-                                    href="{{ url(App::getLocale() . '/product-category/' . $categories[0]->slug) }}">{{ __('message.all') }}
+                                    href="{{ $categories[0]->url }}">{{ __('message.all') }}
                                     <i class="bi bi-arrow-right"></i></a>
                             </div>
                         @endif
@@ -86,7 +86,7 @@
             </li>
 
             <li class="kb-nav-item kb-has-mega search-item">
-                <a class="kb-nav-item-title" href="#">
+                <a class="kb-nav-item-title" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ __('message.search') }}">
                     <i class="bi bi-search"></i>
                 </a>
 
@@ -124,14 +124,14 @@
         <!-- Right side -->
         <ul class="kb-nav-right">
             <li class="theme-toggle-li">
-                <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+                <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="{{ __('message.themeToggle') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ __('message.themeToggle') }}">
                     <i class="bi bi-sun-fill icon-sun"></i>
                     <i class="bi bi-moon-stars-fill icon-moon"></i>
                 </button>
             </li>
             <li>@include('component.language-modal.button')</li>
             <li>
-                <div class="icon cart" id="openModal" onclick="openCartModal()">
+                <div class="icon cart" id="openModal" onclick="openCartModal()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ __('message.viewCart') }}">
                     <span>{{ __('message.cart') }}</span>
                     <span class="cart-icon-wrapper">
                         <i class="bi bi-cart3"></i>
@@ -147,32 +147,32 @@
             </li>
             @if (!empty($user_name))
                 <li>
-                    <a href="{{ url(App::getLocale() . '/account') }}">{{ $user_name }}</a>
+                    <a href="{{ url(App::getLocale() . '/account') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ __('message.myAccount') }}">{{ $user_name }}</a>
                 </li>
                 <li>
-                    <a href="{{ url(App::getLocale() . '/logout') }}"><i
+                    <a href="{{ url(App::getLocale() . '/logout') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ __('message.logout') }}"><i
                             class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </li>
             @endif
             @if (empty($user_name))
-                <li><a href="{{ url(App::getLocale() . '/login') }}">{{ __('message.login') }}</a></li>
+                <li><a href="{{ url(App::getLocale() . '/login') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ __('message.login') }}">{{ __('message.login') }}</a></li>
             @endif
         </ul>
     </div>
 </nav>
 
 <div class="kb-fixed-bar">
-    <a href="{{ url(App::getLocale() . '/wishlist') }}" class="kb-bar-item">
+    <a href="{{ url(App::getLocale() . '/wishlist') }}" class="kb-bar-item" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('message.wishList') }}">
         <i class="bi bi-heart-fill icon"></i>
         <span class="text">{{ __('message.wishList') }}</span>
     </a>
 
-    <a href="{{ url(App::getLocale() . '/sales') }}" class="kb-bar-item">
+    <a href="{{ url(App::getLocale() . '/sales') }}" class="kb-bar-item" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('message.sale') }}">
         <i class="bi bi-tags-fill icon"></i>
         <span class="text">{{ __('message.sale') }}</span>
     </a>
 
-    <a href="{{ url(App::getLocale() . '/new-products') }}" class="kb-bar-item">
+    <a href="{{ url(App::getLocale() . '/new-products') }}" class="kb-bar-item" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('message.new') }}">
         <i class="bi bi-stars icon"></i>
         <span class="text">{{ __('message.new') }}</span>
     </a>

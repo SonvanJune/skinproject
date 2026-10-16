@@ -23,8 +23,24 @@
     @endif
     <div class="input-group">
         <label for="otpInput" class="form-label">{{ __('message.otp') }}</label>
-        <div class="otp-container" id="otpContainer"></div>
-        <input type="hidden" name="one_time_password_code" id="otpInput">
+        <div class="otp-wrapper" id="otpWrapper">
+            <input type="text"
+                   name="one_time_password_code"
+                   id="otpInput"
+                   class="otp-master-input"
+                   maxlength="{{ $count }}"
+                   inputmode="numeric"
+                   pattern="[0-9]*"
+                   autocomplete="one-time-code"
+                   autofocus>
+            <div class="otp-boxes-container" id="otpBoxesContainer">
+                @for ($i = 0; $i < $count; $i++)
+                    <div class="otp-box {{ $i === 0 ? 'is-active' : '' }}" data-index="{{ $i }}">
+                        <span class="otp-digit"></span>
+                    </div>
+                @endfor
+            </div>
+        </div>
         <input type="hidden" name="user_email" value="{{ $email }}">
         <p id="alert" class="text-center mt-2 error d-none">{{ __('message.invalidOtp') }}</p>
     </div>
@@ -55,49 +71,72 @@
         const otpLength = {{ $count }};
         const only_otp = {{ $only_otp }};
         const errorMessage = document.getElementById('alert');
-        const errorMessage1 = document.getElementById('alert-pass');
-        const inputPassword = document.getElementById('password');
+        const otpInput = document.getElementById('otpInput');
+        const otpBoxes = document.querySelectorAll('.otp-box');
 
-        function createOtpFields(count) {
-            const otpContainer = document.getElementById('otpContainer');
-            otpContainer.innerHTML = '';
+        function updateOtpDisplay(val) {
+            errorMessage.classList.add('d-none');
+            const digits = val.split('');
 
-            for (let i = 0; i < count; i++) {
-                const input = document.createElement('input');
-                input.type = 'password';
-                input.maxLength = 1;
-                input.classList.add('otp-input');
-                input.inputMode = 'numeric'
-                input.pattern = '[0-9]*';
+            otpBoxes.forEach((box, idx) => {
+                const digitSpan = box.querySelector('.otp-digit');
+                if (idx < digits.length) {
+                    digitSpan.textContent = digits[idx];
+                    box.classList.add('has-value');
+                } else {
+                    digitSpan.textContent = '';
+                    box.classList.remove('has-value');
+                }
 
-                input.onkeypress = function(e) {
-                    if (!/[0-9]/.test(e.key)) {
-                        e.preventDefault();
-                    }
-                };
-
-                input.oninput = function() {
-                    errorMessage.classList.add('d-none');
-                    if (input.value.length === 1 && i < count - 1) {
-                        otpContainer.children[i + 1].focus();
-                    }
-
-                    if (i === count - 1 && input.value.length === 1) {
-                        submitOtpForm();
-                    }
-                };
-
-                input.onkeydown = function(e) {
-                    errorMessage.classList.add('d-none');
-                    if (e.key === 'Backspace' && input.value === '' && i > 0) {
-                        otpContainer.children[i - 1].focus();
-                    }
-                };
-                otpContainer.appendChild(input);
-            }
+                // Focus/active indicator
+                if (idx === Math.min(digits.length, otpLength - 1) && document.activeElement === otpInput) {
+                    box.classList.add('is-active');
+                } else {
+                    box.classList.remove('is-active');
+                }
+            });
         }
 
-        createOtpFields(otpLength);
+        if (otpInput) {
+            // Support normal typing
+            otpInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '').slice(0, otpLength);
+                updateOtpDisplay(this.value);
+
+                if (this.value.length === otpLength) {
+                    submitOtpForm();
+                }
+            });
+
+            // Support smooth Copy & Paste
+            otpInput.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const pasteData = (e.clipboardData || window.clipboardData).getData('text') || '';
+                const cleanDigits = pasteData.replace(/\D/g, '').slice(0, otpLength);
+                
+                this.value = cleanDigits;
+                updateOtpDisplay(cleanDigits);
+
+                if (cleanDigits.length === otpLength) {
+                    submitOtpForm();
+                }
+            });
+
+            // Focus and blur visual effects
+            otpInput.addEventListener('focus', function() {
+                updateOtpDisplay(this.value);
+            });
+
+            otpInput.addEventListener('blur', function() {
+                otpBoxes.forEach(b => b.classList.remove('is-active'));
+            });
+
+            // Auto focus on load
+            setTimeout(() => {
+                otpInput.focus();
+                updateOtpDisplay(otpInput.value);
+            }, 100);
+        }
 
         function submitOtpForm() {
             let validPassword = true;
@@ -106,19 +145,17 @@
             }
 
             if (validPassword) {
-                const otpInputs = document.querySelectorAll('.otp-input');
-                const otp = Array.from(otpInputs).map(input => input.value).join('');
+                const otp = otpInput ? otpInput.value.trim() : '';
                 
                 if (otp.length !== otpLength) {
-                    event.preventDefault();
+                    if (typeof event !== 'undefined' && event) event.preventDefault();
                     errorMessage.classList.remove('d-none');
                     return;
                 }
                 document.getElementById('notiSuc').classList.remove('d-none');
-                document.getElementById('otpInput').value = otp;
                 document.getElementById('otpForm').submit();
             } else {
-                event.preventDefault();
+                if (typeof event !== 'undefined' && event) event.preventDefault();
                 return;
             }
         }

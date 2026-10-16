@@ -276,4 +276,12 @@ return [
     'wrongAccountOrPassword' => 'Cuenta o contraseña incorrecta',
     'securityStepsNeeded' => 'Es necesario realizar los pasos de configuración de seguridad',
     'noRecentProducts' => 'No hay productos accedidos recientemente',
+    'search' => 'Buscar',
+    'themeToggle' => 'Alternar tema claro/oscuro',
+    'selectLanguage' => 'Seleccionar idioma',
+    'viewCart' => 'Ver carrito',
+    'myAccount' => 'Mi cuenta',
+    'addToCartSuccess' => '¡Agregado al carrito con éxito!',
+    'addToCartFailed' => 'Error al agregar al carrito',
+    'pleaseLoginCart' => 'Por favor inicia sesión para agregar al carrito',
 ];

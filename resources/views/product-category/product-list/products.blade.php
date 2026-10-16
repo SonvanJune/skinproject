@@ -19,7 +19,7 @@
                             @if ($current_page != 1)
                                 <li class="page-item">
                                     <a class="page-link"
-                                        href="{{ url(App::getLocale() . '/product-category' . '/' . $category_detail->slug . '?page=' . ($current_page - 1)) }}"
+                                        href="{{ $category_detail->url . '?page=' . ($current_page - 1) }}"
                                         aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
@@ -28,13 +28,13 @@
                             @for ($i = 1; $i <= $total_page; $i++)
                                 <li class="page-item {{ $current_page == $i ? 'active' : '' }}">
                                     <a class="page-link"
-                                        href="{{ url(App::getLocale() . '/product-category' . '/' . $category_detail->slug . '?page=' . $i) }}">{{ $i }}</a>
+                                        href="{{ $category_detail->url . '?page=' . $i }}">{{ $i }}</a>
                                 </li>
                             @endfor
                             @if ($current_page != $total_page)
                                 <li class="page-item">
                                     <a class="page-link"
-                                        href="{{ url(App::getLocale() . '/product-category' . '/' . $category_detail->slug . '?page=' . ($current_page + 1)) }}"
+                                        href="{{ $category_detail->url . '?page=' . ($current_page + 1) }}"
                                         aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-12 col-sm-12">
                 @if (!$products->isEmpty())
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 products-grid list">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 products-grid">
                         @foreach ($products as $product)
                             <div class="col d-flex">
                                 @include('component.product.product-item', [
@@ -67,7 +67,7 @@
                             @if ($current_page != 1)
                                 <li class="page-item">
                                     <a class="page-link"
-                                        href="{{ url(App::getLocale() . '/product-category' . '/' . $category_detail->slug . '?page=' . $current_page - 1) }}"
+                                        href="{{ $category_detail->url . '?page=' . ($current_page - 1) }}"
                                         aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
@@ -76,18 +76,18 @@
                             @for ($i = 1; $i <= $total_page; $i++)
                                 @if ($current_page == $i)
                                     <li class="page-item active"><a class="page-link"
-                                            href="{{ url(App::getLocale() . '/product-category' . '/' . $category_detail->slug . '?page=' . $i) }}">{{ $i }}</a>
+                                            href="{{ $category_detail->url . '?page=' . $i }}">{{ $i }}</a>
                                     </li>
                                 @else
                                     <li class="page-item"><a class="page-link"
-                                            href="{{ url(App::getLocale() . '/product-category' . '/' . $category_detail->slug . '?page=' . $i) }}">{{ $i }}</a>
+                                            href="{{ $category_detail->url . '?page=' . $i }}">{{ $i }}</a>
                                     </li>
                                 @endif
                             @endfor
                             @if ($current_page != $total_page)
                                 <li class="page-item">
                                     <a class="page-link"
-                                        href="{{ url(App::getLocale() . '/product-category' . '/' . $category_detail->slug . '?page=' . $current_page + 1) }}"
+                                        href="{{ $category_detail->url . '?page=' . ($current_page + 1) }}"
                                         aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
